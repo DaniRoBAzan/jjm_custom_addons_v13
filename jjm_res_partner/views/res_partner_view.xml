@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sview_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='personal_information_page']" position="inside">
+                <group name="more_info">
+                    <group>
+                        <field name="marital" />
+                        <field name="contact_time" />
+                    </group>
+                    <group>
+                        <field name="facebook" />
+                        <field name="instagram" />
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="after">
+                <field attrs="{'invisible': [('is_company','!=',False)]}" name="enterprice_name"/>
+                <field attrs="{'invisible': [('is_company','!=',False)]}" name="enterprice_address"/>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="string">Ocupacion</attribute>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="after">
+                <field attrs="{'invisible': ['|', ('is_company','=',False), ('parent_id','!=',False)]}" name="is_partner"/>
+            </xpath>
+             <xpath expr="//field[@name='function']" position="after">
+                <field attrs="{'invisible': ['|',  ('is_company','=',False), ('parent_id','!=',False)]}" name="is_collector"/>
+            </xpath>
+             <xpath expr="//field[@name='function']" position="after">
+                <field attrs="{'invisible': ['|',  ('is_company','=',False), ('parent_id','!=',False)]}" name="is_consultant"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
+
+
