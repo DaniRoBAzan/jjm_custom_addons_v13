@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="brand_corvenmotos" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Corven Motos </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_corvenmotos-image.png"/>
+    </record>
+    <record id="brand_gilera" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Gilera </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_gilera-image.png"/>
+    </record>
+    <record id="brand_motomel" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Motomel </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_motomel-image.png"/>
+    </record>
+    <record id="brand_hero" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Hero </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_hero-image.png"/>
+    </record>
+    <record id="brand_mondial" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Mondial </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_mondial-image.png"/>
+    </record>
+    <record id="brand_benelli" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Benelli </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_benelli-image.png"/>
+    </record>
+    <record id="brand_honda" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Honda </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_honda-image.png"/>
+    </record>
+    <record id="brand_bajaj" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Bajaj </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_bajaj-image.png"/>
+    </record>
+    <record id="brand_zanella" model="jjm_vehicles.vehicle.model.brand">
+        <field name="name"> Zanella </field>
+        <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_zanella-image.png"/>
+    </record>
+
+
+
+
+    <record id="model_zanellazr250" model="jjm_vehicles.vehicle.model">
+        <field name="name">Zr 250</field>
+        <field name="brand_id" ref="brand_zanella" />
+    </record>
+    <record id="model_zanellazr110" model="jjm_vehicles.vehicle.model">
+        <field name="name">Zr 110</field>
+        <field name="brand_id" ref="brand_zanella" />
+    </record>
+</odoo>

@@ -1,0 +1,180 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jjm_vehicles
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-28 16:13+0000\n"
+"PO-Revision-Date: 2021-05-28 16:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jjm_vehicles
+#: model:ir.model,name:jjm_vehicles.model_jjm_vehicles_vehicle_model_brand
+msgid "Brand of the vehicle"
+msgstr "Marcas de los vehiculos"
+
+#. module: jjm_vehicles
+#: model:ir.actions.act_window,name:jjm_vehicles.jjm_vehicle_model_brand_action
+#: model:ir.ui.menu,name:jjm_vehicles.jjm_vehicle_model_brand_menu
+msgid "Car Manufacturers"
+msgstr "Marcas"
+
+#. module: jjm_vehicles
+#: model_terms:ir.actions.act_window,help:jjm_vehicles.jjm_vehicle_model_brand_action
+msgid "Create a new manufacturer"
+msgstr "Crear una nueva marca"
+
+#. module: jjm_vehicles
+#: model_terms:ir.actions.act_window,help:jjm_vehicles.jjm_vehicle_model_action
+msgid "Create a new model"
+msgstr "Crear un nuevo modelo"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__create_uid
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__create_date
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__display_name
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: jjm_vehicles
+#: model:ir.ui.menu,name:jjm_vehicles.menu_root
+msgid "Fleet"
+msgstr "Vehiculos"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__manager_id
+msgid "Fleet Manager"
+msgstr "Gestion de vehiculos"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__id
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__id
+msgid "ID"
+msgstr ""
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model____last_update
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__write_uid
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__write_date
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__write_date
+msgid "Last Updated on"
+msgstr "Última modificación el"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__image_128
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__image_128
+msgid "Logo"
+msgstr ""
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model_brand__name
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_search
+msgid "Make"
+msgstr "Marca"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__brand_id
+msgid "Manufacturer"
+msgstr "Marcas"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,help:jjm_vehicles.field_jjm_vehicles_vehicle_model__brand_id
+msgid "Manufacturer of the vehicle"
+msgstr "Marcas de vehiculos"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_form
+msgid "Model"
+msgstr "Modelo"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_brand_view_form
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_brand_view_tree
+msgid "Model Make"
+msgstr "Marca de modelo"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__name
+msgid "Model name"
+msgstr "Nombre del modelo"
+
+#. module: jjm_vehicles
+#: model:ir.model,name:jjm_vehicles.model_jjm_vehicles_vehicle_model
+msgid "Model of a vehicle"
+msgstr "Modelo de un vehiculo"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_kanban
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_tree
+msgid "Models"
+msgstr "Modelos"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm__vehicle_model_brand_view_kanban
+msgid "Open"
+msgstr "Abierto"
+
+#. module: jjm_vehicles
+#: model:ir.actions.act_window,name:jjm_vehicles.jjm_vehicle_model_action
+#: model:ir.ui.menu,name:jjm_vehicles.jjm_vehicle_model_menu
+msgid "Vehicles Model"
+msgstr "Modelos"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_search
+msgid "Vehicles costs"
+msgstr "Precios de vehiculos"
+
+#. module: jjm_vehicles
+#: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__vendors
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_form
+msgid "Vendors"
+msgstr "Proveedor"
+
+#. module: jjm_vehicles
+#: model_terms:ir.actions.act_window,help:jjm_vehicles.jjm_vehicle_model_action
+msgid "You can define several models (e.g. A3, A4) for each make (Audi)."
+msgstr "Puede definir varios modelos (por ejemplo, A3, A4) para cada marca (Audi)."
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_form
+msgid "e.g. Model S"
+msgstr "ej: Modelo S"
+
+#. module: jjm_vehicles
+#: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_form
+msgid "e.g. Tesla"
+msgstr "ej: Tesla"
