@@ -8,15 +8,6 @@
             <xpath expr="//page[1]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
-            <!--<xpath expr="//page[name='personal_information_page']" position="replace">
-                <attribute name="position">True</attribute>
-            </xpath>
-            <xpath expr="//notebook/page[1]" position="attributes">
-                    <attribute name="attrs">
-                        {'invisible':[('is_matriculado','=',True)]}
-                    </attribute>
-                </xpath>
-                -->
             <xpath expr="//page[@name='personal_information_page']" position="inside">
                 <group name="more_info">
                     <group>

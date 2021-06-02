@@ -10,7 +10,7 @@
         'base','contacts','partner_manual_rank'
         ],
     'data': [
-        'views/res_partner_view.xml',
+        #'views/res_partner_view.xml',
         'views/res_partner_purchase.xml',
     ],
     'application': False,
