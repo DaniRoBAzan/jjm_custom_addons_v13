@@ -11,20 +11,25 @@
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
                         <h1>
-                            <field name="name" placeholder="e.g. Model S"/>
+                            <field name="name" placeholder="Escribir aqui el nombre del modelo..."/>
                         </h1>
+                        <label for="displacement" class="oe_edit_only"/>
+                        <h2>
+                            <field name="displacement" placeholder="Escribe aqui las cilindradas..."/>
+                        </h2>
                         <label for="brand_id" class="oe_edit_only"/>
                         <h2>
-                            <field name="brand_id" placeholder="e.g. Tesla"/>
+                            <field name="brand_id" placeholder="Seleccione la marca..."/>
                         </h2>
+
                     </div>
-                    <group>
-                        <group>
+<!--                    <group>-->
+<!--                        <group>-->
 <!--                            <field name="manager_id" groups="fleet.fleet_group_manager"/>-->
-                            <field name="manager_id"/>
-                        </group>
-                    </group>
-                    <notebook>
+<!--                            <field name="manager_id"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+                    <!--<notebook>
                         <page string="Vendors" name="vendors">
                             <field name="vendors">
                                 <kanban quick_create="false" create="true">
@@ -43,7 +48,7 @@
                                 </kanban>
                             </field>
                         </page>
-                    </notebook>
+                    </notebook>-->
                 </sheet>
             </form>
         </field>

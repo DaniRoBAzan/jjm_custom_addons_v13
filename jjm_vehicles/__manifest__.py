@@ -12,8 +12,7 @@
         'mail',
         ],
     'data': [
-        #'security/fleet_security.xml',
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/fleet_vehicle_model_views.xml',
         'data/fleet_cars_data.xml',
     ],

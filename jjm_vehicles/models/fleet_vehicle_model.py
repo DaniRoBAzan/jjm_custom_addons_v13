@@ -16,6 +16,8 @@ class FleetVehicleModel(models.Model):
     # manager_id = fields.Many2one('res.users', 'Fleet Manager', default=lambda self: self.env.uid,
     #                              domain=lambda self: [('groups_id', 'in', self.env.ref('jjm_vehicles.fleet_group_manager').id)])
     image_128 = fields.Image(related='brand_id.image_128', readonly=False)
+    displacement = fields.Char(string="Cilindrada")
+
 
     @api.depends('name', 'brand_id')
     def name_get(self):
