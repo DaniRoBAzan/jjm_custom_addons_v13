@@ -7,11 +7,11 @@
     'license': 'OEEL-1',
     'version':  '1.0',
     'depends': [
-        'base','contacts','partner_manual_rank'
+        'base','contacts'
         ],
     'data': [
         #'views/res_partner_view.xml',
-        'views/res_partner_purchase.xml',
+        #'views/res_partner_purchase.xml',
     ],
     'application': False,
 }
