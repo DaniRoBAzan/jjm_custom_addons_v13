@@ -18,9 +18,17 @@ class ResPartner(models.Model):
     facebook = fields.Char(string='Facebook')
     instagram = fields.Char(string='Instagram')
     contact_time = fields.Char(string='Hora de contacto')
-    enterprice_name = fields.Char(string='Empresa', help='Escribe aqui el nombre de la Empresa del cliente')
-    enterprice_address = fields.Char(string='Direccion Empresa' ,help='Escribe aqui el nombre de la direccion de la Empresa del cliente')
 
-    is_partner = fields.Boolean(string= 'Es Socio', store=True)
+    #ENTERPRISE
+    enterprise_name = fields.Char(string='Nombre', help='Escribe aqui el nombre de la Empresa del cliente.')
+    enterprise_address = fields.Char(string='Direccion' ,help='Escribe aqui la direccion de la Empresa del cliente.')
+    enterprise_zip = fields.Char(string='Codigo Postal', help='Escribe aqui el codigo postal de la Empresa del cliente.')
+    enterprise_city = fields.Char(string='Ciudad', help='Escribe aqui el nombre de la ciudad de la Empresa del cliente.')
+    enterprise_state = fields.Char(string='Provincia', help='Escribe aqui el nombre de la Provincia de la Empresa del cliente.')
+    enterprise_country = fields.Char(string='Pais', help='Escribe aqui el nombre del pais de la Empresa del cliente.')
+
+    is_consultant = fields.Boolean(string= 'Es Asesor', store=True, domain={'invisible': [('is_supplier','=',False)]})
+    code_consultant = fields.Char(Strin='Codigo Asesor', store=True)
+    is_associated = fields.Boolean(string= 'Es Socio', store=True)
     is_collector = fields.Boolean(string= 'Es Cobrador', store=True)
-    is_consultant = fields.Boolean(string= 'Es Asesor', store=True)
+

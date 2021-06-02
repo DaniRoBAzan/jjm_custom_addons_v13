@@ -5,12 +5,13 @@
     'description': 'Add fields to the res_partner',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
-    'version':  '13.0.1.0',
+    'version':  '1.0',
     'depends': [
-        'base','contacts',
+        'base','contacts','partner_manual_rank'
         ],
     'data': [
-        'views/res_partner_view.xml'
+        'views/res_partner_view.xml',
+        'views/res_partner_purchase.xml',
     ],
     'application': False,
 }

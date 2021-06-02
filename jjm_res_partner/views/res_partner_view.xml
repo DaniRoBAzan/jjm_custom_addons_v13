@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="sview_partner_form_inherit" model="ir.ui.view">
+    <record id="view_partner_form_inherit" model="ir.ui.view">
         <field name="name">res.partner.form</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <!--<xpath expr="//page[name='personal_information_page']" position="replace">
+                <attribute name="position">True</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[1]" position="attributes">
+                    <attribute name="attrs">
+                        {'invisible':[('is_matriculado','=',True)]}
+                    </attribute>
+                </xpath>
+                -->
             <xpath expr="//page[@name='personal_information_page']" position="inside">
                 <group name="more_info">
                     <group>
@@ -17,25 +29,36 @@
                     </group>
                 </group>
             </xpath>
-            <xpath expr="//field[@name='function']" position="after">
-                <field attrs="{'invisible': [('is_company','!=',False)]}" name="enterprice_name"/>
-                <field attrs="{'invisible': [('is_company','!=',False)]}" name="enterprice_address"/>
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page name='working_information' string="Información laboral">
+                    <group string="Datos de la Empresa">
+                        <group>
+                            <field name="function" string="Ocupacion"/>
+                        </group>
+                        <group>
+                            <field name="enterprise_name" />
+                            <field name="enterprise_address" />
+                        </group>
+                    </group>
+                    <group string="Informacion de la Empresa">
+                        <group>
+                            <field name="enterprise_zip" />
+                            <field name="enterprise_city" />
+                        </group>
+                        <group>
+                            <field name="enterprise_state" />
+                            <field name="enterprise_country" />
+                        </group>
+                    </group>
+                </page>
             </xpath>
             <xpath expr="//field[@name='function']" position="attributes">
                 <attribute name="string">Ocupacion</attribute>
             </xpath>
-            <xpath expr="//field[@name='function']" position="after">
-                <field attrs="{'invisible': ['|', ('is_company','=',False), ('parent_id','!=',False)]}" name="is_partner"/>
-            </xpath>
-             <xpath expr="//field[@name='function']" position="after">
-                <field attrs="{'invisible': ['|',  ('is_company','=',False), ('parent_id','!=',False)]}" name="is_collector"/>
-            </xpath>
-             <xpath expr="//field[@name='function']" position="after">
-                <field attrs="{'invisible': ['|',  ('is_company','=',False), ('parent_id','!=',False)]}" name="is_consultant"/>
-            </xpath>
-
         </field>
     </record>
 </odoo>
-
-

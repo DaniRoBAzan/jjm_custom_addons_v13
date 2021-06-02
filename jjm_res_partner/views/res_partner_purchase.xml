@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_purchase_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="partner_manual_rank.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='purchase']" position="inside">
+                <field attrs="{'invisible': [('is_supplier','=',False)]}" name="is_consultant"/>
+                <field attrs="{'invisible': [('is_supplier','=',False)]}" name="is_collector"/>
+                <field attrs="{'invisible': [('is_supplier','=',False)]}" name="is_associated"/>
+            </xpath>
+            <xpath expr="//field[@name='is_consultant']" position="after">
+                <field attrs="{'invisible': [('is_consultant','=',False)]}" name="code_consultant" string="Codigo Asesor"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
