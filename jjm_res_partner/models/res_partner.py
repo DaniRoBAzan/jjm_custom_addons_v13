@@ -12,7 +12,8 @@ class ResPartner(models.Model):
         [('single', 'Soltero/a'),
          ('married', 'Casado/a'),
          ('divorced', 'Divorciado/a'),
-         ('widower', 'Viudo/a')],
+         ('widower', 'Viudo/a'),
+         ('concubine', 'Concubino/a')],
         default='single'
     )
     facebook = fields.Char(string='Facebook')
