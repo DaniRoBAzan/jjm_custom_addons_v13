@@ -33,3 +33,9 @@ class ResPartner(models.Model):
     is_associated = fields.Boolean(string= 'Es Socio', store=True)
     is_collector = fields.Boolean(string= 'Es Cobrador', store=True)
 
+    #CONTRACT
+    contract_ids = fields.One2many(
+        comodel_name='contract.contract',
+        inverse='partner_id',
+        string="Contracts",
+    )
