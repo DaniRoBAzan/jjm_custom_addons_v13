@@ -8,23 +8,10 @@
             <xpath expr="//page[1]" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
-            <xpath expr="//page[@name='personal_information_page']" position="inside">
-                <group name="more_info">
-                    <group>
-                        <field name="marital" />
-                        <field name="contact_time" />
-                    </group>
-                    <group>
-                        <field name="facebook" />
-                        <field name="instagram" />
-                    </group>
-                </group>
-            </xpath>
             <xpath expr="//field[@name='function']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-
-            <xpath expr="//notebook" position="inside">
+            <xpath expr="//page[@name='sales_purchases']" position="before">
                 <page name='working_information' string="Información laboral">
                     <group string="Datos de la Empresa">
                         <group>
@@ -49,6 +36,46 @@
             </xpath>
             <xpath expr="//field[@name='function']" position="attributes">
                 <attribute name="string">Ocupacion</attribute>
+            </xpath>
+        </field>
+
+    </record>
+
+    <record id="personal_information" model="ir.ui.view">
+        <field name="name">Personal information page for contacts form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="before">
+                <page name="personal_information_page2" string="Información Personal" attrs="{'invisible': [('is_company','=',True)]}">
+                    <group name="personal_information_group"/>
+                </page>
+            </xpath>
+            <xpath expr="//group[@name='personal_information_group']" position="replace">
+                <group>
+                    <group>
+                        <field name="birthdate_date" />
+
+                        <field name="marital" />
+                        <field name="contact_time" />
+                    </group>
+                    <group>
+                        <field name="gender" />
+                        <field name="facebook" />
+                        <field name="instagram" />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_personal_information_inherit" model="ir.ui.view">
+        <field name="name">view.res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='personal_information_page']" position="attributes">
+                <attribute name="invisible">True</attribute>
             </xpath>
         </field>
     </record>
