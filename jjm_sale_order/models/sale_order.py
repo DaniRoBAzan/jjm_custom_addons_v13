@@ -6,12 +6,6 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
 
-
-    def action_contract(self):
-        self.ensure_one()
-        action = self.env.ref('contract.contract_contract_customer_form_view').read()[0]
-        return action
-
     def action_contract(self):
         self.ensure_one()
         action = self.env.ref('contract.contract_contract_customer_form_view').read()[0]
@@ -20,7 +14,7 @@ class SaleOrder(models.Model):
             default_partner_id=self.partner_id.id,
         )
         return {
-            'name': _('Contract'),
+            'name': _('Contrato'),
             'type': 'ir.actions.act_window',
             'view_type': 'form',
             'view_mode': 'form',
