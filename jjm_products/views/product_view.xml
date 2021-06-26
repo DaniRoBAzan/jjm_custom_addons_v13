@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group_standard_price']" position="after">
                 <group string="Beneficio especial del kit" attrs="{'invisible': [('is_kit', '=', False)]}">
-                    <field name="initial_canon" widget="monetary" attrs="{'invisible': [('is_kit', '=', False)]}"/>
-                    <field name="model_moto" attrs="{'invisible': [('is_kit', '=', False)]}"/>
+                    <field name="model_moto" attrs="{'invisible': [('is_kit', '=', False)]}" filter_domain="[('model_moto.display_name','ilike',self)]"/>
                 </group>
 
             </xpath>
@@ -32,5 +31,25 @@
         </field>
     </record>
 
+     <record id="jjm_product_product_tree_view" model="ir.ui.view" >
+        <field name="name">product.product.jjm.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="model_moto" optional="show"/>
+            </field>
+            <xpath expr="//field[@name='lst_price']" position="attributes">
+                 <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                 <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='price']" position="attributes">
+                 <attribute name="optional">hide</attribute>
+            </xpath>
+
+        </field>
+    </record>
 
 </odoo>
