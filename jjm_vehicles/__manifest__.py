@@ -14,8 +14,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/fleet_vehicle_model_views.xml',
+        'views/vehicles_price_view.xml',
         'data/fleet_cars_data.xml',
     ],
     'installable': True,
     'application': True,
 }
+

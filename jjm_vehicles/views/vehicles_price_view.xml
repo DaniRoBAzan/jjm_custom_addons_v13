@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="jjm_vehicles_price_form_view" model="ir.ui.view">
+        <field name="name">jjm_vehicles.vehicles_price</field>
+        <field name="model">jjm_vehicles.vehicles_price</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Precio">
+                <sheet>
+                    <group>
+                        <group name="pricelist_vehicles">
+                            <field name="name"/>
+                            <field name='model_moto'/>
+                            <field name='fixed_price_moto' widget="monetary"/>
+                            <field name='currency_id' invisible='1'/>
+                        </group>
+                        <group name="pricelist_rule_limits">
+                            <field name='date_start_moto'/>
+                            <field name='date_end_moto'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="jjm_vehicles_vehicles_price_view_tree" model="ir.ui.view">
+        <field name="name">jjm_vehicles.vehicles_price.tree</field>
+        <field name="model">jjm_vehicles.vehicles_price</field>
+        <field name="arch" type="xml">
+            <tree string="Lista Precios">
+                <field name="name"/>
+                <field name="model_moto" />
+                <field name="fixed_price_moto"/>
+                <field name="currency_id" />
+                <field name="date_start_moto" />
+                <field name="date_end_moto" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="jjm_vehicles_pricelist_view_search" model="ir.ui.view" >
+        <field name="name">jjm_vehicles.vehicles_price.search</field>
+        <field name="model">jjm_vehicles.vehicles_price</field>
+        <field name="arch" type="xml">
+            <search string="Busqueda de precios">
+                <field name="name" string="Precio Vehiculos"/>
+                <field name="currency_id" groups="base.group_multi_currency"/>
+                <filter string="Modelo moto" name="model_moto" domain="[]" context="{'group_by':'model_moto'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id='jjm_vehicle_price_action' model='ir.actions.act_window'>
+        <field name="name">Precios</field>
+        <field name="res_model">jjm_vehicles.vehicles_price</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new price of vehicles..
+          </p>
+        </field>
+    </record>
+    <menuitem id="jjm_vehicle_price_menu"  action="jjm_vehicle_price_action" string= "Prices" parent="jjm_vehicles.menu_root" sequence="4"/>
+    </data>
+</odoo>

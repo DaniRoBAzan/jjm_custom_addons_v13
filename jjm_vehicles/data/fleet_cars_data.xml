@@ -67,7 +67,7 @@
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_smashbase125_gilera" model="jjm_vehicles.vehicle.model">
-        <field name="name">Smash Base </field>
+        <field name="name">Smash </field>
         <field name="brand_id" ref="brand_gilera" />
         <field name="displacement"> 125 cc </field>
     </record>
@@ -100,6 +100,11 @@
         <field name="name">Skua </field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 150 cc </field>
+    </record>
+    <record id="model_skua200_motomel" model="jjm_vehicles.vehicle.model">
+        <field name="name">Skua </field>
+        <field name="brand_id" ref="brand_motomel" />
+        <field name="displacement"> 200 cc </field>
     </record>
     <record id="model_skuapro250_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Skua Pro</field>
