@@ -69,6 +69,7 @@
             </xpath>
         </field>
     </record>
+
     <record id="view_personal_information_inherit" model="ir.ui.view">
         <field name="name">view.res.partner.inherit</field>
         <field name="model">res.partner</field>
@@ -96,4 +97,14 @@
 <!--                </filter>-->
             </field>
         </record>
+
+
+    <menuitem
+            action="contract.action_customer_contract"
+            id="menu_action_customer_contract"
+            name="Contratos de Clientes"
+            string="Contratos de Clientes"
+            parent="contacts.menu_contacts" sequence="3"/>
+
+
 </odoo>
