@@ -11,7 +11,8 @@
         'contacts',
         'partner_manual_rank',
         'partner_contact_personal_information_page',
-        'partner_contact_birthdate'
+        'partner_contact_birthdate',
+        'contract'
         ],
     'data': [
         'views/res_partner_view.xml',
