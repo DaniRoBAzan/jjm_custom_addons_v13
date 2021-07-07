@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="paid_state" attrs="{'invisible': [('is_customer', '!=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_tree_contact_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.contact.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="debt_balance" position="after">
+                <field name="paid_state" optional="show" />
+            </field>
+        </field>
+    </record>
+    <record id="view_res_partner_filter_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="paid_state"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>
