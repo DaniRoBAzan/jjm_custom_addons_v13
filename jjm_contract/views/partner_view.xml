@@ -30,6 +30,19 @@
                 <filter name="paid_state" string="Estado Deuda" context="{'group_by':'paid_state'}"/>
                 <separator/>
             </filter>
+            <filter name="type_company" position="after">
+                <separator />
+                <filter
+                    name="paid_state"
+                    string="Adeuda"
+                    domain="[('paid_state', '=', 'Adeuda')]"
+                />
+                <filter
+                    name="paid_state"
+                    string="Al Dia"
+                    domain="[('paid_state', '=', 'Al día')]"
+                />
+            </filter>
         </field>
     </record>
 
