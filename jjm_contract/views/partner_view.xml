@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
                 <field name="paid_state" attrs="{'invisible': [('is_customer', '!=', True)]}"/>
-<!--                <field name="paid_state_search" invisible="1"/>-->
             </xpath>
         </field>
     </record>

@@ -7,17 +7,14 @@ class ResPartner(models.Model):
 
     paid_state = fields.Char(string='Estado de Deuda', required=True, compute='_compute_paid_state',
                              readonly=True, store=True)
-    #paid_state_search = fields.Char(string='Estado Deuda Search', default='no declarado')
 
     def _compute_paid_state(self):
         for rec in self:
             if rec.is_customer:
                 if rec.debt_balance <= 0:
                     rec.paid_state = 'Al día'
-                    #rec.paid_state_search = rec.paid_state
                 else:
                     rec.paid_state = 'Adeuda'
-                    #rec.paid_state_search = rec.paid_state
             else:
                 rec.paid_state = 'No es cliente'
 
