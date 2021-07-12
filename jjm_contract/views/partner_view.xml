@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
                 <field name="paid_state" attrs="{'invisible': [('is_customer', '!=', True)]}"/>
-                <field name="paid_state_search" invisible="1"/>
+<!--                <field name="paid_state_search" invisible="1"/>-->
             </xpath>
         </field>
     </record>
@@ -28,7 +28,7 @@
         <field name="arch" type="xml">
             <filter name="salesperson" position="after">
                 <separator/>
-                <filter name="paid_state_search" string="Estado Deuda" context="{'group_by':'paid_state_search'}"/>
+                <filter name="paid_state" string="Estado Deuda" context="{'group_by':'paid_state'}"/>
                 <separator/>
             </filter>
         </field>
