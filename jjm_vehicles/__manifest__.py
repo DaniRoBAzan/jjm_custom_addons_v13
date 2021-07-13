@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'JJM Vehicles',
-    'description': 'With this module, Odoo helps you managing all your vehicles.',
+    'description': '''Este modulo te ayudara a administrar los vehiculos con sus respectivas marcas y modelos.
+    Ademas agrega un modelo de listado de precios.
+    ''',
     'summary': 'Manage your vehicles',
     'author': "Romina Bazan",
     'website':  '',

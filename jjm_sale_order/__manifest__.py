@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'JJM Sale Order',
-    'description': 'this module makes improvements in the sales order.',
+    'description': '''Este modulo agrega un boton inteligente en la orden de venta confirmada, que calcula
+    la cantidad de contratos por cada cliente, y brinda un acceso al listado de los mismos.''',
     'author': "Romina Bazan",
     'website':  '',
     'license': 'OEEL-1',

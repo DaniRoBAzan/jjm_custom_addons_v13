@@ -2,7 +2,7 @@
 
 {
     'name': 'JJM Products',
-    'description': 'Add fields to the product_template',
+    'description': 'Este modulo agrega campos al producto para convertirlos en un kit.',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
     'version':  '1.0',
