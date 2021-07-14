@@ -13,6 +13,8 @@
             </xpath>
              <xpath expr="//field[@name='user_id']" position="after">
                 <field name="date_accession"/>
+                <field name="collector" domain="[('is_collector','=','True')]"/>
+                <field name="consultant" domain="[('is_consultant','=','True')]"/>
             </xpath>
       </field>
     </record>
