@@ -37,6 +37,12 @@
             <xpath expr="//field[@name='function']" position="attributes">
                 <attribute name="string">Ocupacion</attribute>
             </xpath>
+            <xpath expr="//field[@name='street2']" position="attributes">
+                <attribute name="string">Barrio</attribute>
+            </xpath>
+            <xpath expr="//field[@name='street2']" position="attributes">
+                <attribute name="placeholder">Barrio</attribute>
+            </xpath>
         </field>
 
     </record>
@@ -88,13 +94,11 @@
                 <field name="name" position="after">
                     <field name="contract_ids" string="Contrato"/>
                 </field>
-<!--                <filter name="supplier" position="after">-->
-<!--                    <separator/>-->
-<!--                    <filter string="Contract"-->
-<!--                            name="contract_ids"-->
-<!--                            domain="[('contract_ids', '=', self.id.contract_ids)]"/>-->
-<!--                    <separator/>-->
-<!--                </filter>-->
+                 <filter name="salesperson" position="after">
+                    <separator/>
+                    <filter name="street2" string="Barrio" context="{'group_by':'street2'}"/>
+                    <separator/>
+                </filter>
             </field>
         </record>
 
