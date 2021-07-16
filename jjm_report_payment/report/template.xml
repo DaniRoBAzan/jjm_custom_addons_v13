@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! -->
+    <report id="payment_report"
+        model="payment.report.wizard"
+        string="Reporte-cobranza"
+        report_type="qweb-pdf"
+        name="jjm_report_payment.payment_report_template_pdf"
+        menu="False"/>
+
+    <template id="payment_report_template_pdf">
+        <t t-call="web.html_container">
+            <div class="header" style="border-bottom: 1px solid black;">
+                <h3 class="text-center">Reporte de cobranza
+                    <span style="font-size: 14px;"><strong>Desde</strong>: <t t-esc="date_start"/> <strong> Hasta</strong>: <t t-esc="date_end"/></span>
+                </h3>
+                <h3 class="text-left">
+                    <span style="font-size: 12px;"><strong>Cobrador</strong>: <t t-esc="collector"/> </span>
+                </h3>
+            </div>
+            <div class="article mt0 o_report_layout_standard">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <th style="width: 65%">Contrato</th>
+                        <th class="text-center" style="width: 15%">Cliente</th>
+                        <th class="text-center" style="width: 10%">DNI</th>
+                        <th class="text-center" style="width: 10%">CANON</th>
+                        <th class="text-center" style="width: 10%">IMPORTE</th>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td><span t-esc="doc['date']"/></td>
+                                <td class="text-center"><span t-esc="doc['total_orders']"/></td>
+                                <td class="text-center">
+                                    <span t-esc="doc['amount_total']" t-options='{"widget": "monetary", "display_currency": doc["company"].currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer o_standard_footer" style="border-top: 1px solid black;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page"/>
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
