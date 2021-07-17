@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class WizardReportPayment(models.TransientModel):
+class PaymentReportWizard(models.TransientModel):
     _name = 'payment.report.wizard'
     print('entre al wizard class')
     date_start = fields.Date(string='Fecha Inicial', required=True, default=fields.Date.today)
@@ -11,6 +11,7 @@ class WizardReportPayment(models.TransientModel):
     collector = fields.Many2one('res.partner', "Cobrador", domain=[("is_collector", "=", True)])
     print_all = fields.Boolean(string='Imprimir Todos los cobradores')
 
+    #@api.multi
     def generate_pdf_report(self):
         print('entre a la funcion imprimir del wizard')
         data = {
@@ -19,7 +20,7 @@ class WizardReportPayment(models.TransientModel):
             'form': {
                 'date_start': self.date_start,
                 'date_end': self.date_end,
-                'collector': self.collector,
+                'collector': self.collector.id,
                 'print_all': self.print_all,
             },
         }

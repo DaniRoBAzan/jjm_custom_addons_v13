@@ -8,7 +8,8 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 
 class ReportPaymentReportView(models.AbstractModel):
-    _name = 'paymentreport.payment_report_template_pdf'
+    #report.nombre modulo.template_id
+    _name = 'report.jjm_report_payment.payment_report_template_pdf'
     print('entre al reporte class')
 
     @api.model
@@ -17,8 +18,8 @@ class ReportPaymentReportView(models.AbstractModel):
         date_start = data['form']['date_start']
         date_end = data['form']['date_end']
         collector = data['form']['collector']
+        collector_id = int(collector)
         print_all = data['form']['print_all']
-        print('recibi: date_start: ', date_start, '/ date_end: ', date_end, ' / collector: ',collector, ' / print_all: ',print_all)
 
         # date_start = datetime.strptime(date_start, DATE_FORMAT)
         # date_end = datetime.strptime(date_end, DATE_FORMAT)
@@ -30,17 +31,19 @@ class ReportPaymentReportView(models.AbstractModel):
         list_invoices = []
         docs = []
         total = 0
+
         while date_start <= date_end:
             # SI EL CHECK ES FALSO
             if print_all is False:
     # SI NO ESTA TILDADO PRINT_ALL DEBO BUSCAR EN LOS CONTRATOS TODOS LOS CLIENTES QUE TENGAN DE COBRADOR
     # AL COBRADOR ELEGIDO EN EL WIZARD Y CARGARLOS EN UNA LISTA, O BIEN TRAER TODOS.
-                contract_obj = self.env['contract.contract'].search(['collector', '=', collector])
+                contract_obj = self.env['contract.contract'].search(['collector', '=', collector_id])
+                print("Imprimir todo NO NO fue seleccionado! -contract =", collector_id)
             else:
                 contract_obj = self.env['contract.contract']
+                print("Imprimir todo fue seleccionado!,contract_obj= ", collector_id)
 
             for partner in contract_obj:
-                print('--> partner del contract: ', partner)
                 list_partner.append(partner)
     # LUEGO DEBO BUSCAR EN LAS FACTURAS TODOS ESOS CLIENTES Y TRAER LAS FACTURAS
     # FILTRADAS POR LAS FECHAS  ELEGIDAS EN EL WIZARD.

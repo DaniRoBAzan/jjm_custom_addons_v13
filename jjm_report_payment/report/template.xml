@@ -2,7 +2,7 @@
 <odoo>
     <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! -->
     <report id="payment_report"
-        model="payment.report.wizard"
+        model="report.jjm_report_payment.payment_report_template_pdf"
         string="Reporte-cobranza"
         report_type="qweb-pdf"
         name="jjm_report_payment.payment_report_template_pdf"

@@ -7,13 +7,15 @@
     'author': 'Romina Bazan',
     'maintainer': 'Romina Bazan',
     'depends': ['base', 
-                'sale', ],
+                'sale',
+                'account',
+                'contract',
+                ],
     'demo': [],
     'data': [
         # 'security/ir.model.access.csv',
-        'wizard/view.xml',
         'report/template.xml',
-        
+        'wizard/view.xml',
     ],
     'installable': True,
     'application': True,
