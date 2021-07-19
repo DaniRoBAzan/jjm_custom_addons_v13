@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_group_form" model="ir.ui.view">
+        <field name="name">account.payment.group.inherit.view</field>
+        <field name="model">account.payment.group</field>
+        <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
+        <field name="arch" type="xml">
+<!--             <field name="payment_date" position="before">-->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="collector_id" domain="[('is_collector','=','True')]"/>
+            </xpath>
+        </field>
+    </record>
+
+
+<!--    &lt;!&ndash; Search view &ndash;&gt;-->
+<!--    <record id="view_account_payment_group_search" model="ir.ui.view">-->
+<!--        <field name="name">receipt.payment.group.search</field>-->
+<!--        <field name="model">account.payment.group</field>-->
+<!--        <field name="inherit_id" ref="account_payment_group.view_account_payment_group_search"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <field name="display_name" position="attributes">-->
+<!--                <attribute name="filter_domain">['|', ('name','ilike',self), ('communication','ilike',self)]</attribute>-->
+<!--            </field>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Tree view &ndash;&gt;-->
+<!--    <record id="view_account_payment_group_tree" model="ir.ui.view">-->
+<!--        <field name="name">receipt.payment.group.tree</field>-->
+<!--        <field name="model">account.payment.group</field>-->
+<!--        <field name="inherit_id" ref="account_payment_group.view_account_payment_group_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <field name="payment_date" position="after">-->
+<!--                <field name="display_name"/>-->
+<!--            </field>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>
