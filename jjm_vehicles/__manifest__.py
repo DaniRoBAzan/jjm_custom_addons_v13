@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'JJM Vehicles',
-    'description': '''Este modulo te ayudara a administrar los vehiculos con sus respectivas marcas y modelos.
+    'name': 'JJM VEHICULOS',
+    'description': '''
+    Este modulo te ayudara a administrar los vehiculos con sus respectivas marcas y modelos.
     Ademas agrega un modelo de listado de precios.
     ''',
-    'summary': 'Manage your vehicles',
     'author': "Romina Bazan",
     'website':  '',
     'license': 'OEEL-1',

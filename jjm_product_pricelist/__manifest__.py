@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'JJM Pricelist',
-    'description': 'this module makes improvements in the product pricelist.',
+    'name': 'JJM PRECIOS DE LISTA',
+    'description': '''
+    this module makes improvements in the product pricelist.
+    ''',
     'author': "Romina Bazan",
     'website':  '',
     'license': 'OEEL-1',

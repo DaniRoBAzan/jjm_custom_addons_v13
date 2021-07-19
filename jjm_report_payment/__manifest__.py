@@ -1,8 +1,11 @@
 {
-    'name': 'JJM Report Payment',
+    'name': 'JJM REPORTE DE COBRANZA',
     'version': '1.0',
     'category': 'Extra Tools',
-    'summary': 'Reporte de Cobranzas',
+    'description': '''
+    Este es el Reporte de Cobranzas, lo encontras en Ventas/Informes/Reporte Cobranza.
+    El mismo permite elegir un cobrador o todos, descargando en pdf el reporte a partir de una fecha de inicio y otra de fin.
+    ''',
     'license': 'AGPL-3',
     'author': 'Romina Bazan',
     'maintainer': 'Romina Bazan',

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'JJM Contract',
+    'name': 'JJM CONTRATOS',
     'description': '''
     Agregue campo Estado deuda en el formulario de cliente, el mismo agrega automáticamente un estado "Al dia" si el cliente tiene seteado el campo Debt Balance en 0 o negativo ; de lo contrario, lo declara como un estado "Adeuda" .
     Ademas agrego agrupación por "Estado de deuda" y filtrado por "Al día" - "Adeuda".

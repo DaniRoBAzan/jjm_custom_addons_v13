@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'JJM Res Partner',
-    'description': 'Add fields to the res_partner',
+    'name': 'JJM CONTACTOS',
+    'description': '''
+    Add fields to the res_partner
+    ''',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
     'version':  '1.0',

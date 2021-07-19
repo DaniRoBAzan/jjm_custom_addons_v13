@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'JJM ACCOUNT MOVE',
-    'description': '''Este modulo agrega el canon y numero de contrato a las facturas.''',
+    'name': 'JJM CONTABILIDAD / FACTURACION',
+    'description': '''
+    Este modulo agrega el canon y numero de contrato a las facturas.
+    ''',
     'author': "Romina Bazan",
     'website':  '',
     'license': 'OEEL-1',
