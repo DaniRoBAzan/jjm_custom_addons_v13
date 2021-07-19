@@ -10,6 +10,8 @@
     'version':  '1.0',
     'depends': [
         'account',
+        'account_payment_group',
+        'account_payment_group_document',
         ],
     'data': [
         'views/account_payment_group_view.xml',
