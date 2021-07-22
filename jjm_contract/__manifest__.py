@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 {
     'name': 'JJM CONTRATOS',
     'description': '''
@@ -11,14 +10,16 @@
     'license': 'OEEL-1',
     'version':  '1.0',
     'depends': [
+        'base',
         'contract',
         'account_debt_management',
-        # 'product',
         ],
     'data': [
         'data/contract_seq_data.xml',
+        'views/campaign_view.xml',
         'views/contract_view.xml',
         'views/partner_view.xml',
     ],
     'application': False,
 }
+

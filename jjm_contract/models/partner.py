@@ -6,7 +6,6 @@ class ResPartner(models.Model):
 
     paid_state = fields.Char(
         string='Estado de Deuda',
-        # required=True,
         compute='_compute_paid_state',
         readonly=True,
         store=True
