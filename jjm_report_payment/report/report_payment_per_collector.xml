@@ -12,14 +12,24 @@
         <template id="report_payment_collector_pdf">
             <t t-call="web.html_container">
                 <div class="header" style="border-bottom: 1px solid black;">
-                    <h3 class="text-center">Reporte de Cobranza
-                    </h3>
-                    <h3 class="text-left">
-                        <span style="font-size: 14px;"><strong>Desde</strong>: <t t-esc="date_start"/> <strong> Hasta</strong>: <t t-esc="date_end"/></span>
-                    </h3>
-                    <h3 class="text-left">
-                        <span style="font-size: 14px;"><strong>Cobrador</strong>: <t t-esc="collector"/> </span>
-                    </h3>
+                    <h3 class="text-center">Reporte de Cobranza</h3>
+                    <br/>
+                    <div class="text-left">
+                        <span style="font-size: 14px;"><strong>Cobrador</strong>:
+                            <t t-esc="encabezado['collector']"/>
+                        </span>
+                        <br/>
+                    </div>
+                    <div class="text-right">
+                       <span style="font-size: 14px;"><strong>Desde</strong>:
+                            <t t-esc="encabezado['date_start']"/>
+                        </span>
+                        <br/>
+                        <span style="font-size: 14px;"><strong>Hasta</strong>:
+                            <t t-esc="encabezado['date_end']"/>
+                        </span>
+                        <br/>
+                    </div>
                 </div>
                 <div class="article mt0 o_report_layout_standard">
                     <table class="table table-condensed table-bordered">
