@@ -2,11 +2,13 @@
 
 from datetime import datetime, timedelta
 from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
+
 
 
 class ReportPaymentCollectorReport(models.AbstractModel):
     #report.nombre modulo.template_id
-    _name = 'report.jjm_report_payment.payment_report_collector_template_pdf'
+    _name = 'report.jjm_report_payment.report_payment_collector_pdf'
 
     @api.model
     def _get_report_values(self, docids, data=None):
@@ -23,17 +25,20 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                                                                     ('payment_date', '>=', date_start),
                                                                     ('payment_date', '<=', date_end),
                                                                     ], order='partner_id desc') or False
+            if payment_obj is False:
+                raise ValidationError("No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
+
+
             for payment in payment_obj:
                 lineas = {
                     'cliente': payment.partner_id.name,
-                    'telefono': payment.partner_id.phone,
-                    'contrato': payment.to_pay_move_line_ids.move_id.invoice_origin,
-                    'canon': payment.to_pay_move_line_ids.move_id.canon,
+                    'telefono': payment.partner_id.phone or payment.partner_id.mobile,
+                    'contrato': payment.matched_move_line_ids.move_id.invoice_origin,
+                    'canon': payment.matched_move_line_ids.move_id.canon,
                     'fecha': payment.payment_date,
                     'importe': payment.payments_amount,
                 }
                 array.append(lineas)
-
 
         return {
             'doc_ids': data['ids'],

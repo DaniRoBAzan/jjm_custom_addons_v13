@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN -->
+    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN
+    EL EL MODEL DEL REPORT VA EL _NAME DEL WIZARD.-->
     <report id="payment_collector_report"
-        model="report.jjm_report_payment.payment_report_template_pdf"
+        model="payment.report.wizard"
         string="Reporte-cobranza"
         report_type="qweb-pdf"
-        name="jjm_report_payment.payment_report_collector_template_pdf"
+        name="jjm_report_payment.report_payment_collector_pdf"
         menu="False"/>
 
-        <template id="payment_report_collector_template_pdf">
+        <template id="report_payment_collector_pdf">
             <t t-call="web.html_container">
                 <div class="header" style="border-bottom: 1px solid black;">
                     <h3 class="text-center">Reporte de Cobranza
