@@ -15,6 +15,8 @@
                 <field name="date_accession"/>
                 <field name="campaign" domain="[('current','=','True')]"/>
                 <field name="consultant" domain="[('is_consultant','=','True')]"/>
+                <field name="method_payment"/>
+                <field name="collector_id" domain="[('is_collector','=','True')]" attrs="{'invisible': [('method_payment','!=',2)]}"/>
             </xpath>
       </field>
     </record>

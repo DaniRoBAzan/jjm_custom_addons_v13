@@ -44,7 +44,7 @@
         id="menu_action_campaign_contract"
         name="Campañas"
         string="Campañas"
-        parent="contacts.menu_contacts" sequence="4"/>
+        parent="contacts.res_partner_menu_config" sequence="1"/>
 
 
 

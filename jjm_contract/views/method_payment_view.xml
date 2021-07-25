@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_method_payment_form" model="ir.ui.view">
+        <field name="name">method.paymentjjm.form</field>
+        <field name="model">method.paymentjjm</field>
+        <field name="arch" type="xml">
+            <form string="Metodos de pagos">
+            <group>
+               <group>
+                 <field name="name"/>
+                </group>
+            </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_method_payment_tree" model="ir.ui.view">
+        <field name="name">method.payment.tree</field>
+        <field name="model">method.paymentjjm</field>
+        <field name="arch" type="xml">
+            <tree string="Metodos de pagos">
+                <field name="name"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="action_method_payment_form" model="ir.actions.act_window">
+        <field name="name">Metodos de pagos</field>
+        <field name="res_model">method.paymentjjm</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_method_payment_tree"/>
+    </record>
+
+    <menuitem
+        action="action_method_payment_form"
+        id="menu_action_method_payment"
+        name="Metodos de pagos"
+        string="Metodos de pagos"
+        parent="contacts.res_partner_menu_config" sequence="2"/>
+
+
+
+</odoo>

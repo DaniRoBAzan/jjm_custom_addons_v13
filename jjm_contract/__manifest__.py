@@ -18,6 +18,7 @@
         ],
     'data': [
         'data/contract_seq_data.xml',
+        'views/method_payment_view.xml',
         'views/campaign_view.xml',
         'views/contract_view.xml',
         'views/partner_view.xml',
