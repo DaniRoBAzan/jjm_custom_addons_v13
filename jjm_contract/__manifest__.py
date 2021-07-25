@@ -6,6 +6,8 @@
     -Agrego agrupación por "Estado de deuda" y filtrado por "Al día" - "Adeuda".
     -Agrego en contrato el campo Fecha Adhesión y el nombre del contrato se convierte en secuencial de 6 digitos arrancando con las siglas JJM.
     -Agrego modelo de Campaña, el cual tiene una relacion en el contrato.
+    -Agrego modelo de Forma de Pago, el cual tiene una relacion en el contrato.
+    -Agrego cobrador al contrato, el mismo se habilita al asignar una forma de pago "cobrador".
 
 ''',
     'author': "Romina Bazan",
