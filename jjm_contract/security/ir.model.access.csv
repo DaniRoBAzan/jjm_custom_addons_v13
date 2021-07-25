@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_contract_campaign,access_contract_campaign,model_contract_campaign,base.group_user,1,1,1,0
 access_contract_campaign_sale,access_contract_campaign,model_contract_campaign,sales_team.group_sale_manager,1,1,1,0
+access_method_paymentjjm,access_method_paymentjjm,model_method_paymentjjm,base.group_user,1,1,1,0
+access_method_paymentjjm_sale,access_method_paymentjjm,model_method_paymentjjm,sales_team.group_sale_manager,1,1,1,0
