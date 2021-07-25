@@ -22,7 +22,3 @@ class AccountMove(models.Model):
                 else:
                     rec.canon = 1
         return super(AccountMove, self).action_post()
-
-
-
-
