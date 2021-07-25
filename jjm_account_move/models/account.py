@@ -5,7 +5,11 @@ from odoo import _, api, fields, models
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    canon = fields.Integer(string='Canon', store=True)
+    canon = fields.Integer(string='Canon', default=0, store=True)
+    consultant_id = fields.Many2one('res.partner', "Asesor / Vendedor", store=True, readonly=True)
+    campaign_id = fields.Many2one('contract.campaign', string='Campaña', store=True, readonly=True)
+    method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True, readonly=True)
+    collector_id = fields.Many2one('res.partner', "Cobrador", store=True, readonly=True)
 
     def action_post(self):
         for rec in self:
@@ -16,7 +20,7 @@ class AccountMove(models.Model):
                 if invoice_obj:
                     rec.canon = len(invoice_obj) + 1
                 else:
-                    pass
+                    rec.canon = 1
         return super(AccountMove, self).action_post()
 
 

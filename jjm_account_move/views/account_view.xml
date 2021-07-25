@@ -6,7 +6,56 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@id='header_left_group']" position="inside">
-                <field name="canon" readonly="1"/>
+                <field name="canon" readonly="1" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                <field name="consultant_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
+                <field name="campaign_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
+                <field name="method_payment_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
+                <field name="collector_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="jjmview_account_invoice_tree" model="ir.ui.view">
+        <field name="name">invoice.tree.view</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <field name="invoice_origin" position="after">
+                <field name="canon" string="Canon" optional="show"/>
+                <field name="consultant_id" string="Asesor / Vendedor" optional="hide"/>
+                <field name="campaign_id" string="Campaña" optional="hide"/>
+                <field name="method_payment_id" string="Forma de Pago" optional="hide"/>
+                <field name="collector_id" string="Cobrador" optional="hide"/>
+            </field>
+            <xpath expr="//field[@name='invoice_user_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='amount_untaxed_signed']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="jjmview_account_invoice_filter" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='status']" position="after">
+                <separator/>
+                <filter string="Campaña" name="campaign_id" context="{'group_by':'campaign_id'}"/>
+                <filter string="Forma de Pago" name="method_payment_id" context="{'group_by':'method_payment_id'}"/>
+                <filter string="Cobrador" name="collector_id" context="{'group_by':'collector_id'}"/>
+                <filter string="Asesor / Vendedor" name="consultant_id" context="{'group_by':'consultant_id'}"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+    <record id="jjmview_ux_account_invoice_filter" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account_ux.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//group/filter[@name='partner_id']" position="attributes">
+                <attribute name="string">Cliente</attribute>
             </xpath>
         </field>
     </record>

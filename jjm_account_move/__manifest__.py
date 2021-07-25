@@ -2,7 +2,10 @@
 {
     'name': 'JJM CONTABILIDAD / FACTURACION',
     'description': '''
-    Este modulo agrega el canon y numero de contrato a las facturas.
+    Este modulo agrega:
+    - el canon, Asesor / Vendedor, Cobrador, Campaña, Forma de pago 
+    y numero de contrato al encabezado de las facturas (este en Otra informacion, Documento origen).
+    - filtros, agrupacion de los mismos.
     ''',
     'author': "Romina Bazan",
     'website':  '',
