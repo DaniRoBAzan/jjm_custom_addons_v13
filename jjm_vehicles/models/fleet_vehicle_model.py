@@ -18,6 +18,12 @@ class FleetVehicleModel(models.Model):
             res.append(rec.id, rec.brand_id + rec.name  +  rec.displacement)
         return res
 
+    type_model = fields.Selection(
+        [('motorbike', 'Moto'), ('combo', 'Combo')],
+        required=True,
+        index=True,
+        string="Tipo de Producto",
+    )
     name = fields.Char('Model name', required=True)
     brand_id = fields.Many2one('jjm_vehicles.vehicle.model.brand', 'Manufacturer', required=True, help='Manufacturer of the vehicle')
     image_128 = fields.Image(related='brand_id.image_128', readonly=False)

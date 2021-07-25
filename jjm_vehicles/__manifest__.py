@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'JJM VEHICULOS',
+    'name': 'JJM PRODUCTOS MOTO/COMBO',
     'description': '''
-    Este modulo te ayudara a administrar los vehiculos con sus respectivas marcas y modelos.
+    Este modulo te ayudara a administrar los vehiculos o combos con sus respectivas marcas y modelos.
     Ademas agrega un modelo de listado de precios.
     ''',
     'author': "Romina Bazan",

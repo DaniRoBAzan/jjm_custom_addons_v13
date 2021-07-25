@@ -49,5 +49,16 @@
         <menuitem action="action_payment_collector_report_wizard"
             id="menu_payment_report_wizard"
             parent="sale.menu_sale_report"/>
+
+        <menuitem name="Informes"
+                  id="menu_reports_partner"
+                  string="Informes"
+                  sequence="4"
+                  parent="contacts.menu_contacts"/>
+
+        <menuitem action="action_payment_collector_report_wizard"
+            id="menu_payment_report_wizard_partner"
+            string="Informes"
+            parent="jjm_report_payment.menu_reports_partner" sequence="1"/>
     </data>
 </odoo>

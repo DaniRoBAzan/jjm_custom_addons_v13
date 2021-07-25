@@ -11,8 +11,8 @@ class SaleOrder(models.Model):
         self.contracts_count = len(self._get_action_contracts_ids())
         return self.contracts_count
 
+
     def action_contract(self):
-        #self.ensure_one()
         action = self.env.ref('contract.contract_contract_customer_form_view').read()[0]
         ctx = dict(
             default_res_id=self.id,

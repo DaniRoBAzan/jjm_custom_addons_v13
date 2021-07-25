@@ -18,7 +18,7 @@ msgstr ""
 #. module: jjm_vehicles
 #: model:ir.model,name:jjm_vehicles.model_jjm_vehicles_vehicle_model_brand
 msgid "Brand of the vehicle"
-msgstr "Marcas de los vehiculos"
+msgstr "Marcas de los productos"
 
 #. module: jjm_vehicles
 #: model:ir.actions.act_window,name:jjm_vehicles.jjm_vehicle_model_brand_action
@@ -57,12 +57,12 @@ msgstr "Nombre mostrado"
 #. module: jjm_vehicles
 #: model:ir.ui.menu,name:jjm_vehicles.menu_root
 msgid "Fleet"
-msgstr "Vehiculos"
+msgstr "Productos"
 
 #. module: jjm_vehicles
 #: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__manager_id
 msgid "Fleet Manager"
-msgstr "Gestion de vehiculos"
+msgstr "Gestion de productos"
 
 #. module: jjm_vehicles
 #: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_search
@@ -113,7 +113,7 @@ msgstr "Marcas"
 #. module: jjm_vehicles
 #: model:ir.model.fields,help:jjm_vehicles.field_jjm_vehicles_vehicle_model__brand_id
 msgid "Manufacturer of the vehicle"
-msgstr "Marcas de vehiculos"
+msgstr "Marcas de Productos"
 
 #. module: jjm_vehicles
 #: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_form
@@ -134,7 +134,7 @@ msgstr "Nombre del modelo"
 #. module: jjm_vehicles
 #: model:ir.model,name:jjm_vehicles.model_jjm_vehicles_vehicle_model
 msgid "Model of a vehicle"
-msgstr "Modelo de un vehiculo"
+msgstr "Modelo de un producto"
 
 #. module: jjm_vehicles
 #: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_kanban
@@ -156,7 +156,7 @@ msgstr "Modelos"
 #. module: jjm_vehicles
 #: model_terms:ir.ui.view,arch_db:jjm_vehicles.jjm_vehicle_model_view_search
 msgid "Vehicles costs"
-msgstr "Precios de vehiculos"
+msgstr "Precios de productos"
 
 #. module: jjm_vehicles
 #: model:ir.model.fields,field_description:jjm_vehicles.field_jjm_vehicles_vehicle_model__vendors

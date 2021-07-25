@@ -26,7 +26,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
             for payment in payment_obj:
                 lineas = {
                     'cliente': payment.partner_id.name,
-                    'dni': payment.partner_id.vat,
+                    'telefono': payment.partner_id.phone,
                     'contrato': payment.to_pay_move_line_ids.move_id.invoice_origin,
                     'canon': payment.to_pay_move_line_ids.move_id.canon,
                     'fecha': payment.payment_date,

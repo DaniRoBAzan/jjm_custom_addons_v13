@@ -24,7 +24,7 @@
                     <table class="table table-condensed table-bordered">
                         <thead>
                             <th class="text-center" style="width: 50%">CLIENTE</th>
-                            <th class="text-center" style="width: 10%">DNI</th>
+                            <th class="text-center" style="width: 10%">TELEFONO</th>
                             <th class="text-center" style="width: 15%">CONTRATO</th>
                             <th class="text-center" style="width: 10%">CANON</th>
                             <th class="text-center" style="width: 15%">FECHA</th>
@@ -39,7 +39,7 @@
                                             <t t-esc="array['cliente']"/>
                                         </td>
                                         <td class="text-center">
-                                            <t t-esc="array['dni']"/>
+                                            <t t-esc="array['telefono']"/>
                                         </td>
                                         <td class="text-center">
                                             <t t-esc="array['contrato']"/>
