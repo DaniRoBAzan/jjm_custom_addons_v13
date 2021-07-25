@@ -17,6 +17,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
         date_end = data['form']['date_end']
         collector = data['form']['collector']
         array = []
+        encabezado = []
 
     # ARMO EL REPORTE
         if date_start <= date_end:
@@ -25,6 +26,11 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                                                                     ('payment_date', '>=', date_start),
                                                                     ('payment_date', '<=', date_end),
                                                                     ], order='partner_id desc') or False
+            encabezado = {
+                'date_start': date_start,
+                'date_end': date_end,
+                'collector': collector.name,
+            }
             if payment_obj is False:
                 raise ValidationError("No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
 
@@ -43,7 +49,6 @@ class ReportPaymentCollectorReport(models.AbstractModel):
         return {
             'doc_ids': data['ids'],
             'doc_model': data['model'],
-            'date_start': date_start,
-            'date_end': date_end,
+            'encabezado': encabezado,
             'docs': array,
         }
