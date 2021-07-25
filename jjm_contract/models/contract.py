@@ -23,6 +23,19 @@ class ContractContract(models.Model):
         result = super(ContractContract, self).create(vals)
         return result
 
+    def _recurring_create_invoice(self):
+        res = super(ContractContract, self)._recurring_create_invoice()
+        for rec in self:
+            res.update({
+                'consultant_id': rec.consultant_id.id,
+                'campaign_id': rec.campaign_id.id,
+                'method_payment_id': rec.method_payment_id.id,
+                'collector_id': rec.collector_id.id,
+            })
+        return res
+
+
+
 
 
 
