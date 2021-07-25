@@ -19,6 +19,7 @@
         'account_debt_management',
         ],
     'data': [
+        'security/ir.model.access.csv',
         'data/contract_seq_data.xml',
         'views/method_payment_view.xml',
         'views/campaign_view.xml',
