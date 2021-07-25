@@ -11,9 +11,9 @@ class ContractContract(models.Model):
         return today
 
     date_accession = fields.Date(string='Fecha Adhesión', default=default_date, store=True)
-    consultant = fields.Many2one('res.partner', "Asesor / Vendedor", store=True)
-    campaign = fields.Many2one('contract.campaign', string='Campaña', store=True)
-    method_payment = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True)
+    consultant_id = fields.Many2one('res.partner', "Asesor / Vendedor", store=True)
+    campaign_id = fields.Many2one('contract.campaign', string='Campaña', store=True)
+    method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True)
     collector_id = fields.Many2one('res.partner', "Cobrador", store=True)
 
 
