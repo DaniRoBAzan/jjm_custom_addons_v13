@@ -9,29 +9,37 @@
         name="jjm_report_payment.report_payment_collector_pdf"
         menu="False"/>
 
-        <template id="report_payment_collector_pdf">
-            <t t-call="web.html_container">
-                <div class="header" style="border-bottom: 1px solid black;">
-                    <h3 class="text-center">Reporte de Cobranza</h3>
+    <template id="report_payment_collector_pdf">
+        <t t-call="web.html_container">
+            <div class="header" style="border-bottom: 1px solid black;">
+                <h3 class="text-center">Reporte de Cobranza</h3>
+                <br/>
+                <div class="text-right">
+                    <span style="font-size: 14px;"><strong>Desde</strong>:
+                        <t t-esc="encabezado['date_start']"/>
+                    </span>
                     <br/>
+                    <span style="font-size: 14px;"><strong>Hasta</strong>:
+                        <t t-esc="encabezado['date_end']"/>
+                    </span>
+                    <br/>
+                </div>
+            </div>
+            <t t-set="total_gral" t-value="0"/>
+            <div class="article mt0 o_report_layout_standard">
+                <t t-set="group_collector" t-value="[]"/>
+                <t t-foreach="docs" t-as="array">
+                    <t t-set="group_collector" t-value="group_collector+[array['collector']]"/>
+                </t>
+                <t t-foreach="set(group_collector)" t-as="collector">
+                    <t t-set="subtotal" t-value="0"/>
+                    <t t-set="total" t-value="0"/>
                     <div class="text-left">
                         <span style="font-size: 14px;"><strong>Cobrador</strong>:
-                            <t t-esc="encabezado['collector']"/>
+                            <t t-esc="collector.name"/>
                         </span>
                         <br/>
                     </div>
-                    <div class="text-right">
-                       <span style="font-size: 14px;"><strong>Desde</strong>:
-                            <t t-esc="encabezado['date_start']"/>
-                        </span>
-                        <br/>
-                        <span style="font-size: 14px;"><strong>Hasta</strong>:
-                            <t t-esc="encabezado['date_end']"/>
-                        </span>
-                        <br/>
-                    </div>
-                </div>
-                <div class="article mt0 o_report_layout_standard">
                     <table class="table table-condensed table-bordered">
                         <thead>
                             <th class="text-center" style="width: 40%">CLIENTE</th>
@@ -42,9 +50,8 @@
                             <th class="text-center" style="width: 10%">IMPORTE</th>
                         </thead>
                         <tbody>
-                            <t t-set="subtotal" t-value="0"/>
-                            <t t-set="total" t-value="0"/>
                             <t t-foreach="docs" t-as="array">
+                                <t t-if="collector.id==array['collector'].id">
                                     <tr>
                                         <td class="text-center">
                                             <t t-esc="array['cliente']"/>
@@ -65,8 +72,10 @@
                                             <t t-esc="array['importe']"/>
                                             <t t-set="subtotal" t-value="array['importe']"></t>
                                             <t t-set="total" t-value="total + subtotal "></t>
+                                            <t t-set="total_gral" t-value="total_gral + subtotal "></t>
                                         </td>
                                     </tr>
+                                </t>
                             </t>
                             <tr>
                                 <td class="text-center" style="width: 40%"></td>
@@ -78,7 +87,20 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </t>
-        </template>
+                </t>
+                <table class="table table-condensed table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-center" style="width: 40%"></td>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 15%"></td>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 20%">TOTAL GENERAL</td>
+                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
 </odoo>
