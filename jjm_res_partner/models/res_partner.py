@@ -28,10 +28,14 @@ class ResPartner(models.Model):
     enterprise_state = fields.Char(string='Provincia', help='Escribe aqui el nombre de la Provincia de la Empresa del cliente.')
     enterprise_country = fields.Char(string='Pais', help='Escribe aqui el nombre del pais de la Empresa del cliente.')
 
+
+    is_associated = fields.Boolean(string='Es Socio', store=True)
+    is_supervisor = fields.Boolean(string='Es Supervisor', store=True)
     is_consultant = fields.Boolean(string='Es Asesor / Vendedor', store=True, domain={'invisible': [('is_supplier','=',False)]})
     code_consultant = fields.Char(Strin='Codigo Asesor', store=True)
-    is_associated = fields.Boolean(string='Es Socio', store=True)
     is_collector = fields.Boolean(string='Es Cobrador', store=True)
+    jjm_manager = fields.Many2one('res.partner', string="Encargado")
+
 
     #CONTRACT
     contract_ids = fields.One2many(

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_create_report,access_create_report,model_create_report,base.group_user,1,1,1,1
+access_contract_campaign,access_contract_campaign,contract_campaign,base.group_user,1,1,1,1
+access_contract_campaign_sale,access_contract_campaign,contract_campaign,sales_team.group_sale_manager,1,1,1,1

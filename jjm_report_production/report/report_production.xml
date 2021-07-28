@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN -->
+    <report id="production_report"
+        model="report.jjm_report_production.production_report_template_pdf"
+        string="Reporte-produccion"
+        report_type="qweb-pdf"
+        name="jjm_report_production.production_report_template_pdf"
+        menu="False"/>
+
+        <template id="production_report_template_pdf">
+            <t t-call="web.html_container">
+                <div class="header" style="border-bottom: 1px solid black;">
+                    <h3 class="text-center">Reporte de Produccion</h3>
+                    <br/>
+                    <div class="text-left">
+                        <span style="font-size: 14px;"><strong>Asesor</strong>:
+                            <t t-esc="encabezado['consultant']"/>
+                        </span>
+                        <br/>
+                        <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
+                            <t t-esc="encabezado['today']"/>
+                        </span>
+                    </div>
+                    <div class="text-right">
+                       <span style="font-size: 14px;"><strong>Campana</strong>:
+                            <t t-esc="encabezado['campaign']"/>
+                        </span>
+                        <br/>
+                        <span style="font-size: 14px;"><strong>Vigencia</strong>:
+                            <t t-esc="encabezado['current']"/>
+                        </span>
+                        <br/>
+                    </div>
+                </div>
+                <t t-set="total_gral" t-value="0"/>
+                <div class="article mt0 o_report_layout_standard">
+                    <t t-set="group_consultant" t-value="[]"/>
+                    <t t-foreach="docs" t-as="array">
+                        <t t-set="group_consultant" t-value="group_consultant+[array['consultant']]"/>
+                    </t>
+                    <t t-foreach="set(group_consultant)" t-as="consultant">
+                        <t t-set="subtotal" t-value="0"/>
+                        <t t-set="total" t-value="0"/>
+                        <div class="text-left">
+                            <span style="font-size: 14px;"><strong>Asesor / Vendedor</strong>:
+                                <t t-esc="consultant.name"/>
+                            </span>
+                            <br/>
+                        </div>
+                        <table class="table table-condensed table-bordered">
+                            <thead>
+                                <th class="text-center" style="width: 10%">NRO</th>
+                                <th class="text-center" style="width: 50%">CLIENTE</th>
+                                <th class="text-center" style="width: 15%">CONTRATO</th>
+                                <th class="text-center" style="width: 15%">FECHA ADHESION</th>
+                                <th class="text-center" style="width: 10%">IMPORTE</th>
+                            </thead>
+                            <tbody>
+                                <t t-set="subtotal" t-value="0"/>
+                                <t t-set="total" t-value="0"/>
+                                <t t-foreach="docs" t-as="array">
+                                    <tr>
+                                        <td class="text-center">
+                                            <t t-esc="array['numero']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['cliente']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['contrato']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['fecha_inicio']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['importe']"/>
+                                            <t t-set="subtotal" t-value="array['importe']"></t>
+                                            <t t-set="total" t-value="total + subtotal "></t>
+                                            <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td class="text-center" style="width: 5%"></td>
+                                    <td class="text-center" style="width: 50%"></td>
+                                    <td class="text-center" style="width: 15%"></td>
+                                    <td class="text-center" style="width: 15%">TOTAL</td>
+                                    <td class="text-center" style="width: 10%"><span t-esc="total or False"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <table class="table table-condensed table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-center" style="width: 40%"></td>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 15%"></td>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 20%">TOTAL GENERAL</td>
+                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </t>
+        </template>
+</odoo>
