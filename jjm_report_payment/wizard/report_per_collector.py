@@ -3,16 +3,17 @@
 from datetime import datetime, timedelta
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
-
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class ReportPaymentCollectorReport(models.AbstractModel):
-    #report.nombre modulo.template_id
+    # report.nombre modulo.template_id
     _name = 'report.jjm_report_payment.report_payment_collector_pdf'
 
     @api.model
     def _get_report_values(self, docids, data=None):
-    # LOS DATOS QUE RECIBO DEL WIZARD
+        # LOS DATOS QUE RECIBO DEL WIZARD
         date_start = data['form']['date_start']
         date_end = data['form']['date_end']
         collector = data['form']['collector']
@@ -21,19 +22,25 @@ class ReportPaymentCollectorReport(models.AbstractModel):
 
     # ARMO EL REPORTE
         if date_start <= date_end:
-            collector = self.env['res.partner'].browse(int(collector))
-            payment_obj = self.env['account.payment.group'].search([('collector_id', '=', collector.id),
-                                                                    ('payment_date', '>=', date_start),
-                                                                    ('payment_date', '<=', date_end),
-                                                                    ], order='partner_id desc') or False
+            _logger.info('collector %s'%(collector))
+            args = [('payment_date',
+                        '>=', date_start),
+                    ('payment_date',
+                        '<=', date_end),
+                    ]
+            if collector:
+                collector = self.env['res.partner'].browse(int(collector))
+                args.append(('collector_id', '=', collector.id))
+            payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
             encabezado = {
                 'date_start': date_start,
                 'date_end': date_end,
-                'collector': collector.name,
+                'collector': collector and collector.name or '',
             }
+            _logger.info('payment_obj %s'%(payment_obj))
             if payment_obj is False:
-                raise ValidationError("No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
-
+                raise ValidationError(
+                    "No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
 
             for payment in payment_obj:
                 lineas = {
@@ -43,6 +50,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     'canon': payment.matched_move_line_ids.move_id.canon,
                     'fecha': payment.payment_date,
                     'importe': payment.payments_amount,
+                    'collector': payment.collector_id,
                 }
                 array.append(lineas)
 
