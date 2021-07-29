@@ -14,13 +14,14 @@
                     <h3 class="text-center">Reporte de Produccion</h3>
                     <br/>
                     <div class="text-left">
-                        <span style="font-size: 14px;"><strong>Asesor</strong>:
-                            <t t-esc="encabezado['consultant']"/>
-                        </span>
                         <br/>
                         <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
                             <t t-esc="encabezado['today']"/>
                         </span>
+                        <br/>
+<!--                        <span style="font-size: 14px;"><strong>Usuario</strong>:-->
+<!--                            <t t-esc="encabezado['user']"/>-->
+<!--                        </span>-->
                     </div>
                     <div class="text-right">
                        <span style="font-size: 14px;"><strong>Campana</strong>:
@@ -30,7 +31,7 @@
                         <span style="font-size: 14px;"><strong>Vigencia</strong>:
                             <t t-esc="encabezado['current']"/>
                         </span>
-                        <br/>
+                        <br/><br/>
                     </div>
                 </div>
                 <t t-set="total_gral" t-value="0"/>
