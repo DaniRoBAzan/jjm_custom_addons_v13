@@ -11,13 +11,14 @@ class AccountMove(models.Model):
     method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True, readonly=True)
     collector_id = fields.Many2one('res.partner', "Cobrador", store=True, readonly=True)
 
+    @api.model
     def action_post(self):
         for rec in self:
             if rec.invoice_origin:
                 if rec.partner_id:
                     invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
                                                                    ('invoice_origin', '=', rec.invoice_origin),
-                                                                   ('state', '=', 'posted')], order='canon', limit=1)
+                                                                   ('state', '=', 'posted')], order='canon desc', limit=1)
                     if invoice_obj:
                         rec.canon = int(invoice_obj.canon) + 1
                     else:
