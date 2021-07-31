@@ -17,7 +17,6 @@ class ProductionReportWizard(models.TransientModel):
             'form': {
                 'consultant': self.consultant.id,
                 'campaign': self.campaign.id,
-                #'print_all': self.print_all,
             },
         }
 
