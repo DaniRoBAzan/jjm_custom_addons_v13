@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@id='header_left_group']" position="inside">
-                <field name="canon" readonly="1" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                <field name="canon" readonly="1" attrs="{'invisible': [('state', '=', 'draft'),('invoice_origin', '=', False)]}"/>
                 <field name="consultant_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
                 <field name="campaign_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
                 <field name="method_payment_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>

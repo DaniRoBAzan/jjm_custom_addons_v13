@@ -17,11 +17,9 @@ class AccountMove(models.Model):
                 if rec.partner_id:
                     invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
                                                                    ('invoice_origin', '=', rec.invoice_origin),
-                                                                   ('state', '=', 'posted')])
+                                                                   ('state', '=', 'posted')], order='canon', limit=1)
                     if invoice_obj:
-                        rec.canon = len(invoice_obj) + 1
+                        rec.canon = int(invoice_obj.canon) + 1
                     else:
                         rec.canon = 1
-            else:
-                rec.canon = False
         return super(AccountMove, self).action_post()
