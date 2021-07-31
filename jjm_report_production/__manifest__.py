@@ -16,7 +16,7 @@
     'depends': ['base', 
                 'sale',
                 'account',
-                'contract',
+                'jjm_contract',
                 ],
     'demo': [],
     'data': [

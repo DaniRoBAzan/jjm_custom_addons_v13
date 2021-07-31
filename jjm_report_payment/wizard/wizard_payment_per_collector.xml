@@ -10,7 +10,7 @@
                     <group>
                         <group>
                             <field name="date_start"/>
-                            <field name="collector"/>
+                            <field name="collector" options="{'no_create': True, 'no_open': True}"/>
                         </group>
                         <group>
                             <field name="date_end"/>

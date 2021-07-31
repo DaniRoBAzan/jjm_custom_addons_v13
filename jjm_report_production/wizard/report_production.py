@@ -21,7 +21,6 @@ class ReportProductionReportView(models.AbstractModel):
         contador = 0
 
         if campaign:
-            _logger.info('campaign %s' %(campaign))
             campaign_obj = self.env['contract.campaign'].browse(int(campaign))
             args.append(('campaign_id', '=', campaign_obj.id))
             if campaign_obj.current:
@@ -30,7 +29,6 @@ class ReportProductionReportView(models.AbstractModel):
                 current = "Cerrado"
 
         if consultant:
-            _logger.info('consultant %s' %(consultant))
             consultant = self.env['res.partner'].browse(int(consultant))
             args.append(('consultant_id', '=', consultant.id))
 
