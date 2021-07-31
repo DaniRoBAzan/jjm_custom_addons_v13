@@ -9,8 +9,8 @@
                 <form string="Reporte de Produccion">
                     <group>
                         <group>
-                            <field name="consultant" domain="[('is_consultant', '=', True)]"/>
-                            <field name="campaign"/>
+                            <field name="consultant" domain="[('is_consultant', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="campaign" options="{'no_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <footer>
@@ -50,6 +50,6 @@
        <menuitem action="action_production_report_wizard"
             id="menu_payment_report_wizard_partner"
             string="Informes"
-            parent="jjm_report_payment.menu_reports_partner" sequence="1"/>
+            parent="jjm_report_payment.menu_reports_partner" sequence="2"/>
     </data>
 </odoo>
