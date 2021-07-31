@@ -22,5 +22,6 @@ class AccountMove(models.Model):
                         rec.canon = len(invoice_obj) + 1
                     else:
                         rec.canon = 1
-
+            else:
+                rec.canon = False
         return super(AccountMove, self).action_post()
