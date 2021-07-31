@@ -15,6 +15,7 @@ class ContractContract(models.Model):
     campaign_id = fields.Many2one('contract.campaign', string='Campaña', store=True)
     method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True)
     collector_id = fields.Many2one('res.partner', "Cobrador", store=True)
+    cant_cuotas = fields.Integer(string='Cantidad Cuotas', default=0, store=True)
 
 
     @api.model

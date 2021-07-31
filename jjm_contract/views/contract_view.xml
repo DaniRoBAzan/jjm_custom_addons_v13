@@ -16,8 +16,8 @@
                 <field name="campaign_id" domain="[('current','=','True')]"/>
                 <field name="consultant_id" domain="[('is_consultant','=','True')]"/>
                 <field name="method_payment_id"/>
-                <field name="collector_id" domain="[('is_collector','=','True')]" attrs="{'invisible': [('method_payment_id','!=',2)]}"/>
-            </xpath>
+                <field name="collector_id" domain="[('is_collector','=','True')]" attrs="{'invisible': [('method_payment_id','!=',2)]}"/><field name="cant_cuotas"/>
+             </xpath>
       </field>
     </record>
 
