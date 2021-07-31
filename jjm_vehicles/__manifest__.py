@@ -2,8 +2,18 @@
 {
     'name': 'JJM PRODUCTOS MOTO/COMBO',
     'description': '''
-    Este modulo te ayudara a administrar los vehiculos o combos con sus respectivas marcas y modelos.
-    Ademas agrega un modelo de listado de precios.
+    Modulo que permite agregar modelos y marcas a un producto.
+     -Se debe seleccionar el tipo de producto, una moto o un combo.
+     
+     Ademas agrega las tarifas a los productos con los campos:
+    -Nombre tarifa
+    -Moneda  
+    -Modelo 
+    -Precio 
+    -Fecha inicial  
+    -Fecha final  
+    **Desde el Modelo se puede acceder a la lista de precios de cada producto.
+    
     ''',
     'author': "Romina Bazan",
     'website':  '',
