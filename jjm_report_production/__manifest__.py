@@ -3,7 +3,12 @@
     'version': '1.0',
     'category': 'Extra Tools',
     'description': '''
-    Este es el Reporte de Produccion, lo encontras en Contacto/Informes/Reporte Produccion.
+    Este modulo imprime  el Reporte de Produccion, lo encontras en Contacto/Informes/Reporte Produccion.
+    Permite seleccionar:
+    - Vendedor
+    - Campana
+    y al imprimir  genera el reporte donde se podrá visualizar:
+    CLIENTE - CONTRATO -  FECHA ADHESION - IMPORTE
     ''',
     'license': 'AGPL-3',
     'author': 'Romina Bazan',
