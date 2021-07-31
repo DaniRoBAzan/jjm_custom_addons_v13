@@ -3,7 +3,12 @@
 {
     'name': 'JJM CONTACTOS',
     'description': '''
-    Add fields to the res_partner
+    - Agrego solapa de informacion laboral con los datos de la empresa
+    - Agrego solapa de informacion personal 
+    - Agrego el campo Documentos a la vista tree
+    - cambio nombre de campos de origen por Ocupacion y Barrio.
+    - Agrego campos en solapa Compra y Ventas: Es Socio, Es Supervisor, Es Asesor / Vendedor,
+    Codigo Asesor, Es Cobrador  y Encargado.
     ''',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
