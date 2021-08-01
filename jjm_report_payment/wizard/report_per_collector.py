@@ -22,7 +22,6 @@ class ReportPaymentCollectorReport(models.AbstractModel):
 
     # ARMO EL REPORTE
         if date_start <= date_end:
-            _logger.info('collector %s'%(collector))
             args = [('payment_date',
                         '>=', date_start),
                     ('payment_date',
@@ -34,13 +33,12 @@ class ReportPaymentCollectorReport(models.AbstractModel):
             payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
             today = fields.Date.today()
             encabezado = {
-                'today': today,
+                'today': today.strftime('%d-%m-%Y'),
                 'date_start': date_start,
                 'date_end': date_end,
                 'collector': collector and collector.name or '',
                 'user': self.env.user.name,
             }
-            _logger.info('payment_obj %s'%(payment_obj))
             if payment_obj is False:
                 raise ValidationError(
                     "No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
@@ -51,7 +49,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     'telefono': payment.partner_id.phone or payment.partner_id.mobile,
                     'contrato': payment.matched_move_line_ids.move_id.invoice_origin,
                     'canon': payment.matched_move_line_ids.move_id.canon,
-                    'fecha': payment.payment_date,
+                    'fecha': payment.payment_date.strftime('%d-%m-%Y'),
                     'importe': payment.payments_amount,
                     'collector': payment.collector_id,
                 }

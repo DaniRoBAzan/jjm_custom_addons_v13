@@ -15,8 +15,8 @@ class PaymentReportWizard(models.TransientModel):
             'model': self._name,
             'ids': self.ids,
             'form': {
-                'date_start': self.date_start,
-                'date_end': self.date_end,
+                'date_start': self.date_start.strftime('%d-%m-%Y'),
+                'date_end': self.date_end.strftime('%d-%m-%Y'),
                 'collector': self.collector.id,
             },
         }
