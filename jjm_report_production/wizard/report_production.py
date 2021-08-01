@@ -19,6 +19,11 @@ class ReportProductionReportView(models.AbstractModel):
         encabezado = []
         args = []
         contador = 0
+        importe = 0
+
+        if consultant:
+            consultant = self.env['res.partner'].browse(int(consultant))
+            args.append(('consultant_id', '=', consultant.id))
 
         if campaign:
             campaign_obj = self.env['contract.campaign'].browse(int(campaign))
@@ -28,16 +33,13 @@ class ReportProductionReportView(models.AbstractModel):
             else:
                 current = "Cerrado"
 
-        if consultant:
-            consultant = self.env['res.partner'].browse(int(consultant))
-            args.append(('consultant_id', '=', consultant.id))
-
         today = fields.Date.today()
         encabezado = {
             'today': today,
             'campaign': campaign_obj.name,
             'consultant': consultant and consultant.name or '',
             'current': current,
+            'user': self.env.user.name,
         }
 
         contract_obj = self.env['contract.contract'].search(args, order='partner_id desc') or False
@@ -46,14 +48,13 @@ class ReportProductionReportView(models.AbstractModel):
                 "Verifique los datos ingresados nuevamente, no hay contratos asociados a esta campana, para este asesor!")
 
         for contract in contract_obj:
-            # importe = sum(contract.contract_line_fixed_ids.price_subtotal)
             contador += 1
             lineas = {
                 'numero': contador,
                 'cliente': contract.partner_id.name,
                 'contrato': contract.name,
                 'fecha_inicio': contract.date_accession,
-                'importe': 1234,
+                'importe': sum(contract.mapped("contract_line_fixed_ids.price_subtotal")) or False,
                 'consultant': contract.consultant_id,
             }
             array.append(lineas)

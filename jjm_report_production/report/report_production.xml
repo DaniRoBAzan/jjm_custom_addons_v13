@@ -13,27 +13,30 @@
                 <div class="header" style="border-bottom: 1px solid black;">
                     <h3 class="text-center">Reporte de Produccion</h3>
                     <br/>
-                    <div class="text-left">
-                        <br/>
-                        <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
-                            <t t-esc="encabezado['today']"/>
-                        </span>
-                        <br/>
-<!--                        <span style="font-size: 14px;"><strong>Usuario</strong>:-->
-<!--                            <t t-esc="encabezado['user']"/>-->
-<!--                        </span>-->
-                    </div>
                     <div class="text-right">
-                       <span style="font-size: 14px;"><strong>Campana</strong>:
-                            <t t-esc="encabezado['campaign']"/>
-                        </span>
-                        <br/>
-                        <span style="font-size: 14px;"><strong>Vigencia</strong>:
-                            <t t-esc="encabezado['current']"/>
-                        </span>
-                        <br/><br/>
+                        <group>
+                            <div class="text-left">
+                                <span style="font-size: 14px;"><strong>Campaña</strong>:
+                                    <t t-esc="encabezado['campaign']"/>
+                                </span>
+                                <br/>
+                                <span style="font-size: 14px;"><strong>Vigencia</strong>:
+                                    <t t-esc="encabezado['current']"/>
+                                </span>
+                            </div>
+                        </group>
+                        <group>
+                            <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
+                            <t t-esc="encabezado['today']"/>
+                            </span>
+                            <br/>
+                            <span style="font-size: 14px;"><strong>Usuario</strong>:
+                                <t t-esc="encabezado['user']"/>
+                            </span>
+                        </group>
                     </div>
                 </div>
+
                 <t t-set="total_gral" t-value="0"/>
                 <div class="article mt0 o_report_layout_standard">
                     <t t-set="group_consultant" t-value="[]"/>
@@ -44,7 +47,8 @@
                         <t t-set="subtotal" t-value="0"/>
                         <t t-set="total" t-value="0"/>
                         <div class="text-left">
-                            <span style="font-size: 14px;"><strong>Asesor / Vendedor</strong>:
+                            <br/>
+                            <span style="font-size: 16px;"><strong>Asesor / Vendedor</strong>:
                                 <t t-esc="consultant.name"/>
                             </span>
                             <br/>
@@ -61,26 +65,28 @@
                                 <t t-set="subtotal" t-value="0"/>
                                 <t t-set="total" t-value="0"/>
                                 <t t-foreach="docs" t-as="array">
-                                    <tr>
-                                        <td class="text-center">
-                                            <t t-esc="array['numero']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['cliente']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['contrato']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['fecha_inicio']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['importe']"/>
-                                            <t t-set="subtotal" t-value="array['importe']"></t>
-                                            <t t-set="total" t-value="total + subtotal "></t>
-                                            <t t-set="total_gral" t-value="total_gral + subtotal "></t>
-                                        </td>
-                                    </tr>
+                                    <t t-if="consultant.id==array['consultant'].id">
+                                        <tr>
+                                            <td class="text-center">
+                                                <t t-esc="array['numero']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['cliente']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['contrato']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['fecha_inicio']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['importe']"/>
+                                                <t t-set="subtotal" t-value="array['importe']"></t>
+                                                <t t-set="total" t-value="total + subtotal "></t>
+                                                <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </t>
                                 <tr>
                                     <td class="text-center" style="width: 5%"></td>
