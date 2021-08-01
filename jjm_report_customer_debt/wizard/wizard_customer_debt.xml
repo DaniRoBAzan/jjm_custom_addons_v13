@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customer_debt_report_wizard" model="ir.ui.view" >
+            <field name="name">customer.debt.report.wizard</field>
+            <field name="model">customer.debt.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Reporte Deuda Cliente">
+                    <group>
+                        <group>
+                            <field name="client" options="{'no_create': True, 'no_open': True}" required="1"/>
+                            <field name="contract" domain="[('partner_id', '=', client)]" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="generate_pdf_report" string="Aceptar" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="paperformat_payment_customer_debt_report" model="report.paperformat">
+            <field name="name">Reporte Deuda Cliente</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">28</field>
+            <field name="margin_right">7</field>
+            <field name="margin_left">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">15</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- ESTE ACTION ES EL QUE SE VE EN EL MENU -->
+        <act_window id="action_customer_debt_report_wizard"
+            name="Reporte Deuda Cliente"
+            res_model="customer.debt.report.wizard"
+            view_mode="form"
+            target="new"/>
+
+        <menuitem action="action_customer_debt_report_wizard"
+            id="menu_customer_debt_report_wizard"
+            parent="sale.menu_sale_report"/>
+
+        <menuitem name="Informes"
+                  id="menu_reports_partner"
+                  string="Informes"
+                  sequence="4"
+                  parent="contacts.menu_contacts"/>
+
+        <menuitem action="action_customer_debt_report_wizard"
+            id="menu_customer_debt_report_wizard_partner"
+            string="Informes"
+            parent="jjm_report_payment.menu_reports_partner" sequence="4"/>
+    </data>
+</odoo>

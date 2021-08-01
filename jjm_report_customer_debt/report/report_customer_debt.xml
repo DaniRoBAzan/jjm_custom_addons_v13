@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN
+    EL EL MODEL DEL REPORT VA EL _NAME DEL WIZARD.-->
+    <report id="customer_debt_report"
+        model="customer.debt.report.wizard"
+        string="Reporte Deuda Cliente"
+        report_type="qweb-pdf"
+        name="jjm_report_customer_debt.report_customer_debt_pdf"
+        menu="False"/>
+
+    <template id="report_customer_debt_pdf">
+        <t t-call="web.html_container">
+            <div class="header" style="border-bottom: 1px solid black;">
+                <h3 class="text-center">Reporte Deuda Cliente</h3>
+                <br/>
+                <div class="text-right">
+                    <group>
+                        <div class="text-left">
+                            <span style="font-size: 14px;"><strong>Cliente</strong>:
+                                <t t-esc="encabezado['client']"/>
+                            </span>
+                        </div>
+                    </group>
+                    <group>
+                       <br/>
+                        <span style="font-size: 14px;"><strong>Fecha Emision</strong>:
+                            <t t-esc="encabezado['today']"/>
+                        </span>
+                        <br/>
+                        <span style="font-size: 14px;"><strong>Usuario</strong>:
+                            <t t-esc="encabezado['user']"/>
+                        </span>
+                    </group>
+                </div>
+
+            </div>
+
+            <t t-set="total_gral" t-value="0"/>
+            <t t-set="faltan" t-value="0"/>
+            <t t-set="cuotas" t-value="0"/>
+            <div class="article mt0 o_report_layout_standard">
+                <t t-set="group_contract" t-value="[]"/>
+                <t t-foreach="docs" t-as="array">
+                    <t t-set="group_contract" t-value="group_contract+[array['contract']]"/>
+                </t>
+                <t t-foreach="set(group_contract)" t-as="contract">
+                    <t t-set="subtotal" t-value="0"/>
+                    <t t-set="total" t-value="0"/>
+                    <div class="text-left">
+                        <br/>
+                        <span style="font-size: 16px;"><strong>Contrato:</strong>:
+                            <t t-esc="contract.name"/>
+                        </span>
+                        <br/>
+                    </div>
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <th class="text-center btn-primary" style="width: 10%">CANON</th>
+                            <th class="text-center btn-primary" style="width: 20%">FECHA</th>
+                            <th class="text-center btn-primary" style="width: 20%">IMPORTE</th>
+                            <th class="text-center btn-primary" style="width: 30%">OBSERVACION</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="array">
+                                <t t-if="contract.id==array['contract'].id">
+                                    <tr>
+                                        <td class="text-center">
+                                            <t t-esc="array['canon']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['invoice_date']"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['price']"/>
+                                            <t t-set="subtotal" t-value="array['price']"></t>
+                                            <t t-set="total" t-value="total + subtotal "></t>
+                                            <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                            <t t-set="faltan" t-value="array['faltan']"></t>
+                                            <t t-set="cuotas" t-value="array['cuotas']"></t>
+                                        </td>
+                                        <td class="text-center">
+                                            <t t-esc="array['observation']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr>
+                                <td class="text-center" style="width: 10%"></td>
+                                <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
+                                <td class="text-center" style="width: 20%"><span t-esc="total or False"/></td>
+                                <td class="text-center" style="width: 30%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <span style="font-size: 16px;">
+                            <strong>Observaciones:</strong>:
+                        </span>
+                        <span style="font-size: 14px;">
+                            Le faltan pagar <t t-esc="faltan or False"/> cuotas,
+                            de las <t t-esc="cuotas or False"/> asignadas por contrato.
+                        </span>
+                        <br/>
+                    </div>
+                </t>
+                <table class="table table-condensed table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 20%"></td>
+                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 30%"><span t-esc="total_gral or False"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </t>
+    </template>
+</odoo>
