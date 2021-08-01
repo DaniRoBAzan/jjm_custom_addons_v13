@@ -54,6 +54,15 @@
                         <br/>
                     </div>
                     <table class="table table-condensed table-bordered">
+<!--                        <thead>-->
+<!--                            <th class="text-center btn-primary" style="width: 40%">CLIENTE</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 10%">TELEFONO</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 15%">CONTRATO</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 10%">CANON</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 20%">FECHA</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
+<!--                        </thead>-->
+
                         <thead>
                             <th class="text-center" style="width: 40%">CLIENTE</th>
                             <th class="text-center" style="width: 10%">TELEFONO</th>
@@ -62,6 +71,7 @@
                             <th class="text-center" style="width: 20%">FECHA</th>
                             <th class="text-center" style="width: 10%">IMPORTE</th>
                         </thead>
+
                         <tbody>
                             <t t-foreach="docs" t-as="array">
                                 <t t-if="collector.id==array['collector'].id">

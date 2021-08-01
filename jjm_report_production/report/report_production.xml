@@ -54,6 +54,13 @@
                             <br/>
                         </div>
                         <table class="table table-condensed table-bordered">
+<!--                            <thead>-->
+<!--                                <th class="text-center btn-primary" style="width: 10%">NRO</th>-->
+<!--                                <th class="text-center btn-primary" style="width: 50%">CLIENTE</th>-->
+<!--                                <th class="text-center btn-primary" style="width: 15%">CONTRATO</th>-->
+<!--                                <th class="text-center btn-primary" style="width: 15%">FECHA ADHESION</th>-->
+<!--                                <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
+<!--                            </thead>-->
                             <thead>
                                 <th class="text-center" style="width: 10%">NRO</th>
                                 <th class="text-center" style="width: 50%">CLIENTE</th>
