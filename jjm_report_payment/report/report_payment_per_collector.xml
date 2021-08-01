@@ -27,7 +27,7 @@
                         </div>
                     </group>
                     <group>
-                        <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
+                        <span style="font-size: 14px;"><strong>Fecha de impresión</strong>:
                             <t t-esc="encabezado['today']"/>
                             </span>
                             <br/>
