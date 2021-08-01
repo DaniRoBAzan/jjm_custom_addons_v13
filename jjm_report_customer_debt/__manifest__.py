@@ -3,9 +3,11 @@
     'version': '1.0',
     'category': 'Extra Tools',
     'description': '''
-    Este es el Reporte de Deudas del cliente, lo encontras en Ventas/Informes/Reporte Cobranza.
-    El mismo permite elegir un cliente y un contrato, 
-    descargando en pdf el reporte con los datos ingresados.
+    Este es el Reporte de Deudas del cliente, lo encontras en Ventas/Informes/Reporte Cobranza; 
+    o biebn en Contratos/Informes
+    El mismo permite elegir un cliente y un contrato 
+    (si no elige este ultimo, trae todos los que tenga disponible el cliente selecionado), a fin de 
+    descargar en pdf el reporte con los datos ingresados.
     ''',
     'license': 'AGPL-3',
     'author': 'Romina Bazan',
