@@ -32,10 +32,13 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                 collector = self.env['res.partner'].browse(int(collector))
                 args.append(('collector_id', '=', collector.id))
             payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
+            today = fields.Date.today()
             encabezado = {
+                'today': today,
                 'date_start': date_start,
                 'date_end': date_end,
                 'collector': collector and collector.name or '',
+                'user': self.env.user.name,
             }
             _logger.info('payment_obj %s'%(payment_obj))
             if payment_obj is False:
