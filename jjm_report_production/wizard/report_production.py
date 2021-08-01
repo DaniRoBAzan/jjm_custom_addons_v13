@@ -33,7 +33,7 @@ class ReportProductionReportView(models.AbstractModel):
             else:
                 current = "Cerrado"
 
-        today = fields.Date.today()
+        today = fields.Date.today().strftime('%d-%m-%Y')
         encabezado = {
             'today': today,
             'campaign': campaign_obj.name,
@@ -53,7 +53,7 @@ class ReportProductionReportView(models.AbstractModel):
                 'numero': contador,
                 'cliente': contract.partner_id.name,
                 'contrato': contract.name,
-                'fecha_inicio': contract.date_accession,
+                'fecha_inicio': contract.date_accession.strftime('%d-%m-%Y'),
                 'importe': sum(contract.mapped("contract_line_fixed_ids.price_subtotal")) or False,
                 'consultant': contract.consultant_id,
             }

@@ -27,7 +27,9 @@
                         </group>
                         <group>
                             <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
-                            <t t-esc="encabezado['today']"/>
+<!--                            <t t-esc="encabezado['today']"/>-->
+                                <t t-set="date" t-value="encabezado['today']"></t>
+                                <span t-esc="date" t-field-options="{&quot;format&quot;: &quot;dd/MM/YYYY&quot;}"/>
                             </span>
                             <br/>
                             <span style="font-size: 14px;"><strong>Usuario</strong>:
