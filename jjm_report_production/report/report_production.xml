@@ -11,7 +11,7 @@
         <template id="production_report_template_pdf">
             <t t-call="web.html_container">
                 <div class="header" style="border-bottom: 1px solid black;">
-                    <h3 class="text-center">Reporte de Produccion</h3>
+                    <h3 class="text-center">Reporte de Producción</h3>
                     <br/>
                     <div class="text-right">
                         <group>
@@ -26,7 +26,7 @@
                             </div>
                         </group>
                         <group>
-                            <span style="font-size: 14px;"><strong>Fecha de impresion</strong>:
+                            <span style="font-size: 14px;"><strong>Fecha de impresión</strong>:
                                 <t t-esc="encabezado['today']"/>
                             </span>
                             <br/>
