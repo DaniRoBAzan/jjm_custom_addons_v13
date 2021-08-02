@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_print_jjm">
+        <t t-set="docs" t-value="docs.with_context(lang=docs[0].partner_id.lang)" />
+        <t t-foreach="docs" t-as="facturas">
+            <t t-foreach="facturas" t-as="factura">
+                <section style="background-image:url(/jjm_report_troquel/static/img/troquel.jpeg); background-size: 100%;">
+                    <div style="padding: 65px 0px 0px 680px; font-size:12px; text-align:left;">
+                        <span t-field="factura.name"/>
+                    </div>
+                    <div style="padding: 30px 20px 0px 710px; font-size:12px; text-align:left;">
+                        <span t-field="factura.invoice_date"/>
+                    </div>
+                    <div style="padding: 10px 0px 0px 0px; font-size:12px; text-align:left; margin-left:100px;">
+                        <span t-field="factura.partner_id"/>
+                    </div>
+                    <div style="padding: 45px 0px 0px 0px;">
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_line_ids.product_id"/>
+                        <span style="font-size:12px; padding-left:150px; text-align:left" t-field="factura.invoice_date"/>
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_origin"/>
+                        <span style="font-size:12px; padding-left:30px; text-align:left">000001</span>
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.canon"/>
+                    </div>
+                    <div class="o_kanban_image" style="margin-left:710px;margin-top:-45px;">
+                        <img src="/jjm_report_troquel/static/img/firma.jpeg" alt="Congratulations!" style="width:90px;margin:30px 0px;"/>
+                    </div>
+                    <div style="margin-left:720px; margin-top:45px; text-align:left" >
+                        <span style="font-size:12px;" t-field="factura.amount_total"/>
+                    </div>
+                    <div style="padding: 50px 0px 0px 50px; text-align:left">
+                        <div style="padding: 0px 40px 0px 0px;">
+                            <span style="text-align:left; font-size:12px;" t-field="factura.partner_id"/>
+                            <span style="margin-left:590px; font-size:12px;" t-field="factura.invoice_date"/>
+                        </div>
+                    </div>
+                    <div style="padding: 40px 0px 0px 0px;">
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_line_ids.product_id"/>
+                        <span style="font-size:12px; padding-left:150px; text-align:left" t-field="factura.invoice_date"/>
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_origin"/>
+                        <span style="font-size:12px; padding-left:30px; text-align:left">000001</span>
+                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.canon"/>
+                    </div>
+                    <div style="text-align:left; margin-top:10px; ">
+                        <span style="font-size:12px; margin-left:20px;" t-field="factura.name"/>
+                        <span style="font-size:12px; margin-left:710px; margin-top:30px;" t-field="factura.amount_total"/>
+                        <span style="font-size:12px; margin-left:700px; margin-top:-50px;"/>.
+                    </div>
+                </section>
+            </t>
+        </t>
+    </template>
+
+    <template  id="report_print_troquel_t">
+        <xpath expr="//t[@t-name='web.external_layout_clean']" position="replace">
+            <t t-call="web.basic_layout">
+                <t t-call="jjm_report_troquel.report_print_jjm" t-lang="docs[0].partner_id.lang"/>
+            </t>
+        </xpath>
+    </template>
+    <report
+            id="action_report_print_troquel"
+            string="Print Troquel"
+            model="account.move"
+            report_type="qweb-pdf"
+            file="jjm_report_troquel.report_print_troquel_t"
+            name="jjm_report_troquel.report_print_troquel_t"
+            print_report_name="(object.name)"
+        />
+</odoo>
