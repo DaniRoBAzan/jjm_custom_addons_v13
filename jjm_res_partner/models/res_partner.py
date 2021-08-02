@@ -45,7 +45,7 @@ class ResPartner(models.Model):
     )
 
     #DATOS DE LA TARJETA
-    has_credit_card_jjm = fields.Boolean(string='Tiene tarjeta', store=True)
+    has_credit_card_jjm = fields.Boolean(string='Tiene tarjeta', default=False, store=True)
     credit_card_number_jjm = fields.Char(string='Numero de Tarjeta')
     bank_name_jjm = fields.Char(string='Nombre del Banco')
 
