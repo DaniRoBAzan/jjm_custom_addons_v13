@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="jjm_product_pricelist_item_tree_view" model="ir.ui.view">
+          <field name="name">jjmproduct.pricelist.item.tree</field>
+          <field name="model">product.pricelist</field>
+          <field name="inherit_id" ref="product.product_pricelist_view"/>
+          <field name="priority">10</field>
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='item_ids']/tree/field[@name='fixed_price']" position="after">
+                <field name="price_percent"/>
+              </xpath>
+          </field>
+         </record>
+    </data>
+</odoo>

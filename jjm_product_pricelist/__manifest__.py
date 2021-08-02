@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'JJM PRECIOS DE LISTA',
+    'name': 'JJM ACTUALIZACION DE PRECIOS',
     'description': '''
-    this module makes improvements in the product pricelist.
+    Este modulo actualiza los precios de lista de los kits.
+    En la linea de las tarifas agrega un campo %a imputar, a partir del cual calcula el nuevo precio.
     ''',
     'author': "Romina Bazan",
     'website':  '',
@@ -13,8 +14,8 @@
         'product',
         ],
     'data': [
-        'security/ir.model.access.csv',
-        'wizard/product_pricelist_wizard.xml',
+        #'security/ir.model.access.csv',
+        'views/product_pricelist_view.xml',
     ],
     'application': False,
 }
