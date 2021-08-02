@@ -78,7 +78,7 @@
                                             <t t-esc="array['invoice_date']"/>
                                         </td>
                                         <td class="text-center">
-                                            <t t-esc="array['price']"/>
+                                            <t t-esc="array['price']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
                                             <t t-set="subtotal" t-value="array['price']"></t>
                                             <t t-set="total" t-value="total + subtotal "></t>
                                             <t t-set="total_gral" t-value="total_gral + subtotal "></t>
@@ -94,7 +94,7 @@
                             <tr>
                                 <td class="text-center" style="width: 10%"></td>
                                 <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
-                                <td class="text-center" style="width: 20%"><span t-esc="total or False"/></td>
+                                <td class="text-center" style="width: 20%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                 <td class="text-center" style="width: 30%"></td>
                             </tr>
                         </tbody>
@@ -116,7 +116,7 @@
                             <td class="text-center" style="width: 10%"></td>
                             <td class="text-center" style="width: 20%"></td>
                             <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
-                            <td class="text-center" style="width: 30%"><span t-esc="total_gral or False"/></td>
+                            <td class="text-center" style="width: 30%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
                 </table>

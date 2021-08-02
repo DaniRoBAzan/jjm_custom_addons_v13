@@ -56,7 +56,7 @@
                     <table class="table table-condensed table-bordered">
 <!--                        <thead>-->
 <!--                            <th class="text-center btn-primary" style="width: 40%">CLIENTE</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 10%">TELEFONO</th>-->
+<!--                            <th class="text-center btn-primary" style="width: 20%">TELEFONO</th>-->
 <!--                            <th class="text-center btn-primary" style="width: 15%">CONTRATO</th>-->
 <!--                            <th class="text-center btn-primary" style="width: 10%">CANON</th>-->
 <!--                            <th class="text-center btn-primary" style="width: 20%">FECHA</th>-->
@@ -65,7 +65,7 @@
 
                         <thead>
                             <th class="text-center" style="width: 40%">CLIENTE</th>
-                            <th class="text-center" style="width: 10%">TELEFONO</th>
+                            <th class="text-center" style="width: 20%">TELEFONO</th>
                             <th class="text-center" style="width: 15%">CONTRATO</th>
                             <th class="text-center" style="width: 10%">CANON</th>
                             <th class="text-center" style="width: 20%">FECHA</th>
@@ -92,7 +92,7 @@
                                             <t t-esc="array['fecha']"/>
                                         </td>
                                         <td class="text-center">
-                                            <t t-esc="array['importe']"/>
+                                            <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
                                             <t t-set="subtotal" t-value="array['importe']"></t>
                                             <t t-set="total" t-value="total + subtotal "></t>
                                             <t t-set="total_gral" t-value="total_gral + subtotal "></t>
@@ -102,11 +102,11 @@
                             </t>
                             <tr>
                                 <td class="text-center" style="width: 40%"></td>
-                                <td class="text-center" style="width: 10%"></td>
+                                <td class="text-center" style="width: 20%"></td>
                                 <td class="text-center" style="width: 15%"></td>
                                 <td class="text-center" style="width: 10%"></td>
-                                <td class="text-center" style="width: 20%">TOTAL</td>
-                                <td class="text-center" style="width: 10%"><span t-esc="total or False"/></td>
+                                <td class="text-center" style="width: 20%"><stong>TOTAL</stong></td>
+                                <td class="text-center" style="width: 10%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -115,11 +115,11 @@
                     <tbody>
                         <tr>
                             <td class="text-center" style="width: 40%"></td>
-                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 20%"></td>
                             <td class="text-center" style="width: 15%"></td>
                             <td class="text-center" style="width: 10%"></td>
-                            <td class="text-center" style="width: 20%">TOTAL GENERAL</td>
-                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False"/></td>
+                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
                 </table>

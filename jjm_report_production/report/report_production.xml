@@ -46,6 +46,7 @@
                     <t t-foreach="set(group_consultant)" t-as="consultant">
                         <t t-set="subtotal" t-value="0"/>
                         <t t-set="total" t-value="0"/>
+                        <t t-set="contador" t-value="1"/>
                         <div class="text-left">
                             <br/>
                             <span style="font-size: 16px;"><strong>Asesor / Vendedor</strong>:
@@ -75,7 +76,8 @@
                                     <t t-if="consultant.id==array['consultant'].id">
                                         <tr>
                                             <td class="text-center">
-                                                <t t-esc="array['numero']"/>
+                                                <t t-esc="contador"/>
+                                                <t t-set="contador" t-value="contador + 1 "></t>
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['cliente']"/>
@@ -87,7 +89,7 @@
                                                 <t t-esc="array['fecha_inicio']"/>
                                             </td>
                                             <td class="text-center">
-                                                <t t-esc="array['importe']"/>
+                                                <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
                                                 <t t-set="subtotal" t-value="array['importe']"></t>
                                                 <t t-set="total" t-value="total + subtotal "></t>
                                                 <t t-set="total_gral" t-value="total_gral + subtotal "></t>
@@ -99,8 +101,8 @@
                                     <td class="text-center" style="width: 5%"></td>
                                     <td class="text-center" style="width: 50%"></td>
                                     <td class="text-center" style="width: 15%"></td>
-                                    <td class="text-center" style="width: 15%">TOTAL</td>
-                                    <td class="text-center" style="width: 10%"><span t-esc="total or False"/></td>
+                                    <td class="text-center" style="width: 15%"><strong>TOTAL</strong></td>
+                                    <td class="text-center" style="width: 10%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -112,8 +114,8 @@
                             <td class="text-center" style="width: 10%"></td>
                             <td class="text-center" style="width: 15%"></td>
                             <td class="text-center" style="width: 10%"></td>
-                            <td class="text-center" style="width: 20%">TOTAL GENERAL</td>
-                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False"/></td>
+                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
                 </table>

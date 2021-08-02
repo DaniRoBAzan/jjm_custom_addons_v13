@@ -70,4 +70,5 @@ class ReportCustomerDebtReport(models.AbstractModel):
             'doc_model': data['model'],
             'encabezado': encabezado,
             'docs': array,
+            'currency_id': self.env.company.currency_id,
         }

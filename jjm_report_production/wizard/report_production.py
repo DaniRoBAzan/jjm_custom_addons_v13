@@ -48,14 +48,15 @@ class ReportProductionReportView(models.AbstractModel):
                 "Verifique los datos ingresados nuevamente, no hay contratos asociados a esta campana, para este asesor!")
 
         for contract in contract_obj:
-            contador += 1
+            # contador += 1
             lineas = {
-                'numero': contador,
+                # 'numero': contador,
                 'cliente': contract.partner_id.name,
                 'contrato': contract.name,
                 'fecha_inicio': contract.date_accession.strftime('%d-%m-%Y'),
                 'importe': sum(contract.mapped("contract_line_fixed_ids.price_subtotal")) or False,
                 'consultant': contract.consultant_id,
+                'currency_id': self.env.company.currency_id,
             }
             array.append(lineas)
 
@@ -64,4 +65,5 @@ class ReportProductionReportView(models.AbstractModel):
             'doc_model': data['model'],
             'docs': array,
             'encabezado': encabezado,
+            'currency_id': self.env.company.currency_id,
         }
