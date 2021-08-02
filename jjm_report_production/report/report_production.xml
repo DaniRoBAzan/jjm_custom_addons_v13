@@ -10,9 +10,11 @@
 
         <template id="production_report_template_pdf">
             <t t-call="web.html_container">
-                <div class="header" style="border-bottom: 1px solid black;">
-                    <h3 class="text-center">Reporte de Producción</h3>
-                    <br/>
+            <div t-call="web.external_layout">
+                <div class="page">
+                    <div>
+                        <h3 class="text-center"><strong><u>Reporte Produccion</u></strong></h3>
+                        <br/>
                     <div class="text-right">
                         <group>
                             <div class="text-left">
@@ -120,6 +122,8 @@
                     </tbody>
                 </table>
                 </div>
-            </t>
-        </template>
+                </div>
+            </div>
+        </t>
+    </template>
 </odoo>
