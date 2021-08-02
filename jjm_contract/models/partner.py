@@ -11,6 +11,7 @@ class ResPartner(models.Model):
         store=True
     )
 
+    @api.depends('debt_balance', 'is_customer')
     def _compute_paid_state(self):
         for rec in self:
             if rec.is_customer:
