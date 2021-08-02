@@ -65,5 +65,21 @@
             </xpath>
         </field>
     </record>
+<!--    ESTA VISTA ES LA QUE FIGURA EN EL CREAR CONTRATO DEL SALE.ORDER-->
+    <record id="jjm_contract_partner_form_view" model="ir.ui.view">
+        <field name="name">jjm.contract.partner</field>
+        <field name="model">contract.contract</field>
+        <field name="inherit_id" ref="contract.contract_contract_form_view"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="attrs">{'invisible': 1, 'required': 0}</attribute>
+            </field>
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>
