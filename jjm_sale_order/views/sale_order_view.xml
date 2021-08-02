@@ -8,13 +8,15 @@
             <xpath expr="//button[@name='335']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+<!-- ESTE BOTON PERMITE CREAR NUEVOS CONTRATOS-->
             <xpath expr="//button[@name='action_cancel']" position="before">
-                <button name="action_contract"
+                <button name="action_create_contract"
                         string="Create Contract" type="object"
                         attrs="{'invisible': [('state', '!=', 'sale' )]}"
                         class="btn-primary"/>
             </xpath>
 
+<!--ESTE BOTON LISTA LOS CONTRATOS RELACIONADOS AL CLIENTE-->
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button name="action_contracts_ids"
                         type="object"
@@ -24,8 +26,6 @@
                     <field name="contracts_count" widget="statinfo" string="Contratos"/>
                 </button>
             </xpath>
-
-
         </field>
     </record>
 </odoo>

@@ -12,6 +12,8 @@
     'depends': [
         'base',
         'sale',
+        'jjm_contract',
+        # 'contract',
         ],
     'data': [
         'views/sale_order_view.xml',
