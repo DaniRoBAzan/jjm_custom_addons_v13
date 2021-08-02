@@ -44,8 +44,12 @@ class FleetVehicleModel(models.Model):
     @api.depends("name", "brand_id", "displacement")
     def _compute_new_display_name(self):
         for rec in self:
-            name = [rec.brand_id.name, rec.name,rec.displacement]
-            rec.display_name = name
+            if rec.type_model == 'combo':
+                name = [rec.brand_id.name, rec.name]
+                rec.display_name = name
+            else:
+                name = [rec.brand_id.name, rec.name, rec.displacement]
+                rec.display_name = name
 
     def open_pricelist_models(self):
         self.ensure_one()
