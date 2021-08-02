@@ -117,6 +117,26 @@
             </field>
         </record>
 
+    <!--    AGREGO DATOS DE TARJETA-->
+        <record id="res_partner_view_form_property_inherit" model="ir.ui.view">
+            <field name="name">res.partner.view.form.property.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='accounting']" position="inside">
+                    <group name="card_debt_custom" string="Datos de la tarjeta">
+                        <group>
+                            <field name="has_credit_card_jjm" />
+                        </group>
+                        <group>
+                            <field name="bank_name_jjm" attrs="{'invisible': [('has_credit_card_jjm','=',False)]}"/>
+                            <field name="credit_card_number_jjm" attrs="{'invisible': [('has_credit_card_jjm','=',False)]}"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
 
     <menuitem
             action="contract.action_customer_contract"

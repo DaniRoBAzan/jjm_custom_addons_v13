@@ -9,6 +9,8 @@
     - cambio nombre de campos de origen por Ocupacion y Barrio.
     - Agrego campos en solapa Compra y Ventas: Es Socio, Es Supervisor, Es Asesor / Vendedor,
     Codigo Asesor, Es Cobrador  y Encargado.
+    - En Contrato/Partner/Facturacion y Contabilidad, se te habilita la opción "Tiene tarjeta", 
+    al tildar aparece la opción de cargar los datos del banco y numero de tarjeta.
     ''',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
