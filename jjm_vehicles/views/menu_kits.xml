@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem action="sale.product_template_action"
+                  parent="menu_root"
+                  string="Kits"
+                  name="Kits"
+                  id="jjmvehicles_product_template_action"
+                  sequence="5"/>
+    </data>
+</odoo>

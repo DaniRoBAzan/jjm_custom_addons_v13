@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/fleet_vehicle_model_views.xml',
         'views/vehicles_price_view.xml',
+        'views/menu_kits.xml',
         'data/fleet_cars_data.xml',
     ],
     'installable': True,
