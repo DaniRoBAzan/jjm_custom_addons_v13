@@ -3,7 +3,8 @@
     'name': 'JJM Report - Troquel',
     'description': '''
     Este modulo es el reporte del troquel.
-    Debe seleccionar una factura asociada al cliente y cliquear en el Accion/Imprimir Troquel.
+    Debe seleccionar una factura asociada al cliente
+     y cliquear en el Accion/Imprimir Troquel para imprimir el recibo.
     ''',
     'author': "Romina Bazan",
     'license': 'OEEL-1',
