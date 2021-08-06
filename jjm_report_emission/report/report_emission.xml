@@ -3,7 +3,7 @@
     <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN -->
     <report id="jjm_emission_report"
         model="report.jjm_report_emission.jjm_emission_report"
-        string="Reporte-emission"
+        string="Reporte-emisión"
         report_type="qweb-pdf"
         name="jjm_report_emission.jjm_emission_report"
         menu="False"/>
@@ -13,7 +13,7 @@
             <div t-call="web.external_layout">
                 <div class="page">
                     <div>
-                        <h3 class="text-center"><strong><u>Reporte Emision</u></strong></h3>
+                        <h3 class="text-center"><strong><u>Reporte Emisión</u></strong></h3>
                         <br/>
                     <div class="text-right">
                         <group>
@@ -57,17 +57,12 @@
                             <br/>
                         </div>
                         <table class="table table-condensed table-bordered">
-<!--                            <thead>-->
-<!--                                <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
-<!--                            </thead>-->
                             <thead>
                                 <th class="text-center" style="width: 10%">NRO</th>
                                 <th class="text-center" style="width: 50%">CLIENTE</th>
                                 <th class="text-center" style="width: 20%">TELEFONO</th>
                                 <th class="text-center" style="width: 50%">DIRECCION</th>
                                 <th class="text-center" style="width: 20%">HORARIO</th>
-<!--                                <th class="text-center" style="width: 10%">CONTRATO</th>-->
-<!--                                <th class="text-center" style="width: 10%">CANON</th>-->
                                 <th class="text-center" style="width: 20%">FECHA</th>
                                 <th class="text-center" style="width: 30%">IMPORTE</th>
                             </thead>
@@ -96,11 +91,6 @@
                                             <td class="text-center">
                                                 <t t-esc="array['horario']"/>
                                             </td>
-<!--                                            <td class="text-center">-->
-<!--                                                <t t-esc="array['contrato']"/>.-->
-<!--                                                <br/>-->
-<!--                                                Canon: <t t-esc="array['canon']"/>-->
-<!--                                            </td>-->
                                             <td class="text-center">
                                                 <t t-esc="array['fecha']"/>
                                                 <br/>
@@ -123,8 +113,6 @@
                                     <th class="text-center" style="width: 20%"></th>
                                     <th class="text-center" style="width: 50%"></th>
                                     <th class="text-center" style="width: 20%"></th>
-<!--                                    <th class="text-center" style="width: 10%"></th>-->
-<!--                                    <th class="text-center" style="width: 10%"></th>-->
                                     <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
                                     <td class="text-center" style="width: 30%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                 </tr>
@@ -139,8 +127,6 @@
                             <th class="text-center" style="width: 20%"></th>
                             <th class="text-center" style="width: 50%"></th>
                             <th class="text-center" style="width: 20%"></th>
-<!--                            <th class="text-center" style="width: 10%"></th>-->
-<!--                            <th class="text-center" style="width: 10%"></th>-->
                             <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
                             <td class="text-center" style="width: 30%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
