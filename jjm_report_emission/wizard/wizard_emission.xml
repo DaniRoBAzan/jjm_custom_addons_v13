@@ -6,15 +6,12 @@
             <field name="model">jjmemission.report.wizard</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Reporte de Emision">
+                <form string="Reporte de Emisión">
                     <group>
                         <group>
                             <field name="month" string="Mes"/>
                             <field name="collector" options="{'no_create': True, 'no_open': True}" string="Cobrador"/>
                         </group>
-<!--                        <group>-->
-<!--                            <field name="date_end"/>-->
-<!--                        </group>-->
                     </group>
                     <footer>
                         <button name="generate_pdf_report" string="Aceptar" type="object" class="oe_highlight"/>
@@ -24,7 +21,7 @@
             </field>
         </record>
         <record id="paperformat_emission_report" model="report.paperformat">
-            <field name="name">Reporte de Emision</field>
+            <field name="name">Reporte de Emisión</field>
             <field name="default" eval="False"/>
             <field name="format">A4</field>
             <field name="page_width">0</field>
@@ -55,11 +52,9 @@
 <!--            <field name="dpi">90</field>-->
 <!--        </record>-->
 
-
-
         <!-- ESTE ACTION ES EL QUE SE VE EN EL MENU -->
         <act_window id="action_emission_report_wizard"
-            name="Reporte de Emision"
+            name="Reporte de Emisión"
             res_model="jjmemission.report.wizard"
             view_mode="form"
             target="new"/>
