@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN -->
+    <report id="jjm_emission_report"
+        model="report.jjm_report_emission.jjm_emission_report"
+        string="Reporte-emission"
+        report_type="qweb-pdf"
+        name="jjm_report_emission.jjm_emission_report"
+        menu="False"/>
+
+        <template id="jjm_emission_report">
+            <t t-call="web.html_container">
+            <div t-call="web.external_layout">
+                <div class="page">
+                    <div>
+                        <h3 class="text-center"><strong><u>Reporte Emision</u></strong></h3>
+                        <br/>
+                    <div class="text-right">
+                        <group>
+                            <div class="text-left">
+                                <span style="font-size: 14px;"><strong>Cobrador</strong>:
+                                    <t t-esc="encabezado['collector']"/>
+                                </span>
+                                <br/>
+                                <span style="font-size: 14px;"><strong>Mes</strong>:
+                                    <t t-esc="encabezado['month']"/>
+                                </span>
+                            </div>
+                        </group>
+                        <group>
+                            <span style="font-size: 14px;"><strong>Fecha de impresión</strong>:
+                                <t t-esc="encabezado['today']"/>
+                            </span>
+                            <br/>
+                            <span style="font-size: 14px;"><strong>Usuario</strong>:
+                                <t t-esc="encabezado['user']"/>
+                            </span>
+                        </group>
+                    </div>
+                </div>
+
+                <t t-set="total_gral" t-value="0"/>
+                <div class="article mt0 o_report_layout_standard">
+                    <t t-set="group_consultant" t-value="[]"/>
+                    <t t-foreach="docs" t-as="array">
+                        <t t-set="group_consultant" t-value="group_consultant+[array['collector']]"/>
+                    </t>
+                    <t t-foreach="set(group_consultant)" t-as="collector">
+                        <t t-set="subtotal" t-value="0"/>
+                        <t t-set="total" t-value="0"/>
+                        <t t-set="contador" t-value="1"/>
+                        <div class="text-left">
+                            <br/>
+                            <span style="font-size: 16px;"><strong>Cobrador</strong>:
+                                <t t-esc="collector.name"/>
+                            </span>
+                            <br/>
+                        </div>
+                        <table class="table table-condensed table-bordered">
+<!--                            <thead>-->
+<!--                                <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
+<!--                            </thead>-->
+                            <thead>
+                                <th class="text-center" style="width: 10%">NRO</th>
+                                <th class="text-center" style="width: 50%">CLIENTE</th>
+                                <th class="text-center" style="width: 20%">TELEFONO</th>
+                                <th class="text-center" style="width: 50%">DIRECCION</th>
+                                <th class="text-center" style="width: 20%">HORARIO</th>
+<!--                                <th class="text-center" style="width: 10%">CONTRATO</th>-->
+<!--                                <th class="text-center" style="width: 10%">CANON</th>-->
+                                <th class="text-center" style="width: 20%">FECHA</th>
+                                <th class="text-center" style="width: 30%">IMPORTE</th>
+                            </thead>
+                            <tbody>
+                                <t t-set="subtotal" t-value="0"/>
+                                <t t-set="total" t-value="0"/>
+                                <t t-foreach="docs" t-as="array">
+                                    <t t-if="collector.id==array['collector'].id">
+                                        <tr>
+                                            <td class="text-center">
+                                                <t t-esc="contador"/>
+                                                <t t-set="contador" t-value="contador + 1 "></t>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['cliente']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['telefono']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['calle']"/> -
+                                                <t t-esc="array['ciudad']"/> -
+                                                <t t-esc="array['provincia']"/> -
+                                                <t t-esc="array['pais']"/>.
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['horario']"/>
+                                            </td>
+<!--                                            <td class="text-center">-->
+<!--                                                <t t-esc="array['contrato']"/>.-->
+<!--                                                <br/>-->
+<!--                                                Canon: <t t-esc="array['canon']"/>-->
+<!--                                            </td>-->
+                                            <td class="text-center">
+                                                <t t-esc="array['fecha']"/>
+                                                <br/>
+                                                Contrato: <t t-esc="array['contrato']"/>.
+                                                <br/>
+                                                Canon: <t t-esc="array['canon']"/>.
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
+                                                <t t-set="subtotal" t-value="array['importe']"></t>
+                                                <t t-set="total" t-value="total + subtotal "></t>
+                                                <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <th class="text-center" style="width: 10%"></th>
+                                    <th class="text-center" style="width: 50%"></th>
+                                    <th class="text-center" style="width: 20%"></th>
+                                    <th class="text-center" style="width: 50%"></th>
+                                    <th class="text-center" style="width: 20%"></th>
+<!--                                    <th class="text-center" style="width: 10%"></th>-->
+<!--                                    <th class="text-center" style="width: 10%"></th>-->
+                                    <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
+                                    <td class="text-center" style="width: 30%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <table class="table table-condensed table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="text-center" style="width: 10%"></th>
+                            <th class="text-center" style="width: 50%"></th>
+                            <th class="text-center" style="width: 20%"></th>
+                            <th class="text-center" style="width: 50%"></th>
+                            <th class="text-center" style="width: 20%"></th>
+<!--                            <th class="text-center" style="width: 10%"></th>-->
+<!--                            <th class="text-center" style="width: 10%"></th>-->
+                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 30%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
