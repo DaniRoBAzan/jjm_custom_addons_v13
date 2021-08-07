@@ -4,6 +4,8 @@
     'category': 'Extra Tools',
     'description': '''
     Este es el Reporte Emision.
+    Permite seleccionar un cobrador(o todos) y un mes.
+    Trae todas las facturas emitidas por cobrador/es en el mes seleccionado.
     ''',
     'license': 'AGPL-3',
     'author': 'Romina Bazan',
