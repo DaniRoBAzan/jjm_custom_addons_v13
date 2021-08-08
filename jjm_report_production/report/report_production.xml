@@ -18,6 +18,12 @@
                     <div class="text-right">
                         <group>
                             <div class="text-left">
+                                <t t-if="encabezado['supervisor']">
+                                    <span style="font-size: 14px;"><strong>Supervisor</strong>:
+                                        <t t-esc="encabezado['supervisor']"/>
+                                    </span>
+                                </t>
+                                <br/>
                                 <span style="font-size: 14px;"><strong>Campaña</strong>:
                                     <t t-esc="encabezado['campaign']"/>
                                 </span>
@@ -59,15 +65,12 @@
                         <table class="table table-condensed table-bordered">
 <!--                            <thead>-->
 <!--                                <th class="text-center btn-primary" style="width: 10%">NRO</th>-->
-<!--                                <th class="text-center btn-primary" style="width: 50%">CLIENTE</th>-->
-<!--                                <th class="text-center btn-primary" style="width: 15%">CONTRATO</th>-->
-<!--                                <th class="text-center btn-primary" style="width: 15%">FECHA ADHESION</th>-->
-<!--                                <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
 <!--                            </thead>-->
                             <thead>
                                 <th class="text-center" style="width: 10%">NRO</th>
                                 <th class="text-center" style="width: 50%">CLIENTE</th>
                                 <th class="text-center" style="width: 15%">CONTRATO</th>
+                                <th class="text-center" style="width: 15%">F.PAGO</th>
                                 <th class="text-center" style="width: 15%">FECHA ADHESION</th>
                                 <th class="text-center" style="width: 10%">IMPORTE</th>
                             </thead>
@@ -86,6 +89,9 @@
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['contrato']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['forma_pago']"/>
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['fecha_inicio']"/>

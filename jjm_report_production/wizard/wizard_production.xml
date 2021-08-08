@@ -9,7 +9,8 @@
                 <form string="Reporte de Produccion">
                     <group>
                         <group>
-                            <field name="consultant" domain="[('is_consultant', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="supervisor" domain="[('is_supervisor', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="consultant" domain="[('is_consultant', '=', True),('jjm_manager','=',supervisor)]" options="{'no_create': True, 'no_open': True}"/>
                             <field name="campaign" options="{'no_create': True, 'no_open': True}" required="1" />
                         </group>
                     </group>
