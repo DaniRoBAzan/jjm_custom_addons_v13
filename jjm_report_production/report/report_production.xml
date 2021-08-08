@@ -13,7 +13,7 @@
             <div t-call="web.external_layout">
                 <div class="page">
                     <div>
-                        <h3 class="text-center"><strong><u>Reporte Produccion</u></strong></h3>
+                        <h3 class="text-center"><strong><u>Reporte Producción</u></strong></h3>
                         <br/>
                     <div class="text-right">
                         <group>

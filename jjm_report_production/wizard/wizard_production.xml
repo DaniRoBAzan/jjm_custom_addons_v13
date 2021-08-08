@@ -2,11 +2,11 @@
 <odoo>
     <data>
         <record id="production_report_wizard" model="ir.ui.view" >
-            <field name="name">Reporte de Produccion</field>
+            <field name="name">Reporte de Producción</field>
             <field name="model">production.report.wizard</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Reporte de Produccion">
+                <form string="Reporte de Producción">
                     <group>
                         <group>
                             <field name="supervisor" domain="[('is_supervisor', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
@@ -22,7 +22,7 @@
             </field>
         </record>
         <record id="paperformat_production_report" model="report.paperformat">
-            <field name="name">Reporte Produccion</field>
+            <field name="name">Reporte Producción</field>
             <field name="default" eval="False"/>
             <field name="format">A4</field>
             <field name="page_width">0</field>
@@ -39,7 +39,7 @@
 
         <!-- ESTE ACTION ES EL QUE SE VE EN EL MENU -->
         <act_window id="action_production_report_wizard"
-            name="Reporte de Produccion"
+            name="Reporte de Producción"
             res_model="production.report.wizard"
             view_mode="form"
             target="new"/>

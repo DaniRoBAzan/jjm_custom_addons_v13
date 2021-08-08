@@ -8,7 +8,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class ReportProductionReportView(models.AbstractModel):
-    #report.nombre modulo.template_id
     _name = 'report.jjm_report_production.production_report_template_pdf'
 
     @api.model

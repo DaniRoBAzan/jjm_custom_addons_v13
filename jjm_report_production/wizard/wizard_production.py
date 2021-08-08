@@ -21,6 +21,5 @@ class ProductionReportWizard(models.TransientModel):
             },
         }
 
-        # ref(nombre_modulo.reporte_id)
         return self.env.ref('jjm_report_production.production_report').report_action(self, data=data)
 
