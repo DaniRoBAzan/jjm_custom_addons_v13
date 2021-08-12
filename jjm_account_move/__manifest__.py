@@ -14,6 +14,8 @@
     'depends': [
         'base',
         'account',
+        "account_payment_fix",
+        "account_payment_group",
         ],
     'data': [
         'views/account_view.xml',
