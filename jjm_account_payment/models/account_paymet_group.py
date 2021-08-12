@@ -8,4 +8,7 @@ _logger = logging.getLogger(__name__)
 class AccountPaymentGroup(models.Model):
     _inherit = 'account.payment.group'
 
-    collector_id = fields.Many2one('res.partner', "Cobrador", store=True)
+    collector_id = fields.Many2one('res.partner',
+                                   "Cobrador",
+                                   change_default=True,
+                                   store=True)
