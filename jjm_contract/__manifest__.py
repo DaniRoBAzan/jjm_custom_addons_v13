@@ -18,6 +18,7 @@
         'base',
         'contract',
         'account_debt_management',
+        'contract_state',
         ],
     'data': [
         'security/ir.model.access.csv',
