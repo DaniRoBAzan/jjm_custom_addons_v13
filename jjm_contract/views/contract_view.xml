@@ -31,6 +31,7 @@
                 <field name="method_payment_id" optional="show"/>
                 <field name="collector_id" optional="show"/>
                 <field name="consultant_id" optional="show"/>
+                <field name="jjm_estado_contrato" string='Estado' optional="show"/>
             </field>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="string">Cliente</attribute>

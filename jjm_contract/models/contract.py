@@ -16,6 +16,7 @@ class ContractContract(models.Model):
     method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True)
     collector_id = fields.Many2one('res.partner', "Cobrador", store=True)
     cant_cuotas = fields.Integer(string='Cantidad Cuotas', default=0, store=True, help='Escribir la cantidad de cuotas que debera abonar el cliente, para este contrato.')
+    jjm_estado_contrato = fields.Char(string='Estado', compute='_compute_state')
 
 
     @api.model
@@ -34,6 +35,20 @@ class ContractContract(models.Model):
                 'collector_id': rec.collector_id.id,
             })
         return res
+
+    @api.depends('state')
+    def _compute_state(self):
+        for rec in self:
+            if rec.state == 'draft':
+                rec.jjm_estado_contrato = 'Borrador'
+            if rec.state == 'confirm':
+                rec.jjm_estado_contrato = 'Iniciado'
+            if rec.state == 'cancel':
+                rec.jjm_estado_contrato = 'Baja'
+            else:
+                rec.jjm_estado_contrato = 'Sin Estado'
+
+
 
 
 
