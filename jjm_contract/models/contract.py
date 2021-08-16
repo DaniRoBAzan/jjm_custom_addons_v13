@@ -16,7 +16,18 @@ class ContractContract(models.Model):
     method_payment_id = fields.Many2one('method.paymentjjm', string='Forma de Pago', store=True)
     collector_id = fields.Many2one('res.partner', "Cobrador", store=True)
     cant_cuotas = fields.Integer(string='Cantidad Cuotas', default=0, store=True, help='Escribir la cantidad de cuotas que debera abonar el cliente, para este contrato.')
-    jjm_estado_contrato = fields.Char(string='Estado', compute='_compute_state')
+
+    jjm_motivo_baja = fields.Char(string='Motivo de Baja')
+    jjm_contract_state = fields.Char(string='Estado',
+                                     default="Borrador",
+                                     compute='_compute_state',
+                                     store=True,
+                                     readonly=True)
+    jjm_date_unsubscribe = fields.Date(string='Fecha Baja',
+                                       default=False,
+                                       compute='_compute_jjm_date_unsubscribe',
+                                       store=True,
+                                       readonly=True)
 
 
     @api.model
@@ -40,18 +51,16 @@ class ContractContract(models.Model):
     def _compute_state(self):
         for rec in self:
             if rec.state == 'draft':
-                rec.jjm_estado_contrato = 'Borrador'
+                rec.jjm_contract_state = 'Borrador'
             if rec.state == 'confirm':
-                rec.jjm_estado_contrato = 'Iniciado'
+                rec.jjm_contract_state = 'Iniciado'
             if rec.state == 'cancel':
-                rec.jjm_estado_contrato = 'Baja'
+                rec.jjm_contract_state = 'Baja'
+
+    @api.depends('state')
+    def _compute_jjm_date_unsubscribe(self):
+        for rec in self:
+            if rec.state == 'cancel':
+                rec.jjm_date_unsubscribe = fields.Date.today()
             else:
-                rec.jjm_estado_contrato = 'Sin Estado'
-
-
-
-
-
-
-
-
+                rec.jjm_date_unsubscribe = False
