@@ -3,7 +3,7 @@
     <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN -->
     <report id="unsubscribe_report"
         model="report.jjm_report_unsubscribe.unsubscribe_report_template_pdf"
-        string="Reporte-produccion"
+        string="Reporte-baja"
         report_type="qweb-pdf"
         name="jjm_report_unsubscribe.unsubscribe_report_template_pdf"
         menu="False"/>
