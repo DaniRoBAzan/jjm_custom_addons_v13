@@ -20,6 +20,8 @@ class UnsubscribeReportWizard(models.TransientModel):
                 'supervisor': self.supervisor.id,
                 'consultant': self.consultant.id,
                 'campaign': self.campaign.id,
+                # 'date_start': self.date_start,
+                # 'date_end': self.date_end,
                 'date_start': self.date_start.strftime('%d-%m-%Y'),
                 'date_end': self.date_end.strftime('%d-%m-%Y'),
             },

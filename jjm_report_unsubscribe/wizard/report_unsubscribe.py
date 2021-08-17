@@ -55,6 +55,8 @@ class ReportUnsubscribeReportView(models.AbstractModel):
         today = fields.Date.today().strftime('%d-%m-%Y')
         encabezado = {
             'today': today,
+            'fecha_inicio': date_start,
+            'fecha_fin': date_end,
             'campaign': campaign_obj.name,
             'supervisor': supervisor and supervisor.name,
             'consultant': consultant and consultant.name or '',
