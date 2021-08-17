@@ -24,6 +24,7 @@
                                 <span style="font-size: 14px;"><strong> al </strong>
                                     <t t-esc="encabezado['fecha_fin']"/>
                                 </span>
+                                <br/>
                                 <t t-if="encabezado['supervisor']">
                                     <span style="font-size: 14px;"><strong>Supervisor</strong>:
                                         <t t-esc="encabezado['supervisor']"/>
@@ -70,11 +71,11 @@
                         </div>
                         <table class="table table-condensed table-bordered">
                             <thead>
-                                <th class="text-center" style="width: 10%">NRO</th>
-                                <th class="text-center" style="width: 50%">CLIENTE</th>
+                                <th class="text-center" style="width: 5%">NRO</th>
+                                <th class="text-center" style="width: 30%">CLIENTE</th>
                                 <th class="text-center" style="width: 15%">CONTRATO</th>
                                 <th class="text-center" style="width: 15%">FECHA BAJA</th>
-                                <th class="text-center" style="width: 15%">MOTIVO</th>
+                                <th class="text-center" style="width: 30%">MOTIVO</th>
                             </thead>
                             <tbody>
                                 <t t-set="subtotal" t-value="0"/>
