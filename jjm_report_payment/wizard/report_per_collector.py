@@ -23,9 +23,9 @@ class ReportPaymentCollectorReport(models.AbstractModel):
     # ARMO EL REPORTE
         if date_start and date_end:
             args = [('payment_date',
-                        '>=', date_start),
+                        '>=', datetime.strptime(date_start, '%d-%m-%Y')),
                     ('payment_date',
-                        '<=', date_end),
+                        '<=', datetime.strptime(date_end, '%d-%m-%Y')),
                     ]
             if collector:
                 collector = self.env['res.partner'].browse(int(collector))

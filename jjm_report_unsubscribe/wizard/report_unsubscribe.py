@@ -23,9 +23,9 @@ class ReportUnsubscribeReportView(models.AbstractModel):
 
         if date_start and date_end:
             args = [('jjm_date_unsubscribe',
-                        '>=', date_start),
+                        '>=', datetime.strptime(date_start, '%d-%m-%Y')),
                     ('jjm_date_unsubscribe',
-                        '<=', date_end),
+                        '<=', datetime.strptime(date_end, '%d-%m-%Y')),
                     ]
         else:
             raise ValidationError(
