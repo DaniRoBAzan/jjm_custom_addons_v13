@@ -21,7 +21,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
         encabezado = []
 
     # ARMO EL REPORTE
-        if date_start <= date_end:
+        if date_start and date_end:
             args = [('payment_date',
                         '>=', date_start),
                     ('payment_date',

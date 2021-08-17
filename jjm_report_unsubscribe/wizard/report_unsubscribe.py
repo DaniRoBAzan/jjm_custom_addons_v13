@@ -21,7 +21,7 @@ class ReportUnsubscribeReportView(models.AbstractModel):
         args1 = []
         args = []
 
-        if date_start <= date_end:
+        if date_start and date_end:
             args = [('jjm_date_unsubscribe',
                         '>=', date_start),
                     ('jjm_date_unsubscribe',
