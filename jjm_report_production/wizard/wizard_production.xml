@@ -45,12 +45,15 @@
             target="new"/>
 
         <menuitem action="action_production_report_wizard"
-            id="menu_production_report_wizard"
-            parent="sale.menu_sale_report"/>
+                  id="menu_production_report_wizard"
+                  string="Reporte Produccion"
+                  parent="sale.menu_sale_report"
+                  sequence="7"/>
 
-       <menuitem action="action_production_report_wizard"
-            id="menu_payment_report_wizard_partner"
-            string="Informes"
-            parent="jjm_report_payment.menu_reports_partner" sequence="2"/>
+        <menuitem action="action_production_report_wizard"
+                  id="menu_payment_report_wizard_partner"
+                  string="Reporte Produccion"
+                  parent="jjm_report_payment.menu_reports_partner"
+                  sequence="7"/>
     </data>
 </odoo>

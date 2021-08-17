@@ -14,6 +14,7 @@
         'contacts',
         'sale',
         'product',
+        'jjm_report_payment',
         ],
     'data': [
         'report/troquel_view.xml',

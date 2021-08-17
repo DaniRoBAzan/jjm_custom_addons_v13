@@ -17,6 +17,7 @@
                 'sale',
                 'account',
                 'jjm_contract',
+                'jjm_report_payment',
                 ],
     'demo': [],
     'data': [

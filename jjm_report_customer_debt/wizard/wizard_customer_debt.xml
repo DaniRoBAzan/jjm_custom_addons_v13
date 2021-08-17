@@ -44,18 +44,15 @@
             target="new"/>
 
         <menuitem action="action_customer_debt_report_wizard"
-            id="menu_customer_debt_report_wizard"
-            parent="sale.menu_sale_report"/>
-
-        <menuitem name="Informes"
-                  id="menu_reports_partner"
-                  string="Informes"
-                  sequence="4"
-                  parent="contacts.menu_contacts"/>
+                  id="menu_customer_debt_report_wizard"
+                  string="Reporte Deuda Cliente"
+                  parent="sale.menu_sale_report"
+                  sequence="3"/>
 
         <menuitem action="action_customer_debt_report_wizard"
-            id="menu_customer_debt_report_wizard_partner"
-            string="Informes"
-            parent="jjm_report_payment.menu_reports_partner" sequence="4"/>
+                  id="menu_customer_debt_report_wizard_partner"
+                  string="Reporte Deuda Cliente"
+                  parent="jjm_report_payment.menu_reports_partner"
+                  sequence="3"/>
     </data>
 </odoo>

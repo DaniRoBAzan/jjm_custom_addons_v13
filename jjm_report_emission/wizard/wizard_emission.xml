@@ -60,12 +60,15 @@
             target="new"/>
 
         <menuitem action="action_emission_report_wizard"
-            id="menu_emission_report_wizard"
-            parent="sale.menu_sale_report"/>
+                  id="menu_emission_report_wizard"
+                  string="Reporte Emision"
+                  parent="sale.menu_sale_report"
+                  sequence="4"/>
 
         <menuitem action="action_emission_report_wizard"
-            id="menu_payment_report_wizard_partner"
-            string="Informes"
-            parent="jjm_report_payment.menu_reports_partner" sequence="5"/>
+                  id="menu_payment_report_wizard_partner"
+                  string="Reporte Emision"
+                  parent="jjm_report_payment.menu_reports_partner"
+                  sequence="4"/>
     </data>
 </odoo>

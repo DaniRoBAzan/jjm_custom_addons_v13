@@ -46,10 +46,6 @@
             view_mode="form"
             target="new"/>
 
-        <menuitem action="action_payment_collector_report_wizard"
-            id="menu_payment_report_wizard"
-            parent="sale.menu_sale_report"/>
-
         <menuitem name="Informes"
                   id="menu_reports_partner"
                   string="Informes"
@@ -57,8 +53,15 @@
                   parent="contacts.menu_contacts"/>
 
         <menuitem action="action_payment_collector_report_wizard"
-            id="menu_payment_report_wizard_partner"
-            string="Informes"
-            parent="jjm_report_payment.menu_reports_partner" sequence="1"/>
+                  id="menu_payment_report_wizard_partner"
+                  string="Reporte Cobranza"
+                  parent="jjm_report_payment.menu_reports_partner"
+                  sequence="2"/>
+
+        <menuitem action="action_payment_collector_report_wizard"
+                  id="menu_payment_report_wizard"
+                  string="Reporte Cobranza"
+                  parent="sale.menu_sale_report"
+                  sequence="2"/>/>
     </data>
 </odoo>
