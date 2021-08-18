@@ -28,7 +28,7 @@ class ContractContract(models.Model):
                                        compute='_compute_jjm_date_unsubscribe',
                                        store=True,
                                        readonly=True)
-
+    jjm_description_moto = fields.Text(string='Moto', store=True)
 
     @api.model
     def create(self, vals):

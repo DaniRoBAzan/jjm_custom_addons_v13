@@ -24,6 +24,15 @@
                 <field name="jjm_motivo_baja" attrs="{'invisible': [('state','!=','cancel')]}"/>
                 <field name="jjm_date_unsubscribe" force_save="1" attrs="{'invisible': [('state','!=','cancel')]}"/>
             </xpath>
+            <xpath expr="//group[@name='group_legend']" position="after">
+                <group
+                    name="group_moto"
+                    string="Descripción de la moto del propietario.">
+                    <field name="jjm_description_moto" placeholder="Escribir aqui datos del modelo-marca-cilindrada.."/>
+                </group>
+            </xpath>
+
+
       </field>
     </record>
 
