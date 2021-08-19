@@ -96,6 +96,21 @@
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="attrs">{'invisible': 1}</attribute>
             </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="date_accession"/>
+                <field name="campaign_id" domain="[('current','=','True')]"/>
+                <field name="consultant_id" domain="[('is_consultant','=','True')]"/>
+                <field name="method_payment_id"/>
+                <field name="collector_id" domain="[('is_collector','=','True')]" attrs="{'invisible': [('method_payment_id','!=',2)]}"/>
+                <field name="cant_cuotas"/>
+            </xpath>
+            <xpath expr="//group[@name='group_legend']" position="after">
+                <group
+                    name="group_moto"
+                    string="Descripción de la moto del propietario.">
+                    <field name="jjm_description_moto" placeholder="Escribir aqui datos del modelo-marca-cilindrada.."/>
+                </group>
+            </xpath>
         </field>
     </record>
 

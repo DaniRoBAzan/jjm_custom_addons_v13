@@ -17,7 +17,9 @@
     'depends': [
         'base',
         'contract',
+        'l10n_ar',
         'account_debt_management',
+        'account_payment_group',
         'contract_state',
         ],
     'data': [
