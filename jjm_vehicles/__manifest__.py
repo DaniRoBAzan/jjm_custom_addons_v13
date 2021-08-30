@@ -21,6 +21,8 @@
     'version':  '14.0.1.0',
     'depends': [
         'base',
+        'product',
+        'sale',
         'mail',
         ],
     'data': [

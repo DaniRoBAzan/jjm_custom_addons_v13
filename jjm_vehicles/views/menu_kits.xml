@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <menuitem action="sale.product_template_action"
+        <menuitem id="jjmvehicles_menu_kit"
                   parent="menu_root"
                   string="Kits"
                   name="Kits"
-                  id="jjmvehicles_product_template_action"
                   sequence="5"/>
+
+        <menuitem action="sale.product_template_action"
+                  id="jjmvehicles_product_template_action"
+                  parent="jjmvehicles_menu_kit"
+                  string="Kits"
+                  name="Kits"
+                  sequence="1"/>
+
+        <menuitem action="product.product_pricelist_action2"
+                  id="jjmvehicles_product_list"
+                  parent="jjmvehicles_menu_kit"
+                  string="Tarifas"
+                  name="Tarifas"
+                  sequence="2"/>
     </data>
 </odoo>
