@@ -39,13 +39,33 @@ class ContractContract(models.Model):
     def _recurring_create_invoice(self):
         res = super(ContractContract, self)._recurring_create_invoice()
         for rec in self:
+
             res.update({
                 'consultant_id': rec.consultant_id.id,
                 'campaign_id': rec.campaign_id.id,
                 'method_payment_id': rec.method_payment_id.id,
                 'collector_id': rec.collector_id.id,
+                # 'canon': rec.get_canon(),
             })
         return res
+
+    # def get_canon(self):
+    #     for rec in self:
+    #         if rec.invoice_origin:
+    #             invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
+    #                                                            ('invoice_origin', '=', rec.invoice_origin),
+    #                                                            ('state', '=', 'posted')], order='canon desc',
+    #                                                           limit=1)
+    #             if invoice_obj:
+    #                 if rec.parent_id:
+    #                     contract_partner_obj = rec.parent_id
+    #                     rec.canon = int(contract_partner_obj.canon)
+    #                 else:
+    #                     if rec.partner_id and not rec.parent_id:
+    #                         rec.canon = int(invoice_obj.canon) + 1
+    #                     else:
+    #                         rec.canon = 1
+    #     return rec.canon
 
     @api.depends('state')
     def _compute_state(self):

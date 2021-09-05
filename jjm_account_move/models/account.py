@@ -15,15 +15,19 @@ class AccountMove(models.Model):
     def action_post(self):
         for rec in self:
             if rec.invoice_origin:
-                if rec.partner_id:
-                    invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
-                                                                   ('invoice_origin', '=', rec.invoice_origin),
-                                                                   ('state', '=', 'posted')], order='canon desc',
-                                                                  limit=1)
-                    if invoice_obj:
-                        rec.canon = int(invoice_obj.canon) + 1
+                invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
+                                                               ('invoice_origin', '=', rec.invoice_origin),
+                                                               ('state', '=', 'posted')], order='canon desc',
+                                                              limit=1)
+                if invoice_obj:
+                    if rec.parent_id:
+                        contract_partner_obj = rec.parent_id
+                        rec.canon = int(contract_partner_obj.canon)
                     else:
-                        rec.canon = 1
+                        if rec.partner_id and not rec.parent_id:
+                            rec.canon = int(invoice_obj.canon) + 1
+                        else:
+                            rec.canon = 1
         return super(AccountMove, self).action_post()
 
 
