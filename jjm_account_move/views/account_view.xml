@@ -6,11 +6,11 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@id='header_left_group']" position="inside">
-                <field name="consultant_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
-                <field name="campaign_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
-                <field name="method_payment_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
-                <field name="collector_id" readonly="1" attrs="{'invisible': [('invoice_origin', '=', 'False')]}"/>
-                <field name="canon" readonly="1" attrs="{'invisible': ['|',('state', '=', 'draft'),('canon', '=', 0)]}"/>
+                <field name="consultant_id" readonly="1" attrs="{'invisible': [('consultant_id', '=', False)]}"/>
+                <field name="campaign_id" readonly="1" attrs="{'invisible': [('campaign_id', '=', False)]}"/>
+                <field name="method_payment_id" readonly="1" attrs="{'invisible': [('method_payment_id', '=', False)]}"/>
+                <field name="collector_id" readonly="1" attrs="{'invisible': [('collector_id', '=', False)]}"/>
+                <field name="canon" readonly="1" attrs="{'invisible': ['|',('state', '=', 'draft'),('canon', 'in', (False,0))]}"/>
             </xpath>
         </field>
     </record>

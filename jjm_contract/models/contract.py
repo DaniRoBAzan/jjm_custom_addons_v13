@@ -29,6 +29,7 @@ class ContractContract(models.Model):
                                        store=True,
                                        readonly=True)
     jjm_description_moto = fields.Text(string='Moto', store=True)
+    jjm_last_canon_contract = fields.Integer(string='Ultimo canon', readonly=True, default=0)
 
     @api.model
     def create(self, vals):
