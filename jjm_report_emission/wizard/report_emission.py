@@ -41,24 +41,26 @@ class EmissionReport(models.AbstractModel):
         bandera = True
 
         for invoice in invoice_obj:
-            if invoice.invoice_date.month == month:
-                lineas = {
-                    'cliente': invoice.partner_id.name,
-                    'telefono': invoice.partner_id.phone or invoice.partner_id.mobile,
-                    'calle': invoice.partner_id.street or invoice.partner_id.street or '',
-                    'ciudad': invoice.partner_id.city or '',
-                    'provincia': invoice.partner_id.state_id.name or '',
-                    'pais': invoice.partner_id.country_id.name or '',
-                    'horario': invoice.partner_id.contact_time or '',
-                    'contrato': invoice.invoice_origin,
-                    'canon': invoice.canon,
-                    'fecha': invoice.invoice_date.strftime('%d-%m-%Y') or '',
-                    'importe': invoice.amount_total_signed,
-                    'currency_id': self.env.company.currency_id,
-                    'collector': invoice.collector_id,
-                }
-                array.append(lineas)
-                bandera = False
+            contract_obj = self.env['contract.contract'].search([('name', '=', invoice.invoice_origin)])
+            if contract_obj.state != 'cancel':
+                if invoice.invoice_date.month == month:
+                    lineas = {
+                        'cliente': invoice.partner_id.name,
+                        'telefono': invoice.partner_id.phone or invoice.partner_id.mobile,
+                        'calle': invoice.partner_id.street or invoice.partner_id.street or '',
+                        'ciudad': invoice.partner_id.city or '',
+                        'provincia': invoice.partner_id.state_id.name or '',
+                        'pais': invoice.partner_id.country_id.name or '',
+                        'horario': invoice.partner_id.contact_time or '',
+                        'contrato': invoice.invoice_origin,
+                        'canon': invoice.canon,
+                        'fecha': invoice.invoice_date.strftime('%d-%m-%Y') or '',
+                        'importe': invoice.amount_total_signed,
+                        'currency_id': self.env.company.currency_id,
+                        'collector': invoice.collector_id,
+                    }
+                    array.append(lineas)
+                    bandera = False
         if bandera:
             raise ValidationError(
                     "No hay facturas emitidas de este Cobrador en el mes seleccionado!")
