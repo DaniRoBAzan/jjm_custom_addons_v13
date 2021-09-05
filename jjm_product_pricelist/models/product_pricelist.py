@@ -20,7 +20,7 @@ class PricelistItem(models.Model):
 
     @api.onchange('item_ids', 'price_percent')
     def compute_price_percent(self):
-        price_list_id = self.pricelist_id.id or self.pricelist_id.id.origin or self.pricelist_id.id._origin
+        price_list_id = self.pricelist_id.id or self.pricelist_id.id.origin
         product_item_obj = self.env['product.pricelist.item'].search([
             ('pricelist_id', '=', price_list_id or False )],
             order="id desc",
