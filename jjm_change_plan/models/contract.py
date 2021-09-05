@@ -8,14 +8,6 @@ class ContractContract(models.Model):
 
     parent_contract = fields.Integer('Contrato Padre')
 
-    # @api.model
-    # def get_ultimo_canon(self):
-    #     invoice_obj = self.env['account.move'].search([('invoice_origin', '=', self.name),
-    #                                                    ('amount_residual', '=', 0)],
-    #                                                   order="invoice_date desc", limit=1)
-    #     self.state = 'cancel' # cancelamos el contrato actual.
-    #     return invoice_obj.canon
-
     def action_create_contract(self):
         action = self.env.ref('contract.contract_contract_customer_form_view').read()[0]
         self.action_cancel()  # cancelamos el contrato actual.
@@ -27,6 +19,7 @@ class ContractContract(models.Model):
             default_collector_id=self.collector_id.id,
             default_method_payment_id=self.method_payment_id.id,
             default_jjm_description_moto=self.jjm_description_moto,
+            default_jjm_last_canon_contract=self.jjm_last_canon_contract,
         )
         return {
             'name': _('Contrato'),

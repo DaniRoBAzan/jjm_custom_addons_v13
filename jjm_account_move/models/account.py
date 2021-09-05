@@ -21,27 +21,6 @@ class AccountMove(models.Model):
                 else:# si no tiene ultimo canon
                     contract_obj.jjm_last_canon_contract = 1
                 rec.canon = contract_obj.jjm_last_canon_contract# seteo campo canon de factura actual
-
-            # if rec.invoice_origin: #traigo todas las facturas publicadas que coincidan con la referencia al contrato
-            #     invoice_obj = self.env['account.move'].search([('partner_id', '=', rec.partner_id.id),
-            #                                                    ('invoice_origin', '=', rec.invoice_origin),
-            #                                                    ('state', '=', 'posted')], order='canon desc',
-            #                                                   limit=1)
-            #     #traigo el contrato que coincida con la referencia de la factura a publicar
-            #     contract_obj = self.env['contract.contract'].search([('name', '=',  rec.invoice_origin)])
-            #
-            #     if invoice_obj:#si el contrato tiene facturas
-            #         if contract_obj.parent_contract: #si el contrato tiene un padre
-            #             #para setear el canon busco el ultimo canon del padre y le sumo 1
-            #             rec.canon = int(contract_obj.jjm_last_canon) + 1
-            #         else: #si el contrato no tiene padre, busco el ultimo canon de la factura
-            #             if rec.partner_id.id and not contract_obj.parent_contract:
-            #                 rec.canon = int(invoice_obj.canon) + 1
-            #             else:
-            #                 rec.canon = 1
-            #     else: #si no tiene facturas seteo el canon a 1
-            #         rec.canon = 1
-
         return super(AccountMove, self).action_post()
 
 
