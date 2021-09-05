@@ -19,7 +19,6 @@ class PricelistItem(models.Model):
 
     price_percent = fields.Float(string='% a imputar')
 
-
     @api.onchange('price_percent')
     def compute_price_percent(self):
         product_item_obj = self.env['product.pricelist.item'].search([
