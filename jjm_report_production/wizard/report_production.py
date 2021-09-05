@@ -51,7 +51,7 @@ class ReportProductionReportView(models.AbstractModel):
             'current': current,
             'user': self.env.user.name,
         }
-
+        args.append(('state', '!=','cancel')) #traer contrato en estado confirmado
         contract_obj = self.env['contract.contract'].search(args, order='partner_id desc') or False
         if contract_obj is False:
             raise ValidationError(
