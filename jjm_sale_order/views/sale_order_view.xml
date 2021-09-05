@@ -5,9 +5,9 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='335']" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath>
+<!--            <xpath expr="//button[@name='335']" position="attributes">-->
+<!--                <attribute name="invisible">True</attribute>-->
+<!--            </xpath>-->
 <!-- ESTE BOTON PERMITE CREAR NUEVOS CONTRATOS-->
             <xpath expr="//button[@name='action_cancel']" position="before">
                 <button name="action_create_contract"
