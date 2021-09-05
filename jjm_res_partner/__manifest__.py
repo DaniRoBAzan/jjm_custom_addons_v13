@@ -19,6 +19,7 @@
         'base',
         'contacts',
         'partner_manual_rank',
+        'partner_contact_gender',
         'partner_contact_personal_information_page',
         'partner_contact_birthdate',
         'contract'
