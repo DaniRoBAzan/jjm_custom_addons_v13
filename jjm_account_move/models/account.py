@@ -20,11 +20,12 @@ class AccountMove(models.Model):
                                                                ('state', '=', 'posted')], order='canon desc',
                                                               limit=1)
                 if invoice_obj:
-                    if rec.parent_id:
-                        contract_partner_obj = rec.parent_id
+                    contract_obj = self.env['contract.contract'].search([('name', '=',  rec.invoice_origin)])
+                    if contract_obj.parent_contract:
+                        contract_partner_obj = rec.parent_contract
                         rec.canon = int(contract_partner_obj.canon)
                     else:
-                        if rec.partner_id and not rec.parent_id:
+                        if rec.partner_id.id and not contract_obj.parent_contract:
                             rec.canon = int(invoice_obj.canon) + 1
                         else:
                             rec.canon = 1

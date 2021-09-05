@@ -16,6 +16,7 @@
         'account',
         "account_payment_fix",
         "account_payment_group",
+        "jjm_change_plan",
         ],
     'data': [
         'views/account_view.xml',
