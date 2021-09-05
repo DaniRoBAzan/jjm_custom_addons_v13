@@ -51,7 +51,7 @@
                             <t t-set="total" t-value="0"/>
                             <div class="text-left">
                                 <br/>
-                                <span style="font-size: 16px;"><strong>Contrato:</strong>:
+                                <span style="font-size: 16px;"><strong>Contrato</strong>:
                                     <t t-esc="contract.name"/>
                                 </span>
                                 <br/>
@@ -67,6 +67,7 @@
                                     <th class="text-center" style="width: 10%">CANON</th>
                                     <th class="text-center" style="width: 20%">FECHA</th>
                                     <th class="text-center" style="width: 20%">IMPORTE</th>
+                                    <th class="text-center" style="width: 20%">PAGADO</th>
                                     <th class="text-center" style="width: 30%">OBSERVACION</th>
                                 </thead>
                                 <tbody>
@@ -81,33 +82,41 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <t t-esc="array['price']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
-                                                    <t t-set="subtotal" t-value="array['price']"></t>
+                                                </td>
+                                                <td class="text-center">
+                                                    <t t-esc="array['adeuda']"/>
+                                                    <t t-set="faltan" t-value="array['faltan']"/>
+
+                                                    <t t-set="subtotal" t-value="array['adeuda']"></t>
                                                     <t t-set="total" t-value="total + subtotal "></t>
                                                     <t t-set="total_gral" t-value="total_gral + subtotal "></t>
-                                                    <t t-set="faltan" t-value="array['faltan']"></t>
-                                                    <t t-set="cuotas" t-value="array['cuotas']"></t>
+
+
                                                 </td>
                                                 <td class="text-center">
                                                     <t t-esc="array['observation']"/>
                                                 </td>
                                             </tr>
                                         </t>
+
                                     </t>
                                     <tr>
                                         <td class="text-center" style="width: 10%"></td>
                                         <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
-                                        <td class="text-center" style="width: 20%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                                        <td class="text-center" style="width: 20%"><span t-esc="emitidas or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                                        <td class="text-center" style="width: 20%"></td>
                                         <td class="text-center" style="width: 30%"></td>
                                     </tr>
+
                                 </tbody>
                             </table>
                             <div class="text-right">
                                 <span style="font-size: 16px;">
-                                    <strong>Observaciones:</strong>:
+                                    <strong>Observaciones</strong>:
                                 </span>
                                 <span style="font-size: 14px;">
-                                    Le faltan pagar <t t-esc="faltan or False"/> cuotas,
-                                    de las <t t-esc="cuotas or False"/> asignadas por contrato.
+                                    Debe pagar <t t-esc="faltan"/> facturas,
+                                    de las <t t-esc="contract.cant_cuotas"/> asignadas por contrato.
                                 </span>
                                 <br/>
                             </div>

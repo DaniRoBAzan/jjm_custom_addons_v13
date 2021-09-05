@@ -21,6 +21,7 @@ class ReportCustomerDebtReport(models.AbstractModel):
         array = []
         encabezado = []
         faltan = 0
+        pagadas = 0
 
         # ARMO EL REPORTE
         if client:
@@ -50,17 +51,27 @@ class ReportCustomerDebtReport(models.AbstractModel):
 
         for invoice in invoice_obj:
             if invoice.canon != 0:
-                contract_obj = self.env['contract.contract'].search([('name', '=', invoice.invoice_origin)])
-                if contract_obj:
+                if invoice.amount_residual > 0:
+                    obs = 'Adeuda'
+                else:
+                    obs = 'Pagado'
+                    pagadas += 1
+                contract_obj = self.env['contract.contract'].search([('name', '=', invoice.invoice_origin),
+                                                                     ('state', '!=', 'cancel')])
+                if contract_obj.parent_contract:#si tiene padre debo traer los datos de la factura del padre
+                    contract_obj_parent = self.env['contract.contract'].search([('id', '=', contract_obj.parent_contract),
+                                                                         ])
+
                     for contract in contract_obj:
                         lineas = {
                             'canon': invoice.canon,
                             'invoice_date': invoice.invoice_date.strftime('%d-%m-%Y'),
                             'price': invoice.amount_total_signed,
-                            'observation': "Pagado",
+                            'adeuda': invoice.amount_residual,
+                            'observation': obs,
                             'document': invoice.invoice_origin,
                             'cuotas': contract.cant_cuotas or False,
-                            'faltan': contract.cant_cuotas - invoice.canon,
+                            'faltan': contract.cant_cuotas - pagadas,
                             'contract': contract,
                         }
                         array.append(lineas)
