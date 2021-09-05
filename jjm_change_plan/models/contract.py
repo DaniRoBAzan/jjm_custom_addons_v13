@@ -11,6 +11,7 @@ class ContractContract(models.Model):
     def action_create_contract(self):
         action = self.env.ref('contract.contract_contract_customer_form_view').read()[0]
         self.action_cancel()  # cancelamos el contrato actual.
+        self.jjm_motivo_baja = "Baja por cambio de plan."
         ctx = dict(
             default_partner_id=self.partner_id.id,
             default_parent_contract=self.id,

@@ -16,18 +16,18 @@
       </field>
     </record>
 
-    <record id="jjm_contract_contract_canon_form_view_inherit" model="ir.ui.view" >
-        <field name="name">contract.contract.inherit</field>
-        <field name="model">contract.contract</field>
-        <field name="inherit_id" ref="jjm_contract.jjm_contract_partner_form_view"/>
-        <field name="arch" type="xml">
-             <xpath expr="//field[@name='cant_cuotas']" position="after">
-                <field name="parent_contract"
-                       options="{'no_create': True, 'no_open': True}"
-                       readonly="True"
-                       attrs="{'invisible': [('parent_contract', 'in', [0,False])]}"/>
+<!--    <record id="jjm_contract_contract_canon_form_view_inherit" model="ir.ui.view" >-->
+<!--        <field name="name">contract.contract.inherit</field>-->
+<!--        <field name="model">contract.contract</field>-->
+<!--        <field name="inherit_id" ref="jjm_contract.jjm_contract_partner_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--             <xpath expr="//field[@name='cant_cuotas']" position="after">-->
+<!--                <field name="parent_contract"-->
+<!--                       options="{'no_create': True, 'no_open': True}"-->
+<!--                       readonly="True"-->
+<!--                       attrs="{'invisible': [('parent_contract', 'in', [0,False])]}"/>-->
 
-             </xpath>
-      </field>
-    </record>
+<!--             </xpath>-->
+<!--      </field>-->
+<!--    </record>-->
 </odoo>
