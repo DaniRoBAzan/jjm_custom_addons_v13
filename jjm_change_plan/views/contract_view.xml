@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="jjm_contract_contract_customer_form_view_inherit" model="ir.ui.view" >
+        <field name="name">contract.contract.inherit</field>
+        <field name="model">contract.contract</field>
+        <field name="inherit_id" ref="contract.contract_contract_customer_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[last()]" position="after">
+                <button
+                    name="action_create_contract"
+                    class="btn-primary"
+                    type="object"
+                    string="Cambio de Plan"
+                />
+            </xpath>
+      </field>
+    </record>
+
+    <record id="jjm_contract_contract_canon_form_view_inherit" model="ir.ui.view" >
+        <field name="name">contract.contract.inherit</field>
+        <field name="model">contract.contract</field>
+        <field name="inherit_id" ref="jjm_contract.jjm_contract_partner_form_view"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='cant_cuotas']" position="after">
+                <field name="parent_contract"
+                       options="{'no_create': True, 'no_open': True}"
+                       readonly="True"
+                       attrs="{'invisible': [('parent_contract', 'in', [0,False])]}"/>
+
+             </xpath>
+      </field>
+    </record>
+</odoo>
