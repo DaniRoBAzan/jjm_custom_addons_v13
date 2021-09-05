@@ -38,116 +38,135 @@
         <field name="image_128" type="base64" file="jjm_vehicles/static/img/brand_zanella-image.png"/>
     </record>
 
-
-
-
     <record id="model_Energy110_corvenmotos" model="jjm_vehicles.vehicle.model">
         <field name="name"> Energy </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_corvenmotos" />
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_triax150_corvenmotos" model="jjm_vehicles.vehicle.model">
         <field name="name"> Triax </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_corvenmotos" />
         <field name="displacement"> 150 cc </field>
     </record>
     <record id="model_triax250_corvenmotos" model="jjm_vehicles.vehicle.model">
         <field name="name"> Triax </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_corvenmotos" />
         <field name="displacement"> 250 cc </field>
     </record>
     <record id="model_smashbase110_gilera" model="jjm_vehicles.vehicle.model">
         <field name="name">Smash Base </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_gilera" />
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_tunin110_gilera" model="jjm_vehicles.vehicle.model">
         <field name="name">Tuning </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_gilera" />
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_smashbase125_gilera" model="jjm_vehicles.vehicle.model">
         <field name="name">Smash </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_gilera" />
         <field name="displacement"> 125 cc </field>
     </record>
     <record id="model_vc150_gilera" model="jjm_vehicles.vehicle.model">
         <field name="name">VC </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_gilera" />
         <field name="displacement"> 150 cc </field>
     </record>
     <record id="model_blitzbase110_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Blitz Base </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_blitzfull110_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Blitz Full </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 110 cc </field>
     </record>
     <record id="model_serie2150_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Serie 2 </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 150 cc </field>
     </record>
     <record id="model_skua125_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Skua </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 125 cc </field>
     </record>
     <record id="model_skua150_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Skua </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 150 cc </field>
     </record>
     <record id="model_skua200_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Skua </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 200 cc </field>
     </record>
     <record id="model_skuapro250_motomel" model="jjm_vehicles.vehicle.model">
         <field name="name">Skua Pro</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_motomel" />
         <field name="displacement"> 250 cc</field>
     </record>
     <record id="model_hunter150_hero" model="jjm_vehicles.vehicle.model">
         <field name="name">Hunter</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_hero" />
         <field name="displacement"> 150cc </field>
     </record>
     <record id="model_TD250_mondial" model="jjm_vehicles.vehicle.model">
         <field name="name">TD</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_mondial" />
         <field name="displacement"> 250cc </field>
     </record>
     <record id="model_tnt135_benelli" model="jjm_vehicles.vehicle.model">
         <field name="name">TnT</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_benelli" />
         <field name="displacement"> 135cc </field>
     </record>
     <record id="model_wave110_honda" model="jjm_vehicles.vehicle.model">
         <field name="name">Wave</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_honda" />
         <field name="displacement"> 110cc </field>
     </record>
     <record id="model_rouser125_bajaj" model="jjm_vehicles.vehicle.model">
         <field name="name">Rouser Bajaj </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_bajaj" />
         <field name="displacement"> 125cc </field>
     </record>
     <record id="model_rouser160_bajaj" model="jjm_vehicles.vehicle.model">
         <field name="name">Rouser Bajaj </field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_bajaj" />
         <field name="displacement"> 160cc </field>
     </record>
     <record id="model_zb110_zanella" model="jjm_vehicles.vehicle.model">
         <field name="name">ZB</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_zanella" />
         <field name="displacement"> 110cc </field>
     </record>
     <record id="model_rx150_zanella" model="jjm_vehicles.vehicle.model">
         <field name="name">RX</field>
+        <field name="type_model">motorbike</field>
         <field name="brand_id" ref="brand_zanella" />
         <field name="displacement"> 150cc </field>
     </record>
