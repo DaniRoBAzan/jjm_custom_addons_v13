@@ -17,6 +17,7 @@
         'jjm_report_payment',
         ],
     'data': [
+        'data/paperformat_data.xml',
         'report/troquel_view.xml',
     ],
     'application': False,

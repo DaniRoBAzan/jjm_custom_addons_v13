@@ -4,8 +4,9 @@
         <t t-set="docs" t-value="docs.with_context(lang=docs[0].partner_id.lang)" />
         <t t-foreach="docs" t-as="facturas">
             <t t-foreach="facturas" t-as="factura">
-                <section style="background-image:url(/jjm_report_troquel/static/img/troquel.jpeg); background-size: 100%;">
-                    <div style="padding: 65px 0px 0px 680px; font-size:12px; text-align:left;">
+                <section>
+                <!-- section style="background-image:url(/jjm_report_troquel/static/img/troquel.jpeg); background-size: 100%;" -->
+                    <div style="padding: 0px 0px 0px 680px; font-size:12px; text-align:left;">
                         <span t-field="factura.name"/>
                     </div>
                     <div style="padding: 30px 20px 0px 710px; font-size:12px; text-align:left;">
@@ -65,5 +66,11 @@
             file="jjm_report_troquel.report_print_troquel_t"
             name="jjm_report_troquel.report_print_troquel_t"
             print_report_name="(object.name)"
+
         />
+
+    <record id="action_report_print_troquel" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_jjm_troquel"/>
+    </record>
+
 </odoo>
