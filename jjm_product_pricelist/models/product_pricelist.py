@@ -7,6 +7,8 @@ from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_repr
 from odoo.tools.misc import get_lang
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class Pricelist(models.Model):
@@ -21,10 +23,12 @@ class PricelistItem(models.Model):
     @api.onchange('item_ids', 'price_percent')
     def compute_price_percent(self):
         price_list_id = self.pricelist_id.id or self.pricelist_id.id.origin
+        _logger.info('\n\n\nprice_list_id %s'%(price_list_id))
         product_item_obj = self.env['product.pricelist.item'].search([
             ('pricelist_id', '=', price_list_id or False )],
             order="id desc",
             limit=1)
+        _logger.info('\n\n\nproduct_item_obj %s'%(product_item_obj))
         for rec in self:
             rec.product_tmpl_id = product_item_obj.product_tmpl_id
             rec.min_quantity = product_item_obj.min_quantity
