@@ -11,14 +11,15 @@ class ResPartner(models.Model):
         store=True
     )
 
-    @api.depends('debt_balance', 'is_customer')
-    def _compute_paid_state(self):
+    def _compute_debt_balance(self):
         for rec in self:
+            debt_balance = rec.credit - rec.debit
             if rec.is_customer:
-                if rec.debt_balance <= 0:
+                if debt_balance <= 0:
                     rec.paid_state = 'Al día'
                 else:
                     rec.paid_state = 'Adeuda'
             else:
                 rec.paid_state = 'No es cliente'
+        return super(ResPartner, self)._compute_debt_balance()
 
