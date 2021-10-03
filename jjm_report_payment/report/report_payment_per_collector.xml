@@ -40,7 +40,7 @@
                 </div>
             </div>
             <t t-set="total_gral" t-value="0"/>
-            <div class="article mt0 o_report_layout_standard">
+            <div>
                 <t t-set="group_collector" t-value="[]"/>
                 <t t-foreach="docs" t-as="array">
                     <t t-set="group_collector" t-value="group_collector+[array['collector']]"/>
@@ -56,15 +56,6 @@
                         <br/>
                     </div>
                     <table class="table table-condensed table-bordered">
-<!--                        <thead>-->
-<!--                            <th class="text-center btn-primary" style="width: 40%">CLIENTE</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 20%">TELEFONO</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 15%">CONTRATO</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 10%">CANON</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 20%">FECHA</th>-->
-<!--                            <th class="text-center btn-primary" style="width: 10%">IMPORTE</th>-->
-<!--                        </thead>-->
-
                         <thead>
                             <th class="text-center" style="width: 40%">CLIENTE</th>
                             <th class="text-center" style="width: 20%">TELEFONO</th>
