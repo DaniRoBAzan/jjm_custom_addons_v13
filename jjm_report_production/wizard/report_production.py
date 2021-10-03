@@ -55,7 +55,7 @@ class ReportProductionReportView(models.AbstractModel):
         contract_obj = self.env['contract.contract'].search(args, order='partner_id desc') or False
         if contract_obj is False:
             raise ValidationError(
-                "Verifique los datos ingresados nuevamente, no hay contratos asociados a esta campana, para este asesor!")
+                "Verifique los datos ingresados nuevamente, no se encontraron contratos asociados!")
 
         for contract in contract_obj:
             # contador += 1
