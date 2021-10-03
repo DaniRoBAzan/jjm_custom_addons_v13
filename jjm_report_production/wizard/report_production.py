@@ -16,11 +16,8 @@ class ReportProductionReportView(models.AbstractModel):
         consultant = data['form']['consultant']
         campaign = data['form']['campaign']
         array = []
-        encabezado = []
         args1 = []
         args = []
-        contador = 0
-        importe = 0
 
         if supervisor:
             supervisor = self.env['res.partner'].browse(int(supervisor))
@@ -52,16 +49,14 @@ class ReportProductionReportView(models.AbstractModel):
             'current': current,
             'user': self.env.user.name,
         }
-        args.append(('state', '!=','cancel')) #traer contrato en estado confirmado
+        args.append(('state', '!=', 'cancel')) #traer contrato en estado confirmado
         contract_obj = self.env['contract.contract'].search(args, order='partner_id desc') or False
         if contract_obj is False:
             raise ValidationError(
                 "Verifique los datos ingresados nuevamente, no se encontraron contratos asociados!")
 
         for contract in contract_obj:
-            # contador += 1
             lineas = {
-                # 'numero': contador,
                 'cliente': contract.partner_id.name,
                 'contrato': contract.name,
                 'forma_pago': contract.method_payment_id.name,
