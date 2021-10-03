@@ -32,7 +32,8 @@ class ReportProductionReportView(models.AbstractModel):
 
         else:
             consultant = self.env['res.partner'].browse(int(consultant))
-            args.append(('consultant_id', '=', consultant.id))
+            if consultant:
+                args.append(('consultant_id', '=', consultant.id))
 
         if campaign:
             campaign_obj = self.env['contract.campaign'].browse(int(campaign))
