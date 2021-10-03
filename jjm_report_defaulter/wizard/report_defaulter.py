@@ -12,39 +12,36 @@ class ReportDefaulterReportView(models.AbstractModel):
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        supervisor = data['form']['supervisor']
-        partner = data['form']['partner']
+        supervisor_id = data['form']['supervisor']
+        partner_id = data['form']['partner']
         array = []
-        encabezado = []
         args1 = []
         args = []
-        contador = 0
-        importe = 0
 
-        if supervisor:
-            supervisor = self.env['res.partner'].browse(int(supervisor))
-            args1.append(('jjm_manager', '=', int(supervisor)))
-            if partner:
-                args1.append(('id', '=', int(partner)))
-                partner = self.env['res.partner'].search(args1) or False
-                args.append(('partner_id', '=', partner.id))
-
+        supervisor_obj = self.env['res.partner'].browse(int(supervisor_id))
+        args1.append(('jjm_manager', '=', int(supervisor_id)))
+        if partner_id:
+            args1.append(('id', '=', int(partner_id)))
+            partner_obj = self.env['res.partner'].search(args1) or False
+            if partner_obj:
+                args.append(('partner_id', '=', partner_obj.id))
+            else:
+                raise ValidationError(
+                    "El cliente no esta relacionado al supervisor!")
         else:
-            partner = self.env['res.partner'].browse(int(partner))
-            args.append(('partner_id', '=', partner.id))
+            partner_obj = self.env['res.partner'].search(args1) or False
+            args.append(('partner_id', '=', partner_obj.id))
 
 
         today = fields.Date.today().strftime('%d-%m-%Y')
         encabezado = {
             'today': today,
-            'supervisor': supervisor and supervisor.name,
-            'partner': partner and partner.name or '',
+            'supervisor': supervisor_obj and supervisor_obj.name or ' ',
+            'partner': partner_obj and partner_obj.name or '',
             'user': self.env.user.name,
         }
 
         invoice_obj = self.env['account.move'].search(args) or False
-        bandera = True
-
         for invoice in invoice_obj:
             if invoice.invoice_date_due:
                 if invoice.invoice_date_due.day > 15 and invoice.amount_residual_signed > 0:
@@ -64,11 +61,9 @@ class ReportDefaulterReportView(models.AbstractModel):
                         'collector': invoice.collector_id,
                     }
                     array.append(lineas)
-                    bandera = False
-        if bandera:
+        if len(array) < 1 or not invoice_obj:
             raise ValidationError(
-                "No hay morosos pendientes para el supervisor seleccionado!")
-
+                "No se encontraron morosos pendientes!")
 
         return {
             'doc_ids': data['ids'],

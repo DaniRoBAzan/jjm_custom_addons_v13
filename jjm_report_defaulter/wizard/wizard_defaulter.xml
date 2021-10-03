@@ -9,8 +9,8 @@
                 <form string="Reporte de Morosos">
                     <group>
                         <group>
-                            <field name="supervisor" domain="[('is_supervisor', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
-                            <field name="partner" domain="[('is_customer', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="supervisor" required="True" domain="[('is_supervisor', '=', True)]" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="partner" domain="[('is_customer', '=', True),('jjm_manager','=', supervisor)]" options="{'no_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <footer>
