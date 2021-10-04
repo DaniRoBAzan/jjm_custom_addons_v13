@@ -10,6 +10,7 @@
                     name="action_create_contract"
                     class="btn-primary"
                     type="object"
+                    attrs="{'invisible': [('state', '!=', 'confirm')]}"
                     string="Cambio de Plan"
                 />
             </xpath>
