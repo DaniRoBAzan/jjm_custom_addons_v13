@@ -14,67 +14,81 @@ class ReportCustomerDebtReport(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         # LOS DATOS QUE RECIBO DEL WIZARD
-        client = data['form']['client']
-        contract = data['form']['contract']
+        client_id = data['form']['client']
+        contract_id = data['form']['contract']
+        has_parent_contract = data['form']['has_parent_contract']
 
+        #DECLARO VARIABLES
         args = []
+        args_inv = []
+        parent_args = []
         array = []
         encabezado = []
         faltan = 0
         pagadas = 0
 
-        # ARMO EL REPORTE
-        if client:
-            client = self.env['res.partner'].browse(int(client))
-            args.append(('partner_id', '=', client.id))
+        # FILTRO CLIENTE
+        client_obj = self.env['res.partner'].browse(int(client_id)) or False
+
+        # FILTRO TRAER TODOS LOS CONTRATOS
+        if has_parent_contract:
+            args.append(('state', '!=', 'draft'))
+            args.append(('partner_id', '=', client_obj.id))
         else:
-            raise ValidationError(
-                "Debe seleccionar un Cliente para el emitir el reporte!")
+            args.append(('state', '=', 'confirm'))
+            args.append(('partner_id', '=', client_obj.id))
 
-        if contract:
-            contract = self.env['contract.contract'].browse(int(contract))
-            args.append(('invoice_origin', '=', contract.name))
+        #FILTRO CONTRATO
+        if contract_id:
+            args.append(('id', '=', contract_id))
+            # FILTRO TRAER TODOS LOS CONTRATOS
+            if has_parent_contract:
+                args.append(('parent_contract', '=', contract_id))
+            contract_obj = self.env['contract.contract'].search(args) or False
+            args_inv.append(('invoice_origin', '=', contract_obj.name))
+        else:
 
+            contract_obj = self.env['contract.contract'].search(args) or False
 
+        # ARMO EL ENCABEZADO
         today = fields.Date.today().strftime('%d-%m-%Y')
         encabezado = {
             'today': today,
-            'client': client and client.name or '',
-            'contract': contract and contract.name or '',
+            'client': client_obj and client_obj.name or False,
+            'contract': contract_obj and contract_obj[0].name or False,
             'user': self.env.user.name,
         }
 
-        invoice_obj = self.env['account.move'].search(args, order='canon') or False
-        if invoice_obj is False:
-            raise ValidationError(
-                "No existe contratos existentes para el cliente seleccionado!")
+        # BUSCO LAS FACTURAS
+        for contract in contract_obj:
+            invoice_obj = self.env['account.move'].search([('invoice_origin', '=', contract.name)],
+                                                          order='canon') or False
 
-        for invoice in invoice_obj:
-            if invoice.canon != 0:
+            for invoice in invoice_obj:
                 if invoice.amount_residual > 0:
                     obs = 'Adeuda'
                 else:
                     obs = 'Pagado'
                     pagadas += 1
-                contract_obj = self.env['contract.contract'].search([('name', '=', invoice.invoice_origin),
-                                                                     ('state', '!=', 'cancel')])
-                if contract_obj.parent_contract:#si tiene padre debo traer los datos de la factura del padre
-                    contract_obj_parent = self.env['contract.contract'].search([('id', '=', contract_obj.parent_contract),
-                                                                         ])
 
-                    for contract in contract_obj:
-                        lineas = {
-                            'canon': invoice.canon,
-                            'invoice_date': invoice.invoice_date.strftime('%d-%m-%Y'),
-                            'price': invoice.amount_total_signed,
-                            'adeuda': invoice.amount_residual,
-                            'observation': obs,
-                            'document': invoice.invoice_origin,
-                            'cuotas': contract.cant_cuotas or False,
-                            'faltan': contract.cant_cuotas - pagadas,
-                            'contract': contract,
-                        }
-                        array.append(lineas)
+                # if contract.state == 'confirm':
+                #     estado = 'Activo'
+                # else:
+                #     estado = 'Dado de baja'
+
+                lineas = {
+                    'canon': invoice.canon,
+                    'invoice_date': invoice.invoice_date.strftime('%d-%m-%Y'),
+                    'price': invoice.amount_total_signed,
+                    'adeuda': invoice.amount_residual,
+                    'observation': obs,
+                    'document': invoice.invoice_origin,
+                    'cuotas': contract.cant_cuotas or False,
+                    'faltan': contract.cant_cuotas - pagadas,
+                    'contract': contract or False,
+                    # 'state': estado,
+                }
+                array.append(lineas)
 
         return {
             'doc_ids': data['ids'],

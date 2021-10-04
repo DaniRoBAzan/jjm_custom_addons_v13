@@ -41,7 +41,7 @@
                     <t t-set="total_gral" t-value="0"/>
                     <t t-set="faltan" t-value="0"/>
                     <t t-set="cuotas" t-value="0"/>
-                    <div class="article mt0 o_report_layout_standard">
+                    <div>
                         <t t-set="group_contract" t-value="[]"/>
                         <t t-foreach="docs" t-as="array">
                             <t t-set="group_contract" t-value="group_contract+[array['contract']]"/>
@@ -51,18 +51,20 @@
                             <t t-set="total" t-value="0"/>
                             <div class="text-left">
                                 <br/>
-                                <span style="font-size: 16px;"><strong>Contrato</strong>:
+                                <span style="font-size: 16px;">
+                                    <strong>Contrato</strong>:
                                     <t t-esc="contract.name"/>
+                                    <strong>Estado</strong>:
+                                    <t t-if="contract.state == 'confirm'">
+                                        Activo
+                                    </t>
+                                    <t t-else="">
+                                        Dado de Baja
+                                    </t>
                                 </span>
                                 <br/>
                             </div>
                             <table class="table table-condensed table-bordered">
-        <!--                        <thead>-->
-        <!--                            <th class="text-center btn-primary" style="width: 10%">CANON</th>-->
-        <!--                            <th class="text-center btn-primary" style="width: 20%">FECHA</th>-->
-        <!--                            <th class="text-center btn-primary" style="width: 20%">IMPORTE</th>-->
-        <!--                            <th class="text-center btn-primary" style="width: 30%">OBSERVACION</th>-->
-        <!--                        </thead>-->
                                 <thead>
                                     <th class="text-center" style="width: 10%">CANON</th>
                                     <th class="text-center" style="width: 20%">FECHA</th>
@@ -84,7 +86,7 @@
                                                     <t t-esc="array['price']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
                                                 </td>
                                                 <td class="text-center">
-                                                    <t t-esc="array['adeuda']"/>
+                                                    <t t-esc="array['adeuda']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
                                                     <t t-set="faltan" t-value="array['faltan']"/>
 
                                                     <t t-set="subtotal" t-value="array['adeuda']"></t>
@@ -102,9 +104,9 @@
                                     </t>
                                     <tr>
                                         <td class="text-center" style="width: 10%"></td>
-                                        <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
-                                        <td class="text-center" style="width: 20%"><span t-esc="emitidas or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                         <td class="text-center" style="width: 20%"></td>
+                                        <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
+                                        <td class="text-center" style="width: 20%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                         <td class="text-center" style="width: 30%"></td>
                                     </tr>
 

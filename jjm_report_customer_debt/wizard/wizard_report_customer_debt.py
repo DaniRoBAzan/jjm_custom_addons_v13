@@ -8,6 +8,7 @@ class DustomerDebtReportWizard(models.TransientModel):
 
     client = fields.Many2one('res.partner', "Cliente", domain=[("is_customer", "=", True)])
     contract = fields.Many2one('contract.contract', string='Contrato')
+    has_parent_contract = fields.Boolean(string='Tener en cuenta contratos dados de baja.', default=False)
 
     def generate_pdf_report(self):
         data = {
@@ -16,6 +17,7 @@ class DustomerDebtReportWizard(models.TransientModel):
             'form': {
                 'client': self.client.id,
                 'contract': self.contract.id,
+                'has_parent_contract': self.has_parent_contract,
             },
         }
 
