@@ -1,63 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_print_jjm">
-        <t t-set="docs" t-value="docs.with_context(lang=docs[0].partner_id.lang)" />
-        <t t-foreach="docs" t-as="facturas">
-            <t t-foreach="facturas" t-as="factura">
-                <section>
-                <!-- section style="background-image:url(/jjm_report_troquel/static/img/troquel.jpeg); background-size: 100%;" -->
-                    <div style="padding: 0px 0px 0px 680px; font-size:12px; text-align:left;">
-                        <span t-field="factura.name"/>
+
+    <template  id="report_print_troquel_t">
+        <t t-call="web.html_container">
+        <t t-call="web.internal_layout">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.user_id.sudo().lang"/>
+
+                <div class="page">
+                    <div class="row">
+                        <div class="col-md-12 mt16 mb0" style="font-size: 11px;"><p/>
+                        <table class="table" style="text-align: left; border: 1px solid #fff;" border="0" >
+                            <tbody>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.partner_id"/><br/>
+                                        <span t-field="o.partner_id.street"/><br/>
+                                        <span t-field="o.partner_id.city"/>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <br/>
+                                        <span t-field="o.partner_id.state_id.name"/>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <span>Barrio</span><br/>
+                                        <span>CP</span>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <span t-field="o.partner_id.street2"/><br/>
+                                        <span t-field="o.partner_id.zip"/>
+
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.invoice_date"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.invoice_line_ids.product_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.invoice_date"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.invoice_origin"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.campaign_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.canon"/>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/><br/><br/><br/><br/><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_total"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.partner_id"/><br/>
+                                        <span t-field="o.partner_id.street"/><br/>
+                                        <span t-field="o.partner_id.city"/>
+                                    </td>
+                                    <td>
+                                        <span>Cel: </span><br/>
+                                        <br/>
+                                        <span t-field="o.partner_id.state_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.partner_id.mobile"/>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <span>Barrio</span><br/>
+                                        <span>CP</span>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.consultant_id.code_consultant"/><br/>
+                                        <span t-field="o.partner_id.street2"/><br/>
+                                        <span t-field="o.partner_id.zip"/>
+
+                                    </td>
+                                    <td class="text-right" >
+                                        <br/>
+                                        <span t-field="o.invoice_date"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.invoice_line_ids.product_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.invoice_date"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.invoice_origin"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.campaign_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.canon"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <br/>
+                                        <br/>
+                                        <span t-field="o.amount_total"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/><br/><br/><br/><br/><br/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div style="padding: 30px 20px 0px 710px; font-size:12px; text-align:left;">
-                        <span t-field="factura.invoice_date"/>
                     </div>
-                    <div style="padding: 10px 0px 0px 0px; font-size:12px; text-align:left; margin-left:100px;">
-                        <span t-field="factura.partner_id"/>
-                    </div>
-                    <div style="padding: 45px 0px 0px 0px;">
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_line_ids.product_id"/>
-                        <span style="font-size:12px; padding-left:150px; text-align:left" t-field="factura.invoice_date"/>
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_origin"/>
-                        <span style="font-size:12px; padding-left:30px; text-align:left">000001</span>
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.canon"/>
-                    </div>
-                    <div class="o_kanban_image" style="margin-left:710px;margin-top:-45px;">
-                        <img src="/jjm_report_troquel/static/img/firma.jpeg" alt="Congratulations!" style="width:90px;margin:30px 0px;"/>
-                    </div>
-                    <div style="margin-left:720px; margin-top:45px; text-align:left" >
-                        <span style="font-size:12px;" t-field="factura.amount_total"/>
-                    </div>
-                    <div style="padding: 50px 0px 0px 50px; text-align:left">
-                        <div style="padding: 0px 40px 0px 0px;">
-                            <span style="text-align:left; font-size:12px;" t-field="factura.partner_id"/>
-                            <span style="margin-left:590px; font-size:12px;" t-field="factura.invoice_date"/>
-                        </div>
-                    </div>
-                    <div style="padding: 40px 0px 0px 0px;">
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_line_ids.product_id"/>
-                        <span style="font-size:12px; padding-left:150px; text-align:left" t-field="factura.invoice_date"/>
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.invoice_origin"/>
-                        <span style="font-size:12px; padding-left:30px; text-align:left">000001</span>
-                        <span style="font-size:12px; padding-left:50px; text-align:left" t-field="factura.canon"/>
-                    </div>
-                    <div style="text-align:left; margin-top:10px; ">
-                        <span style="font-size:12px; margin-left:20px;" t-field="factura.name"/>
-                        <span style="font-size:12px; margin-left:710px; margin-top:30px;" t-field="factura.amount_total"/>
-                        <span style="font-size:12px; margin-left:700px; margin-top:-50px;"/>.
-                    </div>
-                </section>
+                </div>
+                </t>
             </t>
         </t>
     </template>
 
-    <template  id="report_print_troquel_t">
-        <xpath expr="//t[@t-name='web.external_layout_clean']" position="replace">
-            <t t-call="web.basic_layout">
-                <t t-call="jjm_report_troquel.report_print_jjm" t-lang="docs[0].partner_id.lang"/>
-            </t>
-        </xpath>
-    </template>
     <report
             id="action_report_print_troquel"
             string="Print Troquel"
