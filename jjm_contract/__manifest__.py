@@ -29,6 +29,7 @@
         'views/campaign_view.xml',
         'views/contract_view.xml',
         'views/partner_view.xml',
+        'wizards/recurring_create_invoice_wizard_view.xml',
     ],
     'application': False,
 }

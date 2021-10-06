@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="recurring_create_invoice_wizard" model="ir.ui.view" >
+            <field name="name">recurring.create.invoice.wizard</field>
+            <field name="model">recurring.create.invoice.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Crear Facturas">
+                    <group>
+                    </group>
+                    <footer>
+                        <button name="recurring_create_invoice" string="Crear Facturas" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_recurring_create_invoice_wizard" model="ir.actions.act_window">
+            <field name="name">Crear Facturas</field>
+            <field name="res_model">recurring.create.invoice.wizard</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="recurring_create_invoice_wizard"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="contract.model_contract_contract" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+    </data>
+</odoo>
