@@ -28,7 +28,8 @@ class ReportCustomerDebtReport(models.AbstractModel):
         pagadas = 0
 
         # FILTRO CLIENTE
-        client_obj = self.env['res.partner'].browse(int(client_id)) or False
+        if client_id:
+            client_obj = self.env['res.partner'].browse(int(client_id)) or False
 
         # FILTRO TRAER TODOS LOS CONTRATOS
         if has_parent_contract:
@@ -58,6 +59,9 @@ class ReportCustomerDebtReport(models.AbstractModel):
             'contract': contract_obj and contract_obj[0].name or False,
             'user': self.env.user.name,
         }
+        if not contract_obj:
+            raise ValidationError(
+                "No se encontraron contratos del Cliente seleccionado!")
 
         # BUSCO LAS FACTURAS
         for contract in contract_obj:
