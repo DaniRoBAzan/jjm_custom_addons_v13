@@ -15,17 +15,6 @@
                                 <tr>
                                     <td>
                                     </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="o.name"/>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -65,7 +54,9 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span t-field="o.invoice_line_ids.product_id"/>
+                                        <t t-foreach="o.invoice_line_ids.product_id.product_tmpl_id.filtered('is_kit')" t-as="line">
+                                            <span t-field="line.name"/>
+                                        </t>
                                     </td>
                                     <td class="text-right">
                                         <span t-field="o.invoice_date"/>
@@ -138,7 +129,9 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span t-field="o.invoice_line_ids.product_id"/>
+                                        <t t-foreach="o.invoice_line_ids.product_id.product_tmpl_id.filtered('is_kit')" t-as="line">
+                                            <span t-field="line.name"/>
+                                        </t>
                                     </td>
                                     <td class="text-right">
                                         <span t-field="o.invoice_date"/>
