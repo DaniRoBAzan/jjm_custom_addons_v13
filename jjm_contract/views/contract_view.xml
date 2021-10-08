@@ -34,9 +34,9 @@
                     <field name="jjm_description_moto" placeholder="Escribir aqui datos del modelo-marca-cilindrada.."/>
                 </group>
             </xpath>
-             <xpath expr="//button[@name='recurring_create_invoice']" position="attributes">
-                <attribute name="groups">sale_team.group_sale_manager</attribute>
-            </xpath>
+<!--             <xpath expr="//button[@name='recurring_create_invoice']" position="attributes">-->
+<!--                <attribute name="groups">sale_team.group_sale_manager</attribute>-->
+<!--            </xpath>-->
 
       </field>
     </record>
@@ -117,9 +117,6 @@
                     string="Descripción de la moto del propietario.">
                     <field name="jjm_description_moto" placeholder="Escribir aqui datos del modelo-marca-cilindrada.."/>
                 </group>
-            </xpath>
-            <xpath expr="//button[@name='recurring_create_invoice']" position="attributes">
-                <attribute name="groups">sale_team.group_sale_manager</attribute>
             </xpath>
 
         </field>
