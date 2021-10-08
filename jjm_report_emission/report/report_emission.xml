@@ -58,11 +58,10 @@
                         </div>
                         <table class="table table-condensed table-bordered">
                             <thead>
-                                <th class="text-center" style="width: 10%">NRO</th>
+                                <th class="text-center" style="width: 10%">#</th>
                                 <th class="text-center" style="width: 50%">CLIENTE</th>
-                                <th class="text-center" style="width: 20%">TELEFONO</th>
-                                <th class="text-center" style="width: 50%">DIRECCION</th>
-                                <th class="text-center" style="width: 20%">HORARIO</th>
+                                <th class="text-center" style="width: 60%">DIRECCION</th>
+                                <th class="text-center" style="width: 10%">HORARIO</th>
                                 <th class="text-center" style="width: 20%">FECHA</th>
                                 <th class="text-center" style="width: 30%">IMPORTE</th>
                             </thead>
@@ -78,9 +77,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['cliente']"/>
-                                            </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['telefono']"/>
+                                                (<t t-esc="array['telefono']"/>)
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['calle']"/> -
@@ -94,9 +91,13 @@
                                             <td class="text-center">
                                                 <t t-esc="array['fecha']"/>
                                                 <br/>
-                                                Contrato: <t t-esc="array['contrato']"/>.
-                                                <br/>
-                                                Canon: <t t-esc="array['canon']"/>.
+                                                <t t-if="array['contrato']">
+                                                    Contrato: <t t-esc="array['contrato']"/>
+                                                    <br/>
+                                                    <t t-if="array['canon']">
+                                                        Canon: <t t-esc="array['canon']"/>.
+                                                    </t>
+                                                </t>
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
@@ -108,11 +109,10 @@
                                     </t>
                                 </t>
                                 <tr>
-                                    <th class="text-center" style="width: 10%"></th>
-                                    <th class="text-center" style="width: 50%"></th>
-                                    <th class="text-center" style="width: 20%"></th>
-                                    <th class="text-center" style="width: 50%"></th>
-                                    <th class="text-center" style="width: 20%"></th>
+                                    <td class="text-center" style="width: 10%"></td>
+                                    <td class="text-center" style="width: 50%"></td>
+                                    <td class="text-center" style="width: 60%"></td>
+                                    <td class="text-center" style="width: 10%"></td>
                                     <td class="text-center" style="width: 20%"><strong>TOTAL</strong></td>
                                     <td class="text-center" style="width: 30%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                                 </tr>
@@ -122,12 +122,11 @@
                     <table class="table table-condensed table-bordered">
                     <tbody>
                         <tr>
-                            <th class="text-center" style="width: 10%"></th>
-                            <th class="text-center" style="width: 50%"></th>
-                            <th class="text-center" style="width: 20%"></th>
-                            <th class="text-center" style="width: 50%"></th>
-                            <th class="text-center" style="width: 20%"></th>
-                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 10%"></td>
+                            <td class="text-center" style="width: 50%"></td>
+                            <td class="text-center" style="width: 60%"></td>
+                            <td class="text-center" style="width: 10%"><strong>TOTAL </strong></td>
+                            <td class="text-center" style="width: 20%"><strong>GENERAL</strong></td>
                             <td class="text-center" style="width: 30%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
