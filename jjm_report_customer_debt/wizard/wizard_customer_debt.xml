@@ -12,9 +12,6 @@
                             <field name="client" options="{'no_create': True, 'no_open': True}" required="1"/>
                             <field name="contract" domain="[('partner_id', '=', client)]" options="{'no_create': True, 'no_open': True}"/>
                         </group>
-                        <group>
-                            <field name="has_parent_contract" attrs="{'invisible': [('contract','!=',False)]}"/>
-                        </group>
                     </group>
                     <footer>
                         <button name="generate_pdf_report" string="Aceptar" type="object" class="oe_highlight"/>

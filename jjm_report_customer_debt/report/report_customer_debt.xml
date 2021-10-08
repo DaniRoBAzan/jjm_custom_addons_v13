@@ -37,7 +37,6 @@
                         </div>
 
                     </div>
-
                     <t t-set="total_gral" t-value="0"/>
                     <t t-set="faltan" t-value="0"/>
                     <t t-set="cuotas" t-value="0"/>
