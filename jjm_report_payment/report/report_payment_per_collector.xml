@@ -67,30 +67,32 @@
 
                         <tbody>
                             <t t-foreach="docs" t-as="array">
-                                <t t-if="collector.id==array['collector'].id">
-                                    <tr>
-                                        <td class="text-center">
-                                            <t t-esc="array['cliente']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['telefono']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['contrato']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['canon']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['fecha']"/>
-                                        </td>
-                                        <td class="text-center">
-                                            <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
-                                            <t t-set="subtotal" t-value="array['importe']"></t>
-                                            <t t-set="total" t-value="total + subtotal "></t>
-                                            <t t-set="total_gral" t-value="total_gral + subtotal "></t>
-                                        </td>
-                                    </tr>
+                                <t t-if="array['canon'] != ' '">
+                                    <t t-if="collector.id==array['collector'].id">
+                                        <tr>
+                                            <td class="text-center">
+                                                <t t-esc="array['cliente']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['telefono']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['contrato']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['canon']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['fecha']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
+                                                <t t-set="subtotal" t-value="array['importe']"></t>
+                                                <t t-set="total" t-value="total + subtotal "></t>
+                                                <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </t>
                             </t>
                             <tr>

@@ -30,6 +30,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
             if collector:
                 collector = self.env['res.partner'].browse(int(collector))
                 args.append(('collector_id', '=', collector.id))
+
             payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
             today = fields.Date.today()
             encabezado = {
@@ -41,17 +42,17 @@ class ReportPaymentCollectorReport(models.AbstractModel):
             }
             if payment_obj is False:
                 raise ValidationError(
-                    "No hay pagos asignados a este Cobrador en el rango de fechas seleccionado!")
+                    "No hay pagos asignados en el rango de fechas seleccionado!")
 
             for payment in payment_obj:
                 lineas = {
-                    'cliente': payment.partner_id.name,
-                    'telefono': payment.partner_id.phone or payment.partner_id.mobile,
-                    'contrato': payment.matched_move_line_ids.move_id.invoice_origin,
-                    'canon': payment.matched_move_line_ids.move_id.canon,
-                    'fecha': payment.payment_date.strftime('%d-%m-%Y'),
-                    'importe': payment.payments_amount,
-                    'collector': payment.collector_id,
+                    'cliente': payment.partner_id and payment.partner_id.name or ' ',
+                    'telefono': payment.partner_id.phone or payment.partner_id.mobile or ' ',
+                    'contrato': payment.matched_move_line_ids[0] and payment.matched_move_line_ids[0].move_id.invoice_origin or ' ',
+                    'canon': payment.matched_move_line_ids[0] and payment.matched_move_line_ids[0].move_id.canon or ' ',
+                    'fecha': payment.payment_date and payment.payment_date.strftime('%d-%m-%Y') or ' ',
+                    'importe': payment.payments_amount or ' ',
+                    'collector': payment.collector_id or False,
                 }
                 array.append(lineas)
 
