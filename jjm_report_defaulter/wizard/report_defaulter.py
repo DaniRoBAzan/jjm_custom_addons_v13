@@ -12,39 +12,33 @@ class ReportDefaulterReportView(models.AbstractModel):
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        supervisor_id = data['form']['supervisor']
         partner_id = data['form']['partner']
         array = []
         args1 = []
         args = []
 
-        supervisor_obj = self.env['res.partner'].browse(int(supervisor_id))
-        args1.append(('jjm_manager', '=', int(supervisor_id)))
         if partner_id:
-            args1.append(('id', '=', int(partner_id)))
-            partner_obj = self.env['res.partner'].search(args1) or False
-            if partner_obj:
-                args.append(('partner_id', '=', partner_obj.id))
-            else:
-                raise ValidationError(
-                    "El cliente no esta relacionado al supervisor!")
+            partner_id = self.env['res.partner'].browse(partner_id) or False
+            args.append(('partner_id', '=', int(partner_id.id)))
         else:
-            partner_obj = self.env['res.partner'].search(args1) or False
-            args.append(('partner_id', '=', partner_obj.id))
+            partner_obj = self.env['res.partner'].search([]) or False
+
+        args.append(('state', '=', 'posted'))
+
+        invoice_obj = self.env['account.move'].search(args) or False
+
 
 
         today = fields.Date.today().strftime('%d-%m-%Y')
         encabezado = {
             'today': today,
-            'supervisor': supervisor_obj and supervisor_obj.name or ' ',
-            'partner': partner_obj and partner_obj.name or '',
+            'partner': partner_id and partner_id.name or ' ',
             'user': self.env.user.name,
         }
 
-        invoice_obj = self.env['account.move'].search(args) or False
         for invoice in invoice_obj:
             if invoice.invoice_date_due:
-                if invoice.invoice_date_due.day > 15 and invoice.amount_residual_signed > 0:
+                if invoice.invoice_date_due < fields.Date.today() and invoice.amount_residual_signed > 0:
                     lineas = {
                         'cliente': invoice.partner_id.name,
                         'telefono': invoice.partner_id.phone or invoice.partner_id.mobile,
