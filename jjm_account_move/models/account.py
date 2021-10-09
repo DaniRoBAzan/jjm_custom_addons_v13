@@ -45,3 +45,19 @@ class AccountMove(models.Model):
                 'default_company_id': self.company_id.id,
             },
         }
+
+    class ValidateAccountMove(models.TransientModel):
+        _inherit = "validate.account.move"
+
+        def validate_move(self):
+            if self._context.get('active_model') == 'account.move':
+                invoice_obj = self.env['account.move'].browse(self.env.context.get('active_ids'))
+                for rec in invoice_obj:  # si la factura a publicar tiene referencia a contrato
+                    if rec.invoice_origin:  # busco el contrato relacionado
+                        contract_obj = self.env['contract.contract'].search([('name', '=', rec.invoice_origin)])
+                        if contract_obj.jjm_last_canon_contract:  # si el contrato tiene ultimo canon sesteo el canon
+                            contract_obj.jjm_last_canon_contract += 1
+                        else:  # si no tiene ultimo canon
+                            contract_obj.jjm_last_canon_contract = 1
+                        rec.canon = contract_obj.jjm_last_canon_contract  # seteo campo canon de factura actual
+            return super().validate_move()
