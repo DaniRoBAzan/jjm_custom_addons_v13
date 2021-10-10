@@ -17,23 +17,6 @@
                         <br/>
                     <div class="text-right">
                         <group>
-                            <div class="text-left">
-                                <t t-if="encabezado['supervisor']">
-                                    <span style="font-size: 14px;"><strong>Supervisor</strong>:
-                                        <t t-esc="encabezado['supervisor']"/>
-                                    </span>
-                                </t>
-                                <br/>
-                                <span style="font-size: 14px;"><strong>Campaña</strong>:
-                                    <t t-esc="encabezado['campaign']"/>
-                                </span>
-                                <br/>
-                                <span style="font-size: 14px;"><strong>Vigencia</strong>:
-                                    <t t-esc="encabezado['current']"/>
-                                </span>
-                            </div>
-                        </group>
-                        <group>
                             <span style="font-size: 14px;"><strong>Fecha de impresión</strong>:
                                 <t t-esc="encabezado['today']"/>
                             </span>
@@ -57,15 +40,20 @@
                         <t t-set="contador" t-value="1"/>
                         <div class="text-left">
                             <br/>
-                            <span style="font-size: 16px;"><strong>Asesor / Vendedor</strong>:
-                                <t t-esc="consultant.name"/>
-                            </span>
+                            <t t-if="consultant.jjm_manager.name">
+                                 <span style="font-size: 16px;"><strong>Supervisor</strong>:
+                                <t t-esc="consultant.jjm_manager.name"/>
+                                </span>
+                            </t>
+                            <br/>
+                            <t t-if="consultant.name">
+                                <span style="font-size: 16px;"><strong>Asesor / Vendedor</strong>:
+                                    <t t-esc="consultant.name"/>
+                                </span>
+                            </t>
                             <br/>
                         </div>
                         <table class="table table-condensed table-bordered">
-<!--                            <thead>-->
-<!--                                <th class="text-center btn-primary" style="width: 10%">NRO</th>-->
-<!--                            </thead>-->
                             <thead>
                                 <th class="text-center" style="width: 10%">NRO</th>
                                 <th class="text-center" style="width: 50%">CLIENTE</th>
@@ -78,31 +66,57 @@
                                 <t t-set="subtotal" t-value="0"/>
                                 <t t-set="total" t-value="0"/>
                                 <t t-foreach="docs" t-as="array">
-                                    <t t-if="consultant.id==array['consultant'].id">
+                                    <t t-if="consultant and array['consultant']">
+                                        <t t-if="consultant.id==array['consultant'].id">
                                         <tr>
                                             <td class="text-center">
                                                 <t t-esc="contador"/>
                                                 <t t-set="contador" t-value="contador + 1 "></t>
                                             </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['cliente']"/>
-                                            </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['contrato']"/>
-                                            </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['forma_pago']"/>
-                                            </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['fecha_inicio']"/>
-                                            </td>
-                                            <td class="text-center">
-                                                <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
-                                                <t t-set="subtotal" t-value="array['importe']"></t>
-                                                <t t-set="total" t-value="total + subtotal "></t>
-                                                <t t-set="total_gral" t-value="total_gral + subtotal "></t>
-                                            </td>
+                                            <t t-if="array['cliente']">
+                                                <td class="text-center">
+                                                    <t t-esc="array['cliente']"/>
+                                                </td>
+                                            </t>
+
+                                            <t t-if="array['contrato']">
+                                                <td class="text-center">
+                                                    <t t-esc="array['contrato']"/>
+
+                                                <t t-if="array['campaign']">
+                                                    <br/>
+                                                    <span style="font-size: 16px;"><strong>Campaña</strong>:
+                                                        <t t-esc="array['campaign']"/>
+                                                    </span>
+                                                    </t>
+                                                <t t-if="array['current']">
+                                                    <br/>
+                                                    <span style="font-size: 16px;">(
+                                                        <t t-esc="array['current']"/>)
+                                                    </span>
+                                                </t>
+                                                </td>
+                                            </t>
+                                            <t t-if="array['forma_pago']">
+                                                <td class="text-center">
+                                                    <t t-esc="array['forma_pago']"/>
+                                                </td>
+                                            </t>
+                                            <t t-if="array['fecha_inicio']">
+                                                <td class="text-center">
+                                                    <t t-esc="array['fecha_inicio']"/>
+                                                </td>
+                                            </t>
+                                            <t t-if="array['importe']">
+                                                <td class="text-center">
+                                                    <t t-esc="array['importe']" t-options='{"widget": "monetary", "display_currency": currency_id}'/>
+                                                    <t t-set="subtotal" t-value="array['importe']"></t>
+                                                    <t t-set="total" t-value="total + subtotal "></t>
+                                                    <t t-set="total_gral" t-value="total_gral + subtotal "></t>
+                                                </td>
+                                            </t>
                                         </tr>
+                                    </t>
                                     </t>
                                 </t>
                                 <tr>
