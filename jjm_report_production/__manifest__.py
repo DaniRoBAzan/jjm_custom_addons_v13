@@ -22,10 +22,8 @@
     'demo': [],
     'data': [
         #'security/ir.model.access.csv',
-        'report/report.xml',
-        'wizard/wizard.xml',
-        # 'report/report_production.xml',
-        # 'wizard/wizard_production.xml',
+        'report/report_production.xml',
+        'wizard/wizard_production.xml',
     ],
     'installable': True,
     'application': True,
