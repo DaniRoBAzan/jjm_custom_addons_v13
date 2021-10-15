@@ -40,7 +40,7 @@
                         <t t-set="contador" t-value="1"/>
                         <div class="text-left">
                             <br/>
-                            <t t-if="consultant.jjm_manager.name">
+                            <t t-if="consultant">
                                  <span style="font-size: 16px;"><strong>Supervisor</strong>:
                                 <t t-esc="consultant.jjm_manager.name"/>
                                 </span>
