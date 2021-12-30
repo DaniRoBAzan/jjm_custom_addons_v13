@@ -66,12 +66,12 @@ class ReportCustomerDebtReport(models.AbstractModel):
                     lineas = {
                         'canon': invoice.canon or ' ',
                         'invoice_date': invoice.invoice_date.strftime('%d-%m-%Y') or ' ',
-                        'price': invoice.amount_total_signed or ' ',
-                        'adeuda': invoice.amount_residual or ' ',
+                        'price': invoice.amount_total_signed or 0,
+                        'adeuda': invoice.amount_residual or 0,
                         'observation': obs or ' ',
                         'document': invoice.invoice_origin or ' ',
-                        'cuotas': contract.cant_cuotas or False or ' ',
-                        'faltan': contract.cant_cuotas - pagadas or ' ',
+                        'cuotas': contract.cant_cuotas or False or 0,
+                        'faltan': contract.cant_cuotas - pagadas or 0,
                         'contract': contract or False,
                     }
                     if lineas:
