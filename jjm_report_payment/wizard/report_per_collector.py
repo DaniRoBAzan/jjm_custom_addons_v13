@@ -19,7 +19,8 @@ class ReportPaymentCollectorReport(models.AbstractModel):
         collector = data['form']['collector']
         array = []
         encabezado = []
-
+        contrato = ''
+        canon = ''
     # ARMO EL REPORTE
         if date_start and date_end:
             args = [('payment_date',
@@ -29,7 +30,12 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     ]
             if collector:
                 collector = self.env['res.partner'].browse(int(collector))
-                args.append(('collector_id', '=', collector.id))
+                collector_in_contract = self.env['contract.contract'].search([('collector_id', '=', collector.id)])
+                if collector_in_contract:
+                    args.append(('collector_id', '=', collector.id))
+                else:
+                    raise ValidationError(
+                        "No existen contratos de este cobrador!")
 
             payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
             today = fields.Date.today()
@@ -45,11 +51,14 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     "No hay pagos asignados en el rango de fechas seleccionado!")
 
             for payment in payment_obj:
+                for p in payment.matched_move_line_ids:
+                    contrato = p.move_id.invoice_origin
+                    canon = p.move_id.canon
                 lineas = {
                     'cliente': payment.partner_id and payment.partner_id.name or ' ',
                     'telefono': payment.partner_id.phone or payment.partner_id.mobile or ' ',
-                    'contrato': payment.matched_move_line_ids[0] and payment.matched_move_line_ids[0].move_id.invoice_origin or ' ',
-                    'canon': payment.matched_move_line_ids[0] and payment.matched_move_line_ids[0].move_id.canon or ' ',
+                    'contrato': contrato or ' ',
+                    'canon': canon or ' ',
                     'fecha': payment.payment_date and payment.payment_date.strftime('%d-%m-%Y') or ' ',
                     'importe': payment.payments_amount or ' ',
                     'collector': payment.collector_id or False,
