@@ -11,6 +11,15 @@ class ReportPaymentCollectorReport(models.AbstractModel):
     # report.nombre modulo.template_id
     _name = 'report.jjm_report_payment.report_payment_collector_pdf'
 
+    def get_direction_partner(self, partner):
+        direction = ''
+        direction += partner.street and partner.street or ''
+        direction += partner.street2 and ' - ' + partner.street2 or ''
+        direction += partner.zip and ' C.Postal: ' + partner.zip or ''
+        direction += partner.city and ' ' + partner.city or ''
+        direction += partner.state_id and ' ' + partner.state_id.name or ''
+        return direction
+    
     @api.model
     def _get_report_values(self, docids, data=None):
         # LOS DATOS QUE RECIBO DEL WIZARD
@@ -56,11 +65,12 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     canon = p.move_id.canon
                 lineas = {
                     'cliente': payment.partner_id and payment.partner_id.name or ' ',
+                    'direccion': self.get_direction_partner(payment.partner_id) or ' ',
                     'telefono': payment.partner_id.phone or payment.partner_id.mobile or ' ',
                     'contrato': contrato or ' ',
                     'canon': canon or ' ',
                     'fecha': payment.payment_date and payment.payment_date.strftime('%d-%m-%Y') or ' ',
-                    'importe': payment.payments_amount or ' ',
+                    'importe': payment.payments_amount or 0,
                     'collector': payment.collector_id or False,
                 }
                 array.append(lineas)

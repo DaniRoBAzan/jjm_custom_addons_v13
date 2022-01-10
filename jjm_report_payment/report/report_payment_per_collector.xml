@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="jjm_report_payment_paperformat" model="report.paperformat">
+            <field name="name">Electronic Voucher Paperformat</field>
+<!--        VALORES PARA FORMATO PERSONALIZADO-->
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">23</field>
+        <field name="dpi">90</field>
+    </record>
+
     <!-- EL STRING DE ESTE REPORT ES EL QUE LE DA EL NOMBRE AL ARCHIVO! EL ID ES LLAMADO EN EL RETURN
     EL EL MODEL DEL REPORT VA EL _NAME DEL WIZARD.-->
     <report id="payment_collector_report"
@@ -7,7 +24,10 @@
         string="Reporte-cobranza"
         report_type="qweb-pdf"
         name="jjm_report_payment.report_payment_collector_pdf"
+        paperformat="jjm_report_payment_paperformat"
         menu="False"/>
+
+
 
     <template id="report_payment_collector_pdf">
         <t t-call="web.html_container">
@@ -16,28 +36,28 @@
                     <div>
                         <h3 class="text-center"><strong><u>Reporte Cobranza</u></strong></h3>
                         <br/>
-                <div class="text-right">
-                    <group>
-                        <div class="text-left">
-                            <span style="font-size: 14px;"><strong>Desde</strong>:
-                                <t t-esc="encabezado['date_start']"/>
-                            </span>
-                            <br/>
-                            <span style="font-size: 14px;"><strong>Hasta</strong>:
-                                <t t-esc="encabezado['date_end']"/>
-                            </span>
+                        <div class="row col-12">
+                        <div class="row col-6">
+                            <div class="text-left">
+                                <span style="font-size: 12px;"><strong>Desde</strong>:
+                                    <t t-esc="encabezado['date_start']"/>
+                                </span>
+                                <br/>
+                                <span style="font-size: 12px;"><strong>Hasta</strong>:
+                                    <t t-esc="encabezado['date_end']"/>
+                                </span>
+                            </div>
                         </div>
-                    </group>
-                    <group>
-                        <span style="font-size: 14px;"><strong>Fecha de impresión</strong>:
-                            <t t-esc="encabezado['today']"/>
-                            </span>
-                            <br/>
-                            <span style="font-size: 14px;"><strong>Usuario</strong>:
-                                <t t-esc="encabezado['user']"/>
-                            </span>
-                    </group>
-                </div>
+                        <div class="row col-6">
+                            <span style="font-size: 12px;"><strong>Fecha de impresión</strong>:
+                                <t t-esc="encabezado['today']"/>
+                                </span>
+                                <br/>
+                                <span style="font-size: 12px;"><strong>Usuario</strong>:
+                                    <t t-esc="encabezado['user']"/>
+                                </span>
+                        </div>
+                    </div>
             </div>
             <t t-set="total_gral" t-value="0"/>
             <div>
@@ -50,28 +70,32 @@
                     <t t-set="total" t-value="0"/>
                     <div class="text-left">
                         <br/>
-                        <span style="font-size: 16px;"><strong>Cobrador</strong>:
+                        <span style="font-size: 12px;"><strong>Cobrador</strong>:
                             <t t-esc="collector.name"/>
                         </span>
                         <br/>
                     </div>
                     <table class="table table-condensed table-bordered">
-                        <thead>
-                            <th class="text-center" style="width: 40%">CLIENTE</th>
-                            <th class="text-center" style="width: 20%">TELEFONO</th>
-                            <th class="text-center" style="width: 15%">CONTRATO</th>
-                            <th class="text-center" style="width: 10%">CANON</th>
-                            <th class="text-center" style="width: 20%">FECHA</th>
-                            <th class="text-center" style="width: 10%">IMPORTE</th>
+                        <thead style="font-size: 11px;">
+                            <th class="text-center">CLIENTE</th>
+                            <th class="text-center">DIRECCION</th>
+                            <th class="text-center">TELEFONO</th>
+                            <th class="text-center">CONTRATO</th>
+                            <th class="text-center">CANON</th>
+                            <th class="text-center">FECHA</th>
+                            <th class="text-center">IMPORTE</th>
                         </thead>
 
                         <tbody>
                             <t t-foreach="docs" t-as="array">
                                 <t t-if="array['canon'] != ' '">
                                     <t t-if="collector.id==array['collector'].id">
-                                        <tr>
+                                        <tr style="font-size: 11px;">
                                             <td class="text-center">
                                                 <t t-esc="array['cliente']"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <t t-raw="array['direccion']"/>
                                             </td>
                                             <td class="text-center">
                                                 <t t-esc="array['telefono']"/>
@@ -95,13 +119,14 @@
                                     </t>
                                 </t>
                             </t>
-                            <tr>
-                                <td class="text-center" style="width: 40%"></td>
-                                <td class="text-center" style="width: 20%"></td>
-                                <td class="text-center" style="width: 15%"></td>
-                                <td class="text-center" style="width: 10%"></td>
-                                <td class="text-center" style="width: 20%"><stong>TOTAL</stong></td>
-                                <td class="text-center" style="width: 10%"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                            <tr style="font-size: 11px;">
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center" style="font-size: 11px;"><stong>TOTAL</stong></td>
+                                <td class="text-center"><span style="font-size: 11px;" t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -113,8 +138,8 @@
                             <td class="text-center" style="width: 20%"></td>
                             <td class="text-center" style="width: 15%"></td>
                             <td class="text-center" style="width: 10%"></td>
-                            <td class="text-center" style="width: 20%"><strong>TOTAL GENERAL</strong></td>
-                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                            <td class="text-center" style="width: 20%"><strong style="font-size: 11px;">TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 10%; font-size: 11px;"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
                 </table>
