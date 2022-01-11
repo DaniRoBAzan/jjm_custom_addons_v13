@@ -125,21 +125,17 @@
                                 <td class="text-center"></td>
                                 <td class="text-center"></td>
                                 <td class="text-center"></td>
-                                <td class="text-center" style="font-size: 11px;"><stong>TOTAL</stong></td>
-                                <td class="text-center"><span style="font-size: 11px;" t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                                <td class="text-center"><stong>TOTAL</stong></td>
+                                <td class="text-center"><span t-esc="total or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                             </tr>
                         </tbody>
                     </table>
                 </t>
                 <table class="table table-condensed table-bordered">
                     <tbody>
-                        <tr>
-                            <td class="text-center" style="width: 40%"></td>
-                            <td class="text-center" style="width: 20%"></td>
-                            <td class="text-center" style="width: 15%"></td>
-                            <td class="text-center" style="width: 10%"></td>
-                            <td class="text-center" style="width: 20%"><strong style="font-size: 11px;">TOTAL GENERAL</strong></td>
-                            <td class="text-center" style="width: 10%; font-size: 11px;"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
+                        <tr style="font-size: 11px;">
+                            <td class="text-center" style="width: 90%"><strong>TOTAL GENERAL</strong></td>
+                            <td class="text-center" style="width: 10%"><span t-esc="total_gral or False" t-options='{"widget": "monetary", "display_currency": currency_id}'/></td>
                         </tr>
                     </tbody>
                 </table>

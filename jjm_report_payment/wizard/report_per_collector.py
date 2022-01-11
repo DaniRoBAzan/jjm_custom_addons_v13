@@ -45,7 +45,8 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                 else:
                     raise ValidationError(
                         "No existen contratos de este cobrador!")
-
+            else:
+                collector = self.env['res.partner']
             payment_obj = self.env['account.payment.group'].search(args, order='partner_id desc') or False
             today = fields.Date.today()
             encabezado = {
@@ -71,7 +72,7 @@ class ReportPaymentCollectorReport(models.AbstractModel):
                     'canon': canon or ' ',
                     'fecha': payment.payment_date and payment.payment_date.strftime('%d-%m-%Y') or ' ',
                     'importe': payment.payments_amount or 0,
-                    'collector': payment.collector_id or False,
+                    'collector': payment.collector_id or collector,
                 }
                 array.append(lineas)
 
