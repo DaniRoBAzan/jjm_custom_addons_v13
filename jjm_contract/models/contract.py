@@ -30,6 +30,9 @@ class ContractContract(models.Model):
                                        readonly=True)
     jjm_description_moto = fields.Text(string='Moto', store=True)
     jjm_last_canon_contract = fields.Integer(string='Ultimo canon', readonly=True, default=0)
+    jjm_partner_city = fields.Char(string='Localidad', related='partner_id.city')
+    jjm_partner_phone = fields.Char(string='Telefono', related='partner_id.phone')
+    jjm_partner_debt_balance = fields.Monetary(string='Deuda', related='partner_id.debt_balance')
 
     @api.model
     def create(self, vals):
