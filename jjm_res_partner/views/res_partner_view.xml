@@ -155,9 +155,9 @@
             string="Contratos de Clientes"
             parent="contacts.menu_contacts" sequence="3"/>
 
-    <record model="ir.ui.menu" id="contacts.action_contacts">
+    <!--record model="ir.ui.menu" id="contacts.action_contacts">
         <field name="sequence">3</field>
-    </record>
+    </record-->
 
     <record model="ir.ui.menu" id="contacts.res_partner_menu_config">
         <field name="sequence">99</field>
